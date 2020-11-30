@@ -14,16 +14,9 @@ public class Main {
 	//prefix à utiliser pour que le bot reconnaisse qu'on lui parle
 	public static String prefix = "#";
 	
-	public static int getA() 
-	{
-		return 2; //cote_equipe_A
-	}
-	public static int getB() 
-	{
-		return 5; //cote_equipe_B
-	}
+	public static String [] teamName = {"A", "B", "C" };
+	public static String [] teamValue = {"2", "5", "8" };
 	
-
 	
 	public static void main(String[] args) throws LoginException, InterruptedException
 	{
