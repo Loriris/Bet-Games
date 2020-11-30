@@ -8,7 +8,7 @@ import net.dv8tion.jda.api.OnlineStatus;
 import net.dv8tion.jda.api.entities.Activity;
 
 public class Main {
-	//creation du jda
+	//jda creation 
 	public static JDA jda;
 	
 	//prefix à utiliser pour que le bot reconnaisse qu'on lui parle
@@ -33,7 +33,7 @@ public class Main {
 				.build()
 				.awaitReady(); //This method will block until JDA has reached the status JDA.Status.CONNECTED.
 
-		//appel de commande
+		//command call
 		jda.addEventListener(new Commands());
 		jda.getPresence().setStatus(OnlineStatus.IDLE);
 	
