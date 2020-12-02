@@ -11,7 +11,7 @@ public class Commands extends ListenerAdapter{
 		if(args[0].equalsIgnoreCase(Main.prefix + "hello"))
 		{
 			event.getChannel().sendTyping().queue();
-			event.getChannel().sendMessage("Hello everybody :)").queue();
+			event.getChannel().sendMessage("Should I call you mista ? ").queue();
 		}
 	}
 	
