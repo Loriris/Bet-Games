@@ -2,25 +2,31 @@ package discordBot;
 
 import javax.security.auth.login.LoginException;
 
+import com.mashape.unirest.http.exceptions.UnirestException;
+
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.OnlineStatus;
 import net.dv8tion.jda.api.entities.Activity;
 
+
 public class Main {
+
 	//jda creation 
 	public static JDA jda;
 	
-	//prefix à utiliser pour que le bot reconnaisse qu'on lui parle
+	//prefix ï¿½ utiliser pour que le bot reconnaisse qu'on lui parle
 	public static String prefix = "#";
 	
 	public static String [] teamName = {"A", "B", "C" };
 	public static String [] teamValue = {"2", "5", "8" };
 	
 	
-	public static void main(String[] args) throws LoginException, InterruptedException
+	
+	public static void main(String[] args) throws LoginException, InterruptedException, UnirestException
 	{
-		//crée le bot avec le token adapté		
+		/*
+		//crï¿½e le bot avec le token adaptï¿½		
 		jda = JDABuilder.createDefault("NzgwMzgyMjMxNDExNjg3NDQ1.X7uRlg.Yc-yiu67ZbqSCN8Rcf7VIqG-CTQ")
 				.setActivity(Activity.watching("Ready to take bet"))
 				.build()
@@ -28,8 +34,18 @@ public class Main {
 
 		//command call
 		jda.addEventListener(new Commands());
-		jda.getPresence().setStatus(OnlineStatus.IDLE);
+		jda.getPresence().setStatus(OnlineStatus.IDLE); */
+		
+		InfoAPI info = new InfoAPI("max le chibrax", "EUW1");
+		info.PartyInfo();
+		System.out.println(info.getPartyInfo());
 	
 	
 	}
+	
+		
+	      
+	
+	
 }
+
