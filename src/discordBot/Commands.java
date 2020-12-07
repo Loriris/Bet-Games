@@ -40,7 +40,6 @@ public class Commands extends ListenerAdapter{
 				event.getChannel().sendMessage(info.build()).queue();
 				info.clear(); //Resets this builder to default state.
 			}
-
 		}
 
 	
@@ -92,6 +91,12 @@ public class Commands extends ListenerAdapter{
 		    {
 		        event.getChannel().sendMessage("🔴 Veuillez réassayer en verifiant si vous "
 		        + "avez bien saisi l'équipe et/ou le montant à parier (voir #info).").queue();
+		    }
+		    
+		    if(args.length > 3)
+		    {
+		        event.getChannel().sendMessage("🔴 Veuillez réassayer, "
+		        + "vous avez saisi trop d'arguments (voir #info).").queue();
 		    }
 		    
 		    if(args.length == 3)
