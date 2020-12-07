@@ -9,6 +9,13 @@ import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
 public class Commands extends ListenerAdapter{
+	
+	//prefix à utiliser pour que le bot reconnaisse qu'on lui parle
+		private static String prefix = "#";
+		
+		private static String [] teamName = {"A", "B", "C" };
+		private static String [] teamValue = {"2", "5", "8" };
+		
 	public void onGuildMessageReceived(GuildMessageReceivedEvent event)
 	{
 		int i, money;
@@ -16,8 +23,10 @@ public class Commands extends ListenerAdapter{
 		// to read arguments type on discord
 		String[] args = event.getMessage().getContentRaw().split("\\s+");
 		
-		
-		if(args[0].equalsIgnoreCase(Main.prefix + "info"))
+
+/*--------------------------------------------------------------------------------------------*/		
+		// type #info to display all commands
+		if(args[0].equalsIgnoreCase(prefix + "info"))
 		{
 			//in info there must be only one arg, if there are several args return an error
 			if(args.length > 1)
@@ -39,13 +48,12 @@ public class Commands extends ListenerAdapter{
 				event.getChannel().sendMessage(info.build()).queue();
 				info.clear(); //Resets this builder to default state.
 			}
-
 		}
 
 	
 /*--------------------------------------------------------------------------------------------*/
 		// allow to know the odds of betting of the team you that you want	
-		if(args[0].equalsIgnoreCase(Main.prefix + "cote"))
+		if(args[0].equalsIgnoreCase(prefix + "cote"))
 		{	
 			//in cote there must be 2 args, if there are more than 2 args return an error
 			if(args.length > 2)
@@ -62,20 +70,20 @@ public class Commands extends ListenerAdapter{
 			//if the team exist in the array teamName
 			if(args.length == 2)
 			{
-				if(Arrays.stream(Main.teamName).anyMatch(args[1]::equals) == false)
+				if(Arrays.stream(teamName).anyMatch(args[1]::equals) == false)
 				{
 					event.getChannel().sendTyping().queue();
 					event.getChannel().sendMessage("🔴 L'équipe sélectionnée n'est pas valide, "
 						+ "saisisser #teams pour voir les équipes disponibles.").queue();
 				}
 				
-				for(i = 0; i<Main.teamName.length; i++) 
+				for(i = 0; i<teamName.length; i++) 
 				{
-					if(args[1].equalsIgnoreCase(Main.teamName[i]))
+					if(args[1].equalsIgnoreCase(teamName[i]))
 					{
 						event.getChannel().sendTyping().queue();
-						event.getChannel().sendMessage("Cote à " + Main.teamValue[i] 
-						+ " pour l'équipe " + Main.teamName[i] + ".").queue();
+						event.getChannel().sendMessage("Cote à " + teamValue[i] 
+						+ " pour l'équipe " + teamName[i] + ".").queue();
 					}			
 				}
 			}
@@ -84,7 +92,7 @@ public class Commands extends ListenerAdapter{
 
 /*--------------------------------------------------------------------------------------------*/		
 		//allow to bet on the selected team
-		if(args[0].equalsIgnoreCase(Main.prefix + "bet"))
+		if(args[0].equalsIgnoreCase(prefix + "bet"))
 		{
 			// Check how many arguments were passed in, we need 3 args
 		    if(args.length < 3)
@@ -93,18 +101,24 @@ public class Commands extends ListenerAdapter{
 		        + "avez bien saisi l'équipe et/ou le montant à parier (voir #info).").queue();
 		    }
 		    
+		    if(args.length > 3)
+		    {
+		        event.getChannel().sendMessage("🔴 Veuillez réassayer, "
+		        + "vous avez saisi trop d'arguments (voir #info).").queue();
+		    }
+		    
 		    if(args.length == 3)
 		    {
-		    	if(Arrays.stream(Main.teamName).anyMatch(args[1]::equals) == false)
+		    	if(Arrays.stream(teamName).anyMatch(args[1]::equals) == false)
 				{
 					event.getChannel().sendTyping().queue();
 					event.getChannel().sendMessage("🔴 L'équipe sélectionnée n'est pas valide, "
 						+ "saisisser #teams pour voir les équipes disponibles.").queue();
 				}
 		    	
-		    	for(i = 0; i<Main.teamName.length; i++) 
+		    	for(i = 0; i<teamName.length; i++) 
 				{
-					if(args[1].equalsIgnoreCase(Main.teamName[i]) && args[2].isEmpty() == false)
+					if(args[1].equalsIgnoreCase(teamName[i]) && args[2].isEmpty() == false)
 					{
 						money = Integer.parseInt(args[2]);
 						if(money <=0 || money>100000)
@@ -126,7 +140,7 @@ public class Commands extends ListenerAdapter{
 
 /*--------------------------------------------------------------------------------------------*/
 		// allow to know the team available 
-		if(args[0].equalsIgnoreCase(Main.prefix + "teams"))
+		if(args[0].equalsIgnoreCase(prefix + "teams"))
 		{
 			//in info there must be only one arg, if there are several args return an error
 			if(args.length > 1) 
@@ -138,10 +152,10 @@ public class Commands extends ListenerAdapter{
 			//if the team exist in the array teamName
 			else
 			{
-				for(i = 0; i<Main.teamName.length; i++) 
+				for(i = 0; i<teamName.length; i++) 
 				{
 					event.getChannel().sendTyping().queue();
-					event.getChannel().sendMessage("Equipe " + Main.teamName[i] 
+					event.getChannel().sendMessage("Equipe " + teamName[i] 
 					+ "  disponible.").queue();
 				}				
 			}
