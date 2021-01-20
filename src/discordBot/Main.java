@@ -2,6 +2,9 @@ package discordBot;
 
 import javax.security.auth.login.LoginException;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.mashape.unirest.http.exceptions.UnirestException;
 
 import net.dv8tion.jda.api.JDA;
@@ -30,9 +33,11 @@ public class Main {
 		jda.addEventListener(new Commands());
 		jda.getPresence().setStatus(OnlineStatus.IDLE); */
 		
-		InfoAPI info = new InfoAPI("max le chibrax", "EUW1");
+		InfoAPI info = new InfoAPI("trayton", "EUW1");
 		info.PartyInfo();
-		System.out.println(info.getPartyInfo());
+		info.retrieveParticipantsInfo();
+		System.out.println(info.getParticipant()[0].getSort1());
+		System.out.println(info.getParticipant()[0].getSort2());
 	
 	
 	}
