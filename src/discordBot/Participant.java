@@ -68,6 +68,4 @@ public class Participant
 	{
 		this.team = team;
 	}
-
-
 }

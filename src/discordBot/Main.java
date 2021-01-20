@@ -32,9 +32,8 @@ public class Main {
 		//command call
 		jda.addEventListener(new Commands());
 		jda.getPresence().setStatus(OnlineStatus.IDLE); 
-		//InfoAPI info = new InfoAPI("max le chibrax", "EUW1"); // pseudo, region
 		InfoAPI info = new InfoAPI( gameLog[0], gameLog[1] ); // pseudo, region
-
+	
 	
 	}   
 }

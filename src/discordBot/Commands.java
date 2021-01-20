@@ -2,6 +2,8 @@ package discordBot;
 
 import java.util.Arrays;
 
+import com.mashape.unirest.http.exceptions.UnirestException;
+
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
@@ -10,8 +12,10 @@ public class Commands extends ListenerAdapter{
 	
 	//prefix to used for the bot to recognize that it's being spoken to
 	private static String prefix = "#";
-	private static String [] teamName = {"A", "B", "C" };
-	private static String [] teamValue = {"2", "5", "8" };
+	private static String [] teamName = {"100", "200"};
+	private static String [] teamValue = {"2", "5"};
+	
+	private InfoAPI infos;
 		
 	// LoL server name 
 	private static String [] serverName = {"BR1", "EUN1", "EUW1", "LA1", 
@@ -42,7 +46,8 @@ public class Commands extends ListenerAdapter{
 				info.addField("Pour connaitre les équipes disponibles :", "#teams", false);
 				info.addField("Pour connaitre une cote :", "#cote nom_de_l'équipe", false);
 				info.addField("Pour faire un paris :", "#bet nom_de_l'équipe somme_engagée", false);
-				info.addField("Pour se connecter à une partie :", "#connexion pseudo_joueur region", false);
+				info.addField("Pour se connecter à une partie :", "#connexion pseudo_joueur region  "
+						+ "(pour le nom du joeur il faut écrire en un seul mot)", false);
 				info.addField("Liste serveurs :", "\"BR1\", \"EUN1\", \"EUW1\", \"LA1\", \r\n" + 
 				"\"LA2\", \"NA1\", \"OCE\", \"OC1\", \"RU1\", \"TR1\", \"JP1\", \"KR\", \"PBE\"", false);
 				info.setColor(0x9003fc);
@@ -152,11 +157,12 @@ public class Commands extends ListenerAdapter{
 			//if the team exist in the array teamName
 			else
 			{
-				for(i = 0; i<teamName.length; i++) 
+				infos.retrieveParticipantsInfo();
+				for(i = 0; i<infos.getParticipant().length; i++) 
 				{
 					event.getChannel().sendTyping().queue();
-					event.getChannel().sendMessage("Equipe " + teamName[i] 
-					+ "  disponible.").queue();
+					event.getChannel().sendMessage("Equipe " + infos.getParticipant()[i].getTeam() 
+					+ "  disponible," + " champion " + infos.getParticipant()[i].getChampion()).queue();
 				}				
 			}
 		}
@@ -179,14 +185,28 @@ public class Commands extends ListenerAdapter{
 		    }
 		    
 		    if(args.length == 3)
-		    {
-		    	Main.gameLog[0] = args[1]; 
-		    	Main.gameLog[1] = args[2];
+		    {	//args used in InfoAPI (main)
+		    	Main.gameLog[0] = args[1]; //pseudo
+		    	Main.gameLog[1] = args[2]; //region server
+		    	
 		    	
 	    		if(Arrays.stream(serverName).anyMatch(args[2]::equals) == false)
 	    		{
 	    			event.getChannel().sendMessage("🔴 Veuillez réassayer, "
 	    			+ "le serveur saisie n'existe pas (voir #info).").queue();
+	    		}
+	    		else
+	    		{
+	    			try {
+						infos = new InfoAPI(args[1], args[2]);
+						infos.PartyInfo();
+						System.out.println(infos.getPartyInfo());
+					} catch (UnirestException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+	    			
+	    			event.getChannel().sendMessage("🟢 connexion effectuée.").queue();
 	    		}
 		    }
 		}

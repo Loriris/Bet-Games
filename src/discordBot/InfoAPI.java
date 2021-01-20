@@ -62,7 +62,4 @@ public class InfoAPI
 	{
 		return this.participant;
 	}
-	
-	
-	
 }
