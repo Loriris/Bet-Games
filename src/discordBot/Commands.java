@@ -12,8 +12,8 @@ public class Commands extends ListenerAdapter{
 	
 	//prefix to used for the bot to recognize that it's being spoken to
 	private static String prefix = "#";
-	private static String [] teamName = {"100", "200"};
-	private static String [] teamValue = {"2", "5"};
+	private String [] teamName = {"100", "200"};
+	private String [] teamValue = {"2", "5"};
 	
 	private InfoAPI infos;
 		
@@ -44,10 +44,10 @@ public class Commands extends ListenerAdapter{
 				EmbedBuilder info = new EmbedBuilder();
 				info.setTitle("Liste des commandes :");
 				info.addField("Pour connaitre les équipes disponibles :", "#teams", false);
-				info.addField("Pour connaitre une cote :", "#cote nom_de_l'équipe", false);
-				info.addField("Pour faire un paris :", "#bet nom_de_l'équipe somme_engagée", false);
-				info.addField("Pour se connecter à une partie :", "#connexion pseudo_joueur region  "
-						+ "(pour le nom du joeur il faut écrire en un seul mot)", false);
+				info.addField("Pour connaitre une cote :", "#odds [nom_de_l'équipe]", false);
+				info.addField("Pour faire un paris :", "#bet [nom_de_l'équipe] [somme_engagée]", false);
+				info.addField("Pour se connecter à une partie :", "#connexion [pseudo_joueur] [region]"
+						+ " (pour le nom du joueur il faut écrire en un seul mot)", false);
 				info.addField("Liste serveurs :", "\"BR1\", \"EUN1\", \"EUW1\", \"LA1\", \r\n" + 
 				"\"LA2\", \"NA1\", \"OCE\", \"OC1\", \"RU1\", \"TR1\", \"JP1\", \"KR\", \"PBE\"", false);
 				info.setColor(0x9003fc);
@@ -59,7 +59,7 @@ public class Commands extends ListenerAdapter{
 
 /*--------------------------------------------------------------------------------------------*/
 		// allow to know the odds of betting of the team you that you want	
-		if(args[0].equalsIgnoreCase(prefix + "cote"))
+		if(args[0].equalsIgnoreCase(prefix + "odds"))
 		{	
 			//in cote there must be 2 args, if there are more than 2 args return an error
 			if(args.length > 2)
@@ -118,7 +118,7 @@ public class Commands extends ListenerAdapter{
 				{
 					event.getChannel().sendTyping().queue();
 					event.getChannel().sendMessage("🔴 L'équipe sélectionnée n'est pas valide, "
-						+ "saisisser #teams pour voir les équipes disponibles.").queue();
+						+ "saisir #teams pour voir les équipes disponibles.").queue();
 				}
 		    	
 		    	for(i = 0; i<teamName.length; i++) 
@@ -197,7 +197,8 @@ public class Commands extends ListenerAdapter{
 	    		}
 	    		else
 	    		{
-	    			try {
+	    			try 
+	    			{
 						infos = new InfoAPI(args[1], args[2]);
 						infos.PartyInfo();
 						System.out.println(infos.getPartyInfo());
