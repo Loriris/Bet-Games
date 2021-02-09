@@ -1,6 +1,8 @@
 package discordBot;
 
+import java.io.Console;
 import java.util.Arrays;
+import java.util.Random;
 
 import com.mashape.unirest.http.exceptions.UnirestException;
 
@@ -23,7 +25,8 @@ public class Commands extends ListenerAdapter{
 
 	public void onGuildMessageReceived(GuildMessageReceivedEvent event)
 	{
-		int i, money;
+		int i, money, nb;
+		float odd;
 		
 		// to read arguments type on discord
 		String[] args = event.getMessage().getContentRaw().split("\\s+");
@@ -80,7 +83,7 @@ public class Commands extends ListenerAdapter{
 				{
 					event.getChannel().sendTyping().queue();
 					event.getChannel().sendMessage("🔴 L'équipe sélectionnée n'est pas valide, "
-						+ "saisisser #teams pour voir les équipes disponibles.").queue();
+						+ "saisir #teams pour voir les équipes disponibles.").queue();
 				}
 				
 				for(i = 0; i<teamName.length; i++) 
@@ -137,6 +140,25 @@ public class Commands extends ListenerAdapter{
 							event.getChannel().sendTyping().queue();
 							event.getChannel().sendMessage("🟢 Paris validé.").queue();
 							// perform an action to save the amount of money that was bet
+							//odd = 1 / (float)teamValue[i];
+							//System.out.println(teamValue[i]);
+							Random rand = new Random();
+							nb =rand.nextInt(10);
+							System.out.println("nb: " + nb);
+							
+							odd = 1/Float.parseFloat(teamValue[i]);
+							System.out.println(odd);
+							
+							if(nb < odd*10)
+							{
+								//System.out.println("gagner");
+								event.getChannel().sendMessage("😀 Gagner").queue();
+							}
+							else
+							{
+								//System.out.println("perdu");
+								event.getChannel().sendMessage("😥 Perdu").queue();
+							}
 						}
 					}
 				}
