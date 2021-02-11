@@ -7,6 +7,7 @@ import java.util.Random;
 import com.mashape.unirest.http.exceptions.UnirestException;
 
 import net.dv8tion.jda.api.EmbedBuilder;
+import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
@@ -139,9 +140,9 @@ public class Commands extends ListenerAdapter{
 						{
 							event.getChannel().sendTyping().queue();
 							event.getChannel().sendMessage("🟢 Paris validé.").queue();
+							
 							// perform an action to save the amount of money that was bet
-							//odd = 1 / (float)teamValue[i];
-							//System.out.println(teamValue[i]);
+					
 							Random rand = new Random();
 							nb =rand.nextInt(10);
 							System.out.println("nb: " + nb);
@@ -152,12 +153,14 @@ public class Commands extends ListenerAdapter{
 							if(nb < odd*10)
 							{
 								//System.out.println("gagner");
-								event.getChannel().sendMessage("😀 Gagner").queue();
+								//event.getChannel().sendMessage("😀 Gagner").queue();
+								sendResult(event.getAuthor(), "😀 Gagner");
 							}
 							else
 							{
 								//System.out.println("perdu");
-								event.getChannel().sendMessage("😥 Perdu").queue();
+								//event.getChannel().sendMessage("😥 Perdu").queue();
+								sendResult(event.getAuthor(), "😥 Perdu");
 							}
 						}
 					}
@@ -236,4 +239,11 @@ public class Commands extends ListenerAdapter{
 		
 /*--------------------------------------------------------------------------------------------*/
 	}	
+	
+	static void sendResult(User user, String content) {
+	    user.openPrivateChannel().queue(channel -> { // this is a lambda expression
+	        // the channel is the successful response
+	        channel.sendMessage(content).queue();
+	    });
+	}
 }
