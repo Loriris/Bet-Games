@@ -31,11 +31,13 @@ public class Main {
 
 		//command call
 		jda.addEventListener(new Commands());
+<<<<<<< HEAD
 		jda.getPresence().setStatus(OnlineStatus.IDLE); */
 		InfoAPI info = new InfoAPI("sixenusdecimus", "euw1"); // pseudo, region
 		System.out.println(info.getPartyInfo());
 		
 		//InfoAPI info = new InfoAPI( gameLog[0], gameLog[1] ); // pseudo, region
+		jda.getPresence().setStatus(OnlineStatus.IDLE);
 
 	
 	}   
