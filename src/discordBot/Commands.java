@@ -27,7 +27,7 @@ public class Commands extends ListenerAdapter{
 	public void onGuildMessageReceived(GuildMessageReceivedEvent event)
 	{
 		int i, money, nb;
-		float odd;
+		float odd, gains;
 		
 		// to read arguments type on discord
 		String[] args = event.getMessage().getContentRaw().split("\\s+");
@@ -145,16 +145,19 @@ public class Commands extends ListenerAdapter{
 					
 							Random rand = new Random();
 							nb =rand.nextInt(10);
-							System.out.println("nb: " + nb);
+							//System.out.println("nb: " + nb);
 							
 							odd = 1/Float.parseFloat(teamValue[i]);
-							System.out.println(odd);
+							//System.out.print("odd: ");
+							//System.out.println(odd);
 							
 							if(nb < odd*10)
 							{
 								//System.out.println("gagner");
 								//event.getChannel().sendMessage("😀 Gagner").queue();
-								sendResult(event.getAuthor(), "😀 Gagner");
+								gains = money * Float.parseFloat(teamValue[i]);;
+								Float.toString(gains);
+								sendResult(event.getAuthor(), "😀 Gagner, votre gain est de " + gains + "€");
 							}
 							else
 							{
@@ -239,10 +242,9 @@ public class Commands extends ListenerAdapter{
 		
 /*--------------------------------------------------------------------------------------------*/
 	}	
-	
+	// send a private message to the gambler to inform him if he has won or lost
 	static void sendResult(User user, String content) {
-	    user.openPrivateChannel().queue(channel -> { // this is a lambda expression
-	        // the channel is the successful response
+	    user.openPrivateChannel().queue(channel -> {
 	        channel.sendMessage(content).queue();
 	    });
 	}
