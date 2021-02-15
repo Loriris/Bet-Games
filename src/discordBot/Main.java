@@ -32,13 +32,12 @@ public class Main {
 		//command call
 		jda.addEventListener(new Commands());
 		jda.getPresence().setStatus(OnlineStatus.IDLE); */
-		//InfoAPI.test();
-		InfoAPI info = new InfoAPI("shynouh", "euw1"); // pseudo, region
+		InfoAPI info = new InfoAPI("Evalunna Vêtue", "euw1"); // pseudo, region
 		info.PartyInfo();
 		info.retrieveParticipantsInfo();
 		for(int index = 0; index < info.getParticipant().length; index++)
 		{
-			System.out.println(info.getParticipant()[index].getChampion());
+			System.out.println(info.getParticipant()[index].getRatio());
 		}
 		//System.out.println(info.getPartyInfo());
 		
