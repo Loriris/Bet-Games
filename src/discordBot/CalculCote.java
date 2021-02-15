@@ -10,9 +10,7 @@ public class CalculCote {
 	static String pseudo;
 	static String region;
 	float totRatioEq1, totRatioEq2, ratioEq1, ratioEq2, coteEq1, coteEq2;
-	
-	//constructeur tableau de participants
-	
+		
 	public void calcul() throws UnirestException {
 		
 		pseudo = Main.gameLog[0];
@@ -34,7 +32,6 @@ public class CalculCote {
 				//System.out.print(" EQ2 " + ratioEq2);
 
 			}
-	
 			//System.out.print(" g " + ratio);
 		}
 		
@@ -47,5 +44,4 @@ public class CalculCote {
 		System.out.println("Eq1 " + coteEq1);
 		System.out.println("Eq2 " + coteEq2);
 	}	
-	
 }

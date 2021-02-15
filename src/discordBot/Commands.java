@@ -31,11 +31,6 @@ public class Commands extends ListenerAdapter{
 		// to read arguments type on discord
 		String[] args = event.getMessage().getContentRaw().split("\\s+");
 		
-/*--------------------------------------------------------------------------------------------*/	
-		
-
-		
-		
 /*--------------------------------------------------------------------------------------------*/		
 		// type #info to display all commands
 		if(args[0].equalsIgnoreCase(prefix + "info"))
