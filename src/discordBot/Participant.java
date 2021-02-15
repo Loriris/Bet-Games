@@ -4,17 +4,17 @@ package discordBot;
 public class Participant
 {
 	private String name;
-	private int Champion;
-	private int Sort1;
-	private int Sort2;
+	private String championName;
+	private int sort1;
+	private int sort2;
 	private int team;
 	
-	public Participant(String nameToSet, int championToSet, int teamToSet, int sort1ToSet, int sort2ToSet)
+	public Participant(String nameToSet, String championToSet, int teamToSet, int sort1ToSet, int sort2ToSet)
 	{
 		this.name = nameToSet;
-		this.Champion = championToSet;
-		this.Sort1 = sort1ToSet;
-		this.Sort2 = sort2ToSet;
+		this.championName = championToSet;
+		this.sort1 = sort1ToSet;
+		this.sort2 = sort2ToSet;
 		this.team = teamToSet;
 		
 	}
@@ -29,34 +29,34 @@ public class Participant
 		this.name = name;
 	}
 
-	public int getChampion()
+	public String getChampion()
 	{
-		return this.Champion;
+		return this.championName;
 	}
 
-	public void setChampion(int champion)
+	public void setChampion(String champion)
 	{
-		this.Champion = champion;
+		this.championName = champion;
 	}
 
 	public int getSort1()
 	{
-		return this.Sort1;
+		return this.sort1;
 	}
 
 	public void setSort1(int sort1)
 	{
-		this.Sort1 = sort1;
+		this.sort1 = sort1;
 	}
 
 	public int getSort2()
 	{
-		return this.Sort2;
+		return this.sort2;
 	}
 
 	public void setSort2(int sort2)
 	{
-		this.Sort2 = sort2;
+		this.sort2 = sort2;
 	}
 
 	public int getTeam()

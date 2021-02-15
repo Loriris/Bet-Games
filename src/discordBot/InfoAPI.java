@@ -1,4 +1,7 @@
 package discordBot;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
 import java.util.function.Consumer;
 
 import com.google.gson.JsonArray;
@@ -35,6 +38,7 @@ public class InfoAPI
 			      
 		HttpResponse <JsonNode> response2 = Unirest.get("https://"+ region + ".api.riotgames.com/lol/spectator/v4/active-games/by-summoner/" + summonerInfo.get("id").getAsString() + "?" + "api_key=" + key ).asJson();
 	    this.partyInfo = JsonParser.parseString(response2.getBody().toString()).getAsJsonObject();
+	    System.out.println(this.partyInfo);
 	}
 
 	public JsonObject getPartyInfo()
@@ -42,15 +46,27 @@ public class InfoAPI
 		return this.partyInfo;
 	}
 	
-	public void retrieveParticipantsInfo()
+	public void retrieveParticipantsInfo() throws UnirestException
 	{
+		String name = "";
+		HttpResponse <JsonNode> responseDragon= Unirest.get("https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-summary.json").asJson();;
+		JsonArray champInfo = JsonParser.parseString(responseDragon.getBody().toString()).getAsJsonArray();
+		
 		JsonArray participantArray = this.partyInfo.get("participants").getAsJsonArray();
 		for(int index = 0; index < participantArray.size(); index++)
 		{
+			for (int index2 = 0; index < champInfo.size(); index2++)
+			{
+				if(champInfo.get(index2).getAsJsonObject().get("id").getAsInt() == participantArray.get(index).getAsJsonObject().get("championId").getAsInt())
+				{
+					name = champInfo.get(index2).getAsJsonObject().get("name").getAsString();
+					break;
+				}
+			}
 			
 			this.participant[index] = new Participant(
 					participantArray.get(index).getAsJsonObject().get("summonerName").getAsString(),
-					participantArray.get(index).getAsJsonObject().get("championId").getAsInt(),
+					name,
 					participantArray.get(index).getAsJsonObject().get("teamId").getAsInt(),
 					participantArray.get(index).getAsJsonObject().get("spell1Id").getAsInt(),
 					participantArray.get(index).getAsJsonObject().get("spell2Id").getAsInt());
@@ -61,5 +77,13 @@ public class InfoAPI
 	public Participant[] getParticipant()
 	{
 		return this.participant;
+	}
+	
+	public static void test() throws UnirestException
+	{
+		HttpResponse <JsonNode> responseDragon = Unirest.get("https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-summary.json").asJson();
+		JsonArray champInfo = JsonParser.parseString(responseDragon.getBody().toString()).getAsJsonArray();
+		Boolean name = champInfo.get(1).getAsJsonObject().has("1");
+		System.out.println(name);
 	}
 }

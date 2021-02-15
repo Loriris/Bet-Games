@@ -182,7 +182,15 @@ public class Commands extends ListenerAdapter{
 			//if the team exist in the array teamName
 			else
 			{
-				infos.retrieveParticipantsInfo();
+				try
+				{
+					infos.retrieveParticipantsInfo();
+				}
+				catch (UnirestException e)
+				{
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				for(i = 0; i<infos.getParticipant().length; i++) 
 				{
 					event.getChannel().sendTyping().queue();
