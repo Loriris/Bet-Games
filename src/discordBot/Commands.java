@@ -94,7 +94,8 @@ public class Commands extends ListenerAdapter{
 						event.getChannel().sendTyping().queue();
 						event.getChannel().sendMessage("Cote à " + teamValue[i] 
 						+ " pour l'équipe " + teamName[i] + ".").queue();
-					}			
+					}	
+					//new CalculCote();
 				}
 			}
 		}
