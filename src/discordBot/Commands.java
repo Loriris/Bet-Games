@@ -94,7 +94,8 @@ public class Commands extends ListenerAdapter{
 						event.getChannel().sendTyping().queue();
 						event.getChannel().sendMessage("Cote à " + teamValue[i] 
 						+ " pour l'équipe " + teamName[i] + ".").queue();
-					}			
+					}	
+					//new CalculCote();
 				}
 			}
 		}
@@ -185,15 +186,7 @@ public class Commands extends ListenerAdapter{
 			//if the team exist in the array teamName
 			else
 			{
-				try
-				{
-					infos.retrieveParticipantsInfo();
-				}
-				catch (UnirestException e)
-				{
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				infos.retrieveParticipantsInfo();
 				for(i = 0; i<infos.getParticipant().length; i++) 
 				{
 					event.getChannel().sendTyping().queue();
