@@ -16,7 +16,6 @@ public class Commands extends ListenerAdapter{
 	//prefix to used for the bot to recognize that it's being spoken to
 	private static String prefix = "#";
 	private String [] teamName = {"100", "200"};
-	private String [] teamValue = {"2", "5"};
 	
 	private InfoAPI infos;
 		
@@ -27,10 +26,15 @@ public class Commands extends ListenerAdapter{
 	public void onGuildMessageReceived(GuildMessageReceivedEvent event)
 	{
 		int i, money, nb;
-		float odd, gains;
+		float odd, gains, coteEq1, coteEq2;
 		
 		// to read arguments type on discord
 		String[] args = event.getMessage().getContentRaw().split("\\s+");
+		
+/*--------------------------------------------------------------------------------------------*/	
+		
+
+		
 		
 /*--------------------------------------------------------------------------------------------*/		
 		// type #info to display all commands
@@ -91,11 +95,23 @@ public class Commands extends ListenerAdapter{
 				{
 					if(args[1].equalsIgnoreCase(teamName[i]))
 					{
+						// we get the odd of each teams with cal
+						CalculCote cal = new CalculCote();
+						try {
+							cal.calcul();
+						} catch (UnirestException e) {
+							e.printStackTrace();
+						}
+						
+						coteEq1 = cal.coteEq1;
+						coteEq2 = cal.coteEq2;
+						float [] teamValue = {coteEq1, coteEq2};
+						
 						event.getChannel().sendTyping().queue();
 						event.getChannel().sendMessage("Cote à " + teamValue[i] 
 						+ " pour l'équipe " + teamName[i] + ".").queue();
+						
 					}	
-					//new CalculCote();
 				}
 			}
 		}
@@ -143,12 +159,25 @@ public class Commands extends ListenerAdapter{
 							event.getChannel().sendMessage("🟢 Paris validé.").queue();
 							
 							// perform an action to save the amount of money that was bet
+							
+							// we get the odd of each teams with cal
+							CalculCote cal = new CalculCote();
+							try {
+								cal.calcul();
+							} catch (UnirestException e) {
+								e.printStackTrace();
+							}
+							
+							coteEq1 = cal.coteEq1;
+							coteEq2 = cal.coteEq2;
+							float [] teamValue = {coteEq1, coteEq2};
+							
 					
 							Random rand = new Random();
 							nb =rand.nextInt(10);
 							//System.out.println("nb: " + nb);
 							
-							odd = 1/Float.parseFloat(teamValue[i]);
+							odd = 1/teamValue[i];
 							//System.out.print("odd: ");
 							//System.out.println(odd);
 							
@@ -156,7 +185,7 @@ public class Commands extends ListenerAdapter{
 							{
 								//System.out.println("gagner");
 								//event.getChannel().sendMessage("😀 Gagner").queue();
-								gains = money * Float.parseFloat(teamValue[i]);;
+								gains = money * teamValue[i];
 								Float.toString(gains);
 								sendResult(event.getAuthor(), "😀 Gagner, votre gain est de " + gains + "€");
 							}
@@ -166,6 +195,7 @@ public class Commands extends ListenerAdapter{
 								//event.getChannel().sendMessage("😥 Perdu").queue();
 								sendResult(event.getAuthor(), "😥 Perdu");
 							}
+							
 						}
 					}
 				}
@@ -186,7 +216,14 @@ public class Commands extends ListenerAdapter{
 			//if the team exist in the array teamName
 			else
 			{
-				infos.retrieveParticipantsInfo();
+				try
+				{
+					infos.retrieveParticipantsInfo();
+				}
+				catch (UnirestException e)
+				{
+					e.printStackTrace();
+				}
 				for(i = 0; i<infos.getParticipant().length; i++) 
 				{
 					event.getChannel().sendTyping().queue();

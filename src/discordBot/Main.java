@@ -32,18 +32,20 @@ public class Main {
 		//command call
 		jda.addEventListener(new Commands());
 		jda.getPresence().setStatus(OnlineStatus.IDLE); 
-		/*
-		InfoAPI info = new InfoAPI("shynouh", "euw1"); // pseudo, region
+		
+		//InfoAPI info = new InfoAPI("ficer", "euw1"); // pseudo, region
+	/*
 		info.PartyInfo();
 		info.retrieveParticipantsInfo();
 		for(int index = 0; index < info.getParticipant().length; index++)
 		{
-			System.out.println(info.getParticipant()[index].getChampion());
+			System.out.println(info.getParticipant()[index].getRatio());
 		}
 		System.out.println(info.getPartyInfo());
 		*/
 		
 		InfoAPI info = new InfoAPI( gameLog[0], gameLog[1] ); // pseudo, region
+	
 		//jda.getPresence().setStatus(OnlineStatus.IDLE);
 
 	

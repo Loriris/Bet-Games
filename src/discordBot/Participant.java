@@ -8,14 +8,18 @@ public class Participant
 	private int sort1;
 	private int sort2;
 	private int team;
+	private float ratio;
 	
-	public Participant(String nameToSet, String championToSet, int teamToSet, int sort1ToSet, int sort2ToSet)
+
+
+	public Participant(String nameToSet, String championToSet, int teamToSet, int sort1ToSet, int sort2ToSet, float ratioToSet)
 	{
 		this.name = nameToSet;
 		this.championName = championToSet;
 		this.sort1 = sort1ToSet;
 		this.sort2 = sort2ToSet;
 		this.team = teamToSet;
+		this.ratio = ratioToSet;
 		
 	}
 
@@ -67,5 +71,15 @@ public class Participant
 	public void setTeam(int team)
 	{
 		this.team = team;
+	}
+	
+	public float getRatio()
+	{
+		return ratio;
+	}
+
+	public void setRatio(float ratio)
+	{
+		this.ratio = ratio;
 	}
 }
