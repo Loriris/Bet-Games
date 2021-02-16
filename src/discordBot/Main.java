@@ -30,11 +30,16 @@ public class Main {
 		jda.addEventListener(new Commands());
 		jda.getPresence().setStatus(OnlineStatus.IDLE); */
 		
-		InfoAPI info = new InfoAPI("max le chibrax", "EUW1");
+		/*InfoAPI info = new InfoAPI("max le chibrax", "EUW1");
 		info.PartyInfo();
-		System.out.println(info.getPartyInfo());
-	
-	
+		System.out.println(info.getPartyInfo());*/
+		
+		Bet monPari = new Bet(60,"B","2","BR1");
+		
+		Mongo col = new Mongo();
+		col.insert(monPari);
+		
+		
 	}
 	
 		
