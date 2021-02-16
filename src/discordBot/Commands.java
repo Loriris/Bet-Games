@@ -54,7 +54,6 @@ public class Commands extends ListenerAdapter{
 				info.addField("Liste serveurs :", "\"BR1\", \"EUN1\", \"EUW1\", \"LA1\", \r\n" + 
 				"\"LA2\", \"NA1\", \"OCE\", \"OC1\", \"RU1\", \"TR1\", \"JP1\", \"KR\", \"PBE\"", false);
 				info.setColor(0x9003fc);
-				event.getChannel().sendTyping().queue();
 				event.getChannel().sendMessage(info.build()).queue();
 				info.clear(); //Resets this builder to default state.
 			}
@@ -81,7 +80,6 @@ public class Commands extends ListenerAdapter{
 			{
 				if(Arrays.stream(teamName).anyMatch(args[1]::equals) == false)
 				{
-					event.getChannel().sendTyping().queue();
 					event.getChannel().sendMessage("🔴 L'équipe sélectionnée n'est pas valide, "
 						+ "saisir #teams pour voir les équipes disponibles.").queue();
 				}
@@ -102,10 +100,8 @@ public class Commands extends ListenerAdapter{
 						coteEq2 = cal.coteEq2;
 						float [] teamValue = {coteEq1, coteEq2};
 						
-						event.getChannel().sendTyping().queue();
 						event.getChannel().sendMessage("Cote à " + teamValue[i] 
-						+ " pour l'équipe " + teamName[i] + ".").queue();
-						
+						+ " pour l'équipe " + teamName[i] + ".").queue();	
 					}	
 				}
 			}
@@ -132,7 +128,6 @@ public class Commands extends ListenerAdapter{
 		    {
 		    	if(Arrays.stream(teamName).anyMatch(args[1]::equals) == false)
 				{
-					event.getChannel().sendTyping().queue();
 					event.getChannel().sendMessage("🔴 L'équipe sélectionnée n'est pas valide, "
 						+ "saisir #teams pour voir les équipes disponibles.").queue();
 				}
@@ -144,13 +139,11 @@ public class Commands extends ListenerAdapter{
 						money = Integer.parseInt(args[2]);
 						if(money <=0 || money>100000)
 						{
-							event.getChannel().sendTyping().queue();
 							event.getChannel().sendMessage("🔴 Le montant selectionné n'est pas valide, "
 								+ "les valeurs doivent être comprises entre 1 et 100 000.").queue();
 						}
 						else
 						{
-							event.getChannel().sendTyping().queue();
 							event.getChannel().sendMessage("🟢 Paris validé.").queue();
 							
 							// perform an action to save the amount of money that was bet
@@ -190,7 +183,6 @@ public class Commands extends ListenerAdapter{
 								//event.getChannel().sendMessage("😥 Perdu").queue();
 								sendResult(event.getAuthor(), "😥 Perdu");
 							}
-							
 						}
 					}
 				}
@@ -221,7 +213,6 @@ public class Commands extends ListenerAdapter{
 				}
 				for(i = 0; i<infos.getParticipant().length; i++) 
 				{
-					event.getChannel().sendTyping().queue();
 					event.getChannel().sendMessage("Equipe " + infos.getParticipant()[i].getTeam() 
 					+ "  disponible," + " champion " + infos.getParticipant()[i].getChampion()).queue();
 				}				
@@ -250,7 +241,6 @@ public class Commands extends ListenerAdapter{
 		    	Main.gameLog[0] = args[1]; //pseudo
 		    	Main.gameLog[1] = args[2]; //region server
 		    	
-		    	
 	    		if(Arrays.stream(serverName).anyMatch(args[2]::equals) == false)
 	    		{
 	    			event.getChannel().sendMessage("🔴 Veuillez réassayer, "
@@ -267,7 +257,6 @@ public class Commands extends ListenerAdapter{
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-	    			
 	    			event.getChannel().sendMessage("🟢 connexion effectuée.").queue();
 	    		}
 		    }
