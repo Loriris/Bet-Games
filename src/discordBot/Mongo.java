@@ -21,10 +21,6 @@ public class Mongo {
 	
 	
 	public Mongo() {
-		//mongoAtlas: 
-		//this.mClient = MongoClients.create("mongodb+srv://Ines:mdp@test.ubsu3.mongodb.net/test");
-		//this.database = mClient.getDatabase("InesData");
-		//this.collection = database.getCollection("Test");
 		this.mClient = MongoClients.create("mongodb://admin:FyxEhu9vj4NEQn7A2n@34.89.161.106:27017");
 		this.database = mClient.getDatabase("BetData");
 		this.collection = database.getCollection("test");
