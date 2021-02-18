@@ -90,7 +90,7 @@ public class Commands extends ListenerAdapter{
 					if(args[1].equalsIgnoreCase(teamName[i]))
 					{
 						// we get the odd of each teams with cal
-						CalculCote cal = new CalculCote();
+						CalculCote cal = new CalculCote(infos);
 						try {
 							cal.calcul();
 						} catch (UnirestException e) {
@@ -150,7 +150,7 @@ public class Commands extends ListenerAdapter{
 							// perform an action to save the amount of money that was bet
 							
 							// we get the odd of each teams with cal
-							CalculCote cal = new CalculCote();
+							CalculCote cal = new CalculCote(infos);
 							try {
 								cal.calcul();
 							} catch (UnirestException e) {

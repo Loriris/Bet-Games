@@ -4,18 +4,18 @@ import com.mashape.unirest.http.exceptions.UnirestException;
 
 public class CalculCote {
 	
-	private static InfoAPI infoC;
+	private InfoAPI infoC;
 	
-	static float ratio;
-	static String pseudo, region;
+	private float ratio;
 	float totRatioEq1, totRatioEq2, ratioEq1, ratioEq2, coteEq1, coteEq2;
 	int denoEq1 = 5, denoEq2 =5;
+	
+	public CalculCote(InfoAPI info) {
+		this.infoC = info;		
+	}
 		
 	public void calcul() throws UnirestException {
 		
-		pseudo = Main.gameLog[0];
-    	region = Main.gameLog[1];
-    	infoC = new InfoAPI(pseudo, region);
     	infoC.PartyInfo();
     	infoC.retrieveParticipantsInfo();
 		for(int index = 0; index < infoC.getParticipant().length; index++)
