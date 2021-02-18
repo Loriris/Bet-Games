@@ -1,5 +1,7 @@
 package discordBot;
 
+import net.dv8tion.jda.api.entities.User;
+
 public class Bet {
 	
 	//mise
@@ -7,15 +9,18 @@ public class Bet {
 	//equipe
 	private String team;
 	//cote
-	private String odd;
+	private float odd;
 	//partie 
 	private String game;
+	//gambler
+	private String user;
 	
-	public Bet(long bet, String team, String odd, String game)  {
+	public Bet(long bet, String team, float teamValue, String game, String user)  {
 		this.bet = bet;
 		this.team = team;
-		this.odd = odd;
+		this.odd = teamValue;
 		this.game = game;
+		this.user = user;
 	}
 	
 	public long bet() {
@@ -26,11 +31,15 @@ public class Bet {
 		return this.team;
 	}
 	
-	public String odd() {
+	public float odd() {
 		return this.odd;
 	}
 	
 	public String game() {
 		return this.game;
+	}
+	
+	public String user() {
+		return this.user;
 	}
 }

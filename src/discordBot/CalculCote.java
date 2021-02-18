@@ -43,8 +43,5 @@ public class CalculCote {
 		
 		coteEq1 = 1/ratioEq1;
 		coteEq2 = 1/ratioEq2;
-
-		System.out.println("Eq1 " + coteEq1);
-		System.out.println("Eq2 " + coteEq2);
 	}	
 }

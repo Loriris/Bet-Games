@@ -18,6 +18,7 @@ public class Commands extends ListenerAdapter{
 	private String [] teamName = {"100", "200"};
 	
 	private InfoAPI infos;
+	
 		
 	// LoL server name 
 	private static String [] serverName = {"BR1", "EUN1", "EUW1", "LA1", 
@@ -169,6 +170,11 @@ public class Commands extends ListenerAdapter{
 							//System.out.print("odd: ");
 							//System.out.println(odd);
 							
+							Bet monPari = new Bet(money,teamName[i],teamValue[i],Main.gameLog[1], event.getAuthor().getName());
+							
+							Mongo col = new Mongo();
+							col.insert(monPari);
+							
 							if(nb < odd*10)
 							{
 								//System.out.println("gagner");
@@ -254,7 +260,6 @@ public class Commands extends ListenerAdapter{
 						infos.PartyInfo();
 						System.out.println(infos.getPartyInfo());
 					} catch (UnirestException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 	    			event.getChannel().sendMessage("🟢 connexion effectuée.").queue();

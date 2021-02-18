@@ -33,9 +33,6 @@ public class Main {
 		jda.addEventListener(new Commands());
 		jda.getPresence().setStatus(OnlineStatus.IDLE); 
 		
-		/*InfoAPI info = new InfoAPI("max le chibrax", "EUW1");
-		//InfoAPI info = new InfoAPI("ficer", "euw1"); // pseudo, region
-	/*
 		//InfoAPI info = new InfoAPI("ficer", "euw1"); // pseudo, region
 	/*
 		info.PartyInfo();
@@ -44,26 +41,13 @@ public class Main {
 		{
 			System.out.println(info.getParticipant()[index].getRatio());
 		}
-		info.retrieveParticipantsInfo();
-		for(int index = 0; index < info.getParticipant().length; index++)
-		{
-			System.out.println(info.getParticipant()[index].getRatio());
-		}
-		System.out.println(info.getPartyInfo());*/
-		
-		Bet monPari = new Bet(60,"B","2","BR1");
-		
-		Mongo col = new Mongo();
-		col.insert(monPari);
-		
-		
-	
-	
+		System.out.println(info.getPartyInfo());
+		*/
 		
 		InfoAPI info = new InfoAPI( gameLog[0], gameLog[1] ); // pseudo, region
 	
 		//jda.getPresence().setStatus(OnlineStatus.IDLE);
 
 	
-	}  
+	}   
 }
