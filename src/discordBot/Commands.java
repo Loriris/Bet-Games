@@ -28,6 +28,7 @@ public class Commands extends ListenerAdapter{
 	{
 		int i, money, nb;
 		float odd, gains, coteEq1 = 0, coteEq2 = 0;
+		String regionServer = null;
 		
 		// to read arguments type on discord
 		String[] args = event.getMessage().getContentRaw().split("\\s+");
@@ -107,7 +108,7 @@ public class Commands extends ListenerAdapter{
 							odd = 1/teamValue[i];
 							//System.out.println("odd: " + odd);
 							
-							Bet monPari = new Bet(money,teamName[i],teamValue[i],Main.gameLog[1], event.getAuthor().getName());
+							Bet monPari = new Bet(money,teamName[i],teamValue[i], regionServer, event.getAuthor().getName());
 							
 							Mongo col = new Mongo();
 							col.insert(monPari);
@@ -178,9 +179,8 @@ public class Commands extends ListenerAdapter{
 		    }
 		    
 		    if(args.length == 3)
-		    {	//args used in InfoAPI (main)
-		    	Main.gameLog[0] = args[1]; //pseudo
-		    	Main.gameLog[1] = args[2]; //region server
+		    {	
+		    	regionServer = args[2]; //region server
 		    	
 	    		if(Arrays.stream(serverName).anyMatch(args[2]::equals) == false)
 	    		{
