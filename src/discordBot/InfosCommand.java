@@ -11,7 +11,9 @@ public class InfosCommand {
 	public InfosCommand(GuildMessageReceivedEvent event, String[] args) {
 		this.event = event;
 		this.args = args;
-		
+	}
+	
+	public void displayInfo() {
 		//in info there must be only one arg, if there are several args return an error
 		if(this.args.length > 1)
 		{

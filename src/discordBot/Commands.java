@@ -33,135 +33,44 @@ public class Commands extends ListenerAdapter{
 		// to read arguments type on discord
 		String[] args = event.getMessage().getContentRaw().split("\\s+");
 		
-/*--------------------------------------------------------------------------------------------*/		
+/*--------------------------------------------------------------------------------------------*/	
+		
 		// type #info to display all commands
 		if(args[0].equalsIgnoreCase(prefix + "info"))
 		{
 			InfosCommand infoCom = new InfosCommand(event, args);
+			infoCom.displayInfo();
 		}
 
 /*--------------------------------------------------------------------------------------------*/
+		
 		// allow to know the odds of betting of the team you that you want	
 		if(args[0].equalsIgnoreCase(prefix + "odds"))
 		{	
-			OddsCommand oddsCom = new OddsCommand(event, args, args, coteEq1, coteEq2, infos);
+			OddsCommand oddsCom = new OddsCommand(event, args, teamName, coteEq1, coteEq2, infos);
+			oddsCom.Odds();
 		}
 
-/*--------------------------------------------------------------------------------------------*/		
+/*--------------------------------------------------------------------------------------------*/
+		
 		//allow to bet on the selected team
 		if(args[0].equalsIgnoreCase(prefix + "bet"))
 		{
-			// Check how many arguments were passed in, we need 3 args
-		    if(args.length < 3)
-		    {
-		        event.getChannel().sendMessage("🔴 Veuillez réassayer en verifiant si vous "
-		        + "avez bien saisi l'équipe et/ou le montant à parier (voir #info).").queue();
-		    }
-		    
-		    if(args.length > 3)
-		    {
-		        event.getChannel().sendMessage("🔴 Veuillez réassayer, "
-		        + "vous avez saisi trop d'arguments (voir #info).").queue();
-		    }
-		    
-		    if(args.length == 3)
-		    {
-		    	if(Arrays.stream(teamName).anyMatch(args[1]::equals) == false)
-				{
-					event.getChannel().sendMessage("🔴 L'équipe sélectionnée n'est pas valide, "
-						+ "saisir #teams pour voir les équipes disponibles.").queue();
-				}
-		    	
-		    	for(i = 0; i<teamName.length; i++) 
-				{
-					if(args[1].equalsIgnoreCase(teamName[i]) && args[2].isEmpty() == false)
-					{
-						money = Integer.parseInt(args[2]);
-						if(money <=0 || money>100000)
-						{
-							event.getChannel().sendMessage("🔴 Le montant selectionné n'est pas valide, "
-								+ "les valeurs doivent être comprises entre 1 et 100 000.").queue();
-						}
-						else
-						{
-							event.getChannel().sendMessage("🟢 Paris validé.").queue();
-							
-							// perform an action to save the amount of money that was bet
-							
-							// we get the odd of each teams with cal
-							CalculCote cal = new CalculCote(infos);
-							try {
-								cal.calcul();
-							} catch (UnirestException e) {
-								e.printStackTrace();
-							}
-							
-							coteEq1 = cal.coteEq1;
-							coteEq2 = cal.coteEq2;
-							float [] teamValue = {coteEq1, coteEq2};
-							
-					
-							Random rand = new Random();
-							nb =rand.nextInt(10);
-							//System.out.println("nb: " + nb);
-							
-							odd = 1/teamValue[i];
-							//System.out.println("odd: " + odd);
-							
-							Bet monPari = new Bet(money,teamName[i],teamValue[i], regionServer, event.getAuthor().getName());
-							
-							Mongo col = new Mongo();
-							col.insert(monPari);
-							
-							if(nb < odd*10)
-							{
-								//event.getChannel().sendMessage("😀 Gagner").queue();
-								gains = money * teamValue[i];
-								Float.toString(gains);
-								sendResult(event.getAuthor(), "😀 Gagner, votre gain est de " + gains + "€");
-							}
-							else
-							{
-								//event.getChannel().sendMessage("😥 Perdu").queue();
-								sendResult(event.getAuthor(), "😥 Perdu");
-							}
-						}
-					}
-				}
-		    }  
+			BetCommand betCom = new BetCommand(event, args, teamName, coteEq1, coteEq2, infos, regionServer);
+			betCom.BetComm();
 		}
 
 /*--------------------------------------------------------------------------------------------*/
+		
 		// allow to know the team available 
 		if(args[0].equalsIgnoreCase(prefix + "teams"))
 		{
-			//in info there must be only one arg, if there are several args return an error
-			if(args.length > 1) 
-			{
-				 event.getChannel().sendMessage("🔴Veuillez réassayer, "
-				 + "vous avez saisi trop d'arguments (voir #info)").queue();
-			}
-			
-			//if the team exist in the array teamName
-			else
-			{
-				try
-				{
-					infos.retrieveParticipantsInfo();
-				}
-				catch (UnirestException e)
-				{
-					e.printStackTrace();
-				}
-				for(i = 0; i<infos.getParticipant().length; i++) 
-				{
-					event.getChannel().sendMessage("Equipe " + infos.getParticipant()[i].getTeam() 
-					+ "  disponible," + " champion " + infos.getParticipant()[i].getChampion()).queue();
-				}				
-			}
+			TeamsCommand teamsCom = new TeamsCommand(event, args, infos);
+			teamsCom.Teams();
 		}
 		
 /*--------------------------------------------------------------------------------------------*/
+		
 		// Return the pseudo and the region to use in the LoL API
 		if(args[0].equalsIgnoreCase(prefix + "connexion"))
 		{
@@ -218,14 +127,16 @@ public class Commands extends ListenerAdapter{
 			{
 				//	
 			}
-		}
-				
-/*--------------------------------------------------------------------------------------------*/
+		}			
 	}	
+	
+/*--------------------------------------------------------------------------------------------*/
+	
 	// send a private message to the gambler to inform him if he has won or lost
-	static void sendResult(User user, String content) {
+	public static void sendResult(User user, String content) {
 	    user.openPrivateChannel().queue(channel -> {
 	        channel.sendMessage(content).queue();
 	    });
 	}
+	
 }

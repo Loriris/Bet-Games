@@ -22,14 +22,18 @@ public class OddsCommand {
 		this.coteEq1 = coteEq1;
 		this.coteEq2 = coteEq2;
 		this.infos = infos;
+	}
+	
+	public void Odds() {
+		
 				
-		//in cote there must be 2 args, if there are more than 2 args return an error
+		//in odds there must be 2 args, if there are more than 2 args return an error
 		if(this.args.length > 2)
 		{
 			 this.event.getChannel().sendMessage("🔴Veuillez réassayer, "
 			 + "vous avez saisi trop d'arguments (voir #info).").queue();
 		}
-		//in cote there must be 2 args, if there are less than 2 args return an error
+		//in odds there must be 2 args, if there are less than 2 args return an error
 		if(this.args.length < 2)
 		{
 			 this.event.getChannel().sendMessage("🔴Veuillez réassayer, "
@@ -58,6 +62,7 @@ public class OddsCommand {
 					
 					this.coteEq1 = cal.coteEq1;
 					this.coteEq2 = cal.coteEq2;
+					
 					float [] teamValue = {this.coteEq1, this.coteEq2};
 					
 					this.event.getChannel().sendMessage("Cote à " + teamValue[i] 
