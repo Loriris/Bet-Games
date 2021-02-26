@@ -2,9 +2,6 @@ package discordBot;
 
 import javax.security.auth.login.LoginException;
 
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 import com.mashape.unirest.http.exceptions.UnirestException;
 
 import net.dv8tion.jda.api.JDA;
@@ -31,23 +28,6 @@ public class Main {
 
 		//command call
 		jda.addEventListener(new Commands());
-		jda.getPresence().setStatus(OnlineStatus.IDLE); 
-		
-		//InfoAPI info = new InfoAPI("ficer", "euw1"); // pseudo, region
-	/*
-		info.PartyInfo();
-		info.retrieveParticipantsInfo();
-		for(int index = 0; index < info.getParticipant().length; index++)
-		{
-			System.out.println(info.getParticipant()[index].getRatio());
-		}
-		System.out.println(info.getPartyInfo());
-		*/
-		
-		InfoAPI info = new InfoAPI( gameLog[0], gameLog[1] ); // pseudo, region
-	
-		//jda.getPresence().setStatus(OnlineStatus.IDLE);
-
-	
+		jda.getPresence().setStatus(OnlineStatus.IDLE);	
 	}   
 }

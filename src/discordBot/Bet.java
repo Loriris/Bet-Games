@@ -15,7 +15,7 @@ public class Bet {
 	//gambler
 	private String user;
 	
-	public Bet(long bet, String team, float teamValue, String game, String user)  {
+	public Bet(long bet, String team, float teamValue, String game, String user) {
 		this.bet = bet;
 		this.team = team;
 		this.odd = teamValue;

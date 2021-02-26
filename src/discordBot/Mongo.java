@@ -22,7 +22,7 @@ public class Mongo {
 	public Mongo() {
 		this.mClient = MongoClients.create("mongodb://admin:FyxEhu9vj4NEQn7A2n@34.89.161.106:27017");
 		this.database = mClient.getDatabase("BetData");
-		this.collection = database.getCollection("test");
+		this.collection = database.getCollection("Bets");
 		
 	}
 		

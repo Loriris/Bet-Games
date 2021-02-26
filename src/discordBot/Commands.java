@@ -27,7 +27,7 @@ public class Commands extends ListenerAdapter{
 	public void onGuildMessageReceived(GuildMessageReceivedEvent event)
 	{
 		int i, money, nb;
-		float odd, gains, coteEq1, coteEq2;
+		float odd, gains, coteEq1 = 0, coteEq2 = 0;
 		
 		// to read arguments type on discord
 		String[] args = event.getMessage().getContentRaw().split("\\s+");
@@ -36,76 +36,14 @@ public class Commands extends ListenerAdapter{
 		// type #info to display all commands
 		if(args[0].equalsIgnoreCase(prefix + "info"))
 		{
-			//in info there must be only one arg, if there are several args return an error
-			if(args.length > 1)
-			{
-				 event.getChannel().sendMessage("🔴Veuillez réassayer en saisissant #info "
-				 + "car vous avez donné trop d'arguments").queue();
-			}
-			
-			else
-			{
-				EmbedBuilder info = new EmbedBuilder();
-				info.setTitle("Liste des commandes :");
-				info.addField("Pour connaitre les équipes disponibles :", "#teams", false);
-				info.addField("Pour connaitre une cote :", "#odds [nom_de_l'équipe]", false);
-				info.addField("Pour faire un paris :", "#bet [nom_de_l'équipe] [somme_engagée]", false);
-				info.addField("Pour se connecter à une partie :", "#connexion [pseudo_joueur] [region]"
-						+ " (pour le nom du joueur il faut écrire en un seul mot)", false);
-				info.addField("Liste serveurs :", "\"BR1\", \"EUN1\", \"EUW1\", \"LA1\", \r\n" + 
-				"\"LA2\", \"NA1\", \"OCE\", \"OC1\", \"RU1\", \"TR1\", \"JP1\", \"KR\", \"PBE\"", false);
-				info.setColor(0x9003fc);
-				event.getChannel().sendMessage(info.build()).queue();
-				info.clear(); //Resets this builder to default state.
-			}
+			InfosCommand infoCom = new InfosCommand(event, args);
 		}
 
 /*--------------------------------------------------------------------------------------------*/
 		// allow to know the odds of betting of the team you that you want	
 		if(args[0].equalsIgnoreCase(prefix + "odds"))
 		{	
-			//in cote there must be 2 args, if there are more than 2 args return an error
-			if(args.length > 2)
-			{
-				 event.getChannel().sendMessage("🔴Veuillez réassayer, "
-				 + "vous avez saisi trop d'arguments (voir #info).").queue();
-			}
-			//in cote there must be 2 args, if there are less than 2 args return an error
-			if(args.length < 2)
-			{
-				 event.getChannel().sendMessage("🔴Veuillez réassayer, "
-				 + "vous n'avez pas saisi assez d'arguments (voir #info).").queue();
-			}
-			//if the team exist in the array teamName
-			if(args.length == 2)
-			{
-				if(Arrays.stream(teamName).anyMatch(args[1]::equals) == false)
-				{
-					event.getChannel().sendMessage("🔴 L'équipe sélectionnée n'est pas valide, "
-						+ "saisir #teams pour voir les équipes disponibles.").queue();
-				}
-				
-				for(i = 0; i<teamName.length; i++) 
-				{
-					if(args[1].equalsIgnoreCase(teamName[i]))
-					{
-						// we get the odd of each teams with cal
-						CalculCote cal = new CalculCote(infos);
-						try {
-							cal.calcul();
-						} catch (UnirestException e) {
-							e.printStackTrace();
-						}
-						
-						coteEq1 = cal.coteEq1;
-						coteEq2 = cal.coteEq2;
-						float [] teamValue = {coteEq1, coteEq2};
-						
-						event.getChannel().sendMessage("Cote à " + teamValue[i] 
-						+ " pour l'équipe " + teamName[i] + ".").queue();	
-					}	
-				}
-			}
+			OddsCommand oddsCom = new OddsCommand(event, args, args, coteEq1, coteEq2, infos);
 		}
 
 /*--------------------------------------------------------------------------------------------*/		
@@ -167,8 +105,7 @@ public class Commands extends ListenerAdapter{
 							//System.out.println("nb: " + nb);
 							
 							odd = 1/teamValue[i];
-							//System.out.print("odd: ");
-							//System.out.println(odd);
+							//System.out.println("odd: " + odd);
 							
 							Bet monPari = new Bet(money,teamName[i],teamValue[i],Main.gameLog[1], event.getAuthor().getName());
 							
@@ -177,7 +114,6 @@ public class Commands extends ListenerAdapter{
 							
 							if(nb < odd*10)
 							{
-								//System.out.println("gagner");
 								//event.getChannel().sendMessage("😀 Gagner").queue();
 								gains = money * teamValue[i];
 								Float.toString(gains);
@@ -185,7 +121,6 @@ public class Commands extends ListenerAdapter{
 							}
 							else
 							{
-								//System.out.println("perdu");
 								//event.getChannel().sendMessage("😥 Perdu").queue();
 								sendResult(event.getAuthor(), "😥 Perdu");
 							}
@@ -254,7 +189,7 @@ public class Commands extends ListenerAdapter{
 	    		}
 	    		else
 	    		{
-	    			try 
+	    			try
 	    			{
 						infos = new InfoAPI(args[1], args[2]);
 						infos.PartyInfo();
@@ -267,6 +202,24 @@ public class Commands extends ListenerAdapter{
 		    }
 		}
 		
+/*--------------------------------------------------------------------------------------------*/
+		
+		// allow to know the games available 
+		if(args[0].equalsIgnoreCase(prefix + "games"))
+		{
+			//in info there must be only one arg, if there are several args return an error
+			if(args.length > 1) 
+			{
+				 event.getChannel().sendMessage("🔴Veuillez réassayer, "
+				 + "vous avez saisi trop d'arguments (voir #info)").queue();
+			}
+			
+			else
+			{
+				//	
+			}
+		}
+				
 /*--------------------------------------------------------------------------------------------*/
 	}	
 	// send a private message to the gambler to inform him if he has won or lost
