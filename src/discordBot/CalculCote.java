@@ -41,7 +41,7 @@ public class CalculCote {
 		ratioEq1 = totRatioEq1/denoEq1;
 		ratioEq2 = totRatioEq2/denoEq2;
 		
-		coteEq1 = 1/ratioEq1;
-		coteEq2 = 1/ratioEq2;
+		coteEq1 = (float) (Math.round((1/ratioEq1) *100.0)/100.0);
+		coteEq2 = (float) (Math.round((1/ratioEq2) *100.0)/100.0);
 	}	
 }

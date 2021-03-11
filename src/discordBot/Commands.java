@@ -18,7 +18,6 @@ public class Commands extends ListenerAdapter{
 	private String [] teamName = {"100", "200"};
 	
 	private InfoAPI infos;
-	
 		
 	// LoL server name 
 	private static String [] serverName = {"BR1", "EUN1", "EUW1", "LA1", 
@@ -26,8 +25,7 @@ public class Commands extends ListenerAdapter{
 
 	public void onGuildMessageReceived(GuildMessageReceivedEvent event)
 	{
-		int i, money, nb;
-		float odd, gains, coteEq1 = 0, coteEq2 = 0;
+		float  coteEq1 = 0, coteEq2 = 0;
 		String regionServer = null;
 		
 		// to read arguments type on discord
