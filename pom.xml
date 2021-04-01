@@ -12,6 +12,11 @@
         <configuration>
           <source>1.8</source>
           <target>1.8</target>
+          <manifest>
+          	<addClasspath>true</addClasspath>
+            <classpathPrefix>lib/</classpathPrefix>
+            <mainClass>com.discordBot.Main</mainClass>
+          </manifest>
         </configuration>
       </plugin>
     </plugins>
