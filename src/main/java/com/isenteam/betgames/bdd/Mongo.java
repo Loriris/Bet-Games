@@ -1,6 +1,7 @@
-package discordBot;
+package com.isenteam.betgames.bdd;
 
 import com.mongodb.client.MongoClients;
+import com.isenteam.betgames.bot.Bet;
 import com.mongodb.client.MongoClient;
 //import com.mongodb.MongoClientSettings;
 //import com.mongodb.ConnectionString;
@@ -27,7 +28,7 @@ public class Mongo {
 	}
 		
 	public void insert(Bet bet) {
-		//Création d'un document qui contiendra pour le champ bet la valeur de la mise 
+		//Crï¿½ation d'un document qui contiendra pour le champ bet la valeur de la mise 
 		Document doc = new Document("bet", bet.bet());
 		doc.append("team", bet.team());
 		doc.append("odd", bet.odd());

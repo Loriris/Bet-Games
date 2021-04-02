@@ -1,11 +1,11 @@
-package discordBot;
+package com.isenteam.betgames.bot;
 
 import java.util.Arrays;
 import java.util.Random;
 
+import com.isenteam.betgames.API.InfoAPI;
+import com.isenteam.betgames.bdd.Mongo;
 import com.mashape.unirest.http.exceptions.UnirestException;
-
-import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 
 public class BetCommand {

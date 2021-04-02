@@ -1,6 +1,5 @@
-package discordBot;
+package com.isenteam.betgames.bot;
 
-import net.dv8tion.jda.api.entities.User;
 
 public class Bet {
 	
