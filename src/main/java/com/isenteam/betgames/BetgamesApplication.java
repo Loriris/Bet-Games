@@ -20,7 +20,10 @@ public class BetgamesApplication {
 		SpringApplication.run(BetgamesApplication.class, args);
 		
 		//bot creation with adapted token	
-		jda = JDABuilder.createDefault("NzgwMzgyMjMxNDExNjg3NDQ1.X7uRlg.Yc-yiu67ZbqSCN8Rcf7VIqG-CTQ")
+		// officiel NzgwMzgyMjMxNDExNjg3NDQ1.X7uRlg.Yc-yiu67ZbqSCN8Rcf7VIqG-CTQ
+		// test ODI5NjIxNDk3Mjg2ODg1Mzk2.YG6zOg.ordrRLH9jD0B8G7P4-Y0ttnW9HA
+ 
+		jda = JDABuilder.createDefault("ODI5NjIxNDk3Mjg2ODg1Mzk2.YG6zOg.ordrRLH9jD0B8G7P4-Y0ttnW9HA")
 				.setActivity(Activity.watching("Type #info to display all commands"))
 				.build()
 				.awaitReady(); //This method will block until JDA has reached the status JDA.Status.CONNECTED.

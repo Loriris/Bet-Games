@@ -3,6 +3,7 @@ package com.isenteam.betgames.bdd;
 import com.mongodb.client.MongoClients;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.isenteam.betgames.bot.ActiveGames;
 import com.isenteam.betgames.bot.Bet;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoClient;
@@ -14,6 +15,7 @@ import com.mongodb.client.MongoDatabase;
 //import com.mongodb.MongoCredential;
 //import com.mongodb.MongoClientOptions;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 
 import org.bson.Document;
@@ -93,7 +95,25 @@ public class Mongo {
         this.collection.insertOne(part);
 	}
 	
-	
+	public ArrayList<ActiveGames> displayGames()
+    {
+		//tous les doc de la collection
+        FindIterable<Document> iterDoc = this.collection.find();
+        Iterator it = iterDoc.iterator();
+        ArrayList<ActiveGames> tab = new ArrayList<>();
+        while (it.hasNext()) 
+        {
+        	Document doc = (Document) it.next();
+        	//recuperation de tous le doc
+        	JsonObject docObj = JsonParser.parseString(doc.toJson()).getAsJsonObject(); 
+        	//recuperation données partie
+            JsonObject party = JsonParser.parseString(docObj.get("party").getAsString()).getAsJsonObject();
+            ActiveGames active = new ActiveGames(party.get("gameId").getAsString(), party.get("gameType").getAsString());
+            tab.add(active);
+        }
+        
+        return tab;
+    }
 }	
 	
 	
