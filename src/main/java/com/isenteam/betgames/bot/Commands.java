@@ -97,7 +97,7 @@ public class Commands extends ListenerAdapter{
 	    			{
 						infos = new InfoAPI(args[1], args[2]);
 						infos.PartyInfo();
-						System.out.println(infos.getPartyInfo());
+						//System.out.println(infos.getPartyInfo());
 					} catch (UnirestException e) {
 						e.printStackTrace();
 					}

@@ -1,7 +1,10 @@
 package com.isenteam.betgames.bdd;
 
 import com.mongodb.client.MongoClients;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.isenteam.betgames.bot.Bet;
+import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoClient;
 //import com.mongodb.MongoClientSettings;
 //import com.mongodb.ConnectionString;
@@ -10,6 +13,8 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 //import com.mongodb.MongoCredential;
 //import com.mongodb.MongoClientOptions;
+
+import java.util.Iterator;
 
 import org.bson.Document;
 
@@ -20,13 +25,37 @@ public class Mongo {
 	private MongoDatabase database;
 	private MongoCollection<Document> collection;
 	
-	public Mongo() {
+	public Mongo( String collection) {
 		this.mClient = MongoClients.create("mongodb://admin:FyxEhu9vj4NEQn7A2n@34.89.161.106:27017");
 		this.database = mClient.getDatabase("BetData");
-		this.collection = database.getCollection("Bets");
+		this.collection = database.getCollection(collection);
 		
 	}
 		
+	public MongoClient getmClient() {
+		return mClient;
+	}
+
+	public void setmClient(MongoClient mClient) {
+		this.mClient = mClient;
+	}
+
+	public MongoDatabase getDatabase() {
+		return database;
+	}
+
+	public void setDatabase(MongoDatabase database) {
+		this.database = database;
+	}
+
+	public MongoCollection<Document> getCollection() {
+		return collection;
+	}
+
+	public void setCollection(MongoCollection<Document> collection) {
+		this.collection = collection;
+	}
+
 	public void insert(Bet bet) {
 		//Cr�ation d'un document qui contiendra pour le champ bet la valeur de la mise 
 		Document doc = new Document("bet", bet.bet());
@@ -38,6 +67,33 @@ public class Mongo {
 		//insertion du document dans la collection "collection" (cad collectionTest)
 		this.collection.insertOne(doc);
 	}
+	
+	public boolean searchForExistingParty(String id)
+    {
+        FindIterable<Document> iterDoc = this.collection.find();
+        Iterator it = iterDoc.iterator();
+         
+         while (it.hasNext()) {
+        	 Document doc = (Document) it.next();
+        	 JsonObject docObj = JsonParser.parseString(doc.toJson()).getAsJsonObject();
+             JsonObject party = JsonParser.parseString(docObj.get("party").getAsString()).getAsJsonObject();
+             if(party.get("gameId").getAsString().contentEquals(id))
+             {
+            	 return true;
+            	 
+             }
+         }
+ 
+		return false;
+    }
+	
+	public void insertParty(JsonObject party)
+	{
+		Document part = new Document("party",party.toString());
+        this.collection.insertOne(part);
+	}
+	
+	
 }	
 	
 	

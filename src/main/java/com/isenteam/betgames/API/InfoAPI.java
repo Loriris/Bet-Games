@@ -1,9 +1,12 @@
 package com.isenteam.betgames.API;
 
 
+import org.bson.Document;
+
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.isenteam.betgames.bdd.Mongo;
 import com.isenteam.betgames.bot.Participant;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
@@ -34,6 +37,11 @@ public class InfoAPI
 			      
 		HttpResponse <JsonNode> response2 = Unirest.get("https://"+ region + ".api.riotgames.com/lol/spectator/v4/active-games/by-summoner/" + summonerInfo.get("id").getAsString() + "?" + "api_key=" + key ).asJson();
 	    this.partyInfo = JsonParser.parseString(response2.getBody().toString()).getAsJsonObject();
+	    Mongo mongo = new Mongo("Party");
+	    if(Boolean.compare(mongo.searchForExistingParty(this.partyInfo.get("gameId").getAsString()), false) == 0)
+	    {
+	    	mongo.insertParty(this.partyInfo);
+	    }
 	}
 
 	public JsonObject getPartyInfo()

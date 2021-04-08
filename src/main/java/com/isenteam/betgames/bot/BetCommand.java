@@ -92,7 +92,7 @@ public class BetCommand {
 						
 						Bet monPari = new Bet(money,this.teamName[i],teamValue[i], this.regionServer, this.event.getAuthor().getName());
 						
-						Mongo col = new Mongo();
+						Mongo col = new Mongo("Bets");
 						col.insert(monPari);
 						
 						if(nb < odd*10)
