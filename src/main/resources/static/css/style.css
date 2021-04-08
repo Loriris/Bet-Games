@@ -1,0 +1,46 @@
+.hero.is-link{
+    background: linear-gradient(#FFCFFF, #80CDE1);
+}
+
+.hero.is-dark{
+    background: linear-gradient(#80CDE1, #FFCFFF);
+}
+
+.button.hero-button.left {
+    margin-left: auto;
+    margin-right: 10px;
+    width: 20%;
+    background-color: #FFCFFF;
+    color: #2F4F4F;
+    font-weight: bold;
+}
+
+.button.hero-button.right {
+    background-color: #FFCFFF;
+    color: #2F4F4F;
+    margin-left: 10px;
+    width: 20%;
+    margin-right: auto;
+    font-weight: bold;
+}
+
+.hero-body-two{
+    flex-grow: 1; 
+    flex-shrink: 0;
+    padding: 0rem 1.5rem;
+    display: block;
+    align-content: center
+}
+.first{
+    text-align: center;
+    padding-top: 6rem;
+}
+
+.second{
+    display: flex;
+    padding-top: 6rem;
+}
+
+.footer{
+    padding: 3rem 1.5rem 3rem;
+}
