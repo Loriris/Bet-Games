@@ -1,11 +1,10 @@
 package com.isenteam.betgames.bot;
 
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import com.isenteam.betgames.API.InfoAPI;
-import com.isenteam.betgames.bdd.Mongo;
 import com.mashape.unirest.http.exceptions.UnirestException;
+
 import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
@@ -29,6 +28,7 @@ public class Commands extends ListenerAdapter{
 		
 		// to read arguments type on discord
 		String[] args = event.getMessage().getContentRaw().split("\\s+");
+		ShowMessage mess = new ShowMessage(event);
 		
 /*--------------------------------------------------------------------------------------------*/	
 		
@@ -46,6 +46,15 @@ public class Commands extends ListenerAdapter{
 		{	
 			OddsCommand oddsCom = new OddsCommand(event, args, teamName, coteEq1, coteEq2, infos);
 			oddsCom.Odds();
+		}
+		
+/*--------------------------------------------------------------------------------------------*/
+		
+		// allow to know the games available 
+		if(args[0].equalsIgnoreCase(prefix + "games"))
+		{
+			GamesCommand gamesCom = new GamesCommand(event, args);
+			gamesCom.gamesComm();
 		}
 
 /*--------------------------------------------------------------------------------------------*/
@@ -74,14 +83,14 @@ public class Commands extends ListenerAdapter{
 			// Check how many arguments were passed in, we need 3 args
 		    if(args.length < 3)
 		    {
-		        event.getChannel().sendMessage("🔴 Veuillez réassayer en verifiant si vous "
-		        + "avez bien saisi le bon pseudo et/ou la bonne région (voir #info).").queue();
+		        mess.showMess("🔴 Veuillez réassayer en verifiant si vous "
+		        + "avez bien saisi le bon pseudo et/ou la bonne région (voir #info).", 0xCA0707);
+		        
 		    }
 		    
 		    if(args.length > 3)
 		    {
-		        event.getChannel().sendMessage("🔴 Veuillez réassayer, "
-		        + "vous avez saisi trop d'arguments (voir #info).").queue();
+		    	mess.showMess("🔴 Veuillez réassayer, vous avez saisi trop d'arguments (voir #info).", 0xCA0707);
 		    }
 		    
 		    if(args.length == 3)
@@ -90,8 +99,7 @@ public class Commands extends ListenerAdapter{
 		    	
 	    		if(Arrays.stream(serverName).anyMatch(args[2]::equals) == false)
 	    		{
-	    			event.getChannel().sendMessage("🔴 Veuillez réassayer, "
-	    			+ "le serveur saisie n'existe pas (voir #info).").queue();
+	    			mess.showMess("🔴 Veuillez réassayer, le serveur saisie n'existe pas (voir #info).", 0xCA0707);
 	    		}
 	    		else
 	    		{
@@ -103,44 +111,18 @@ public class Commands extends ListenerAdapter{
 					} catch (UnirestException e) {
 						e.printStackTrace();
 					}
-	    			event.getChannel().sendMessage("🟢 connexion effectuée.").queue();
+	    			mess.showMess("🟢 connexion effectuée.", 0x27AE1E);
 	    		}
 		    }
-		}
-		
-/*--------------------------------------------------------------------------------------------*/
-		
-		// allow to know the games available 
-		if(args[0].equalsIgnoreCase(prefix + "games"))
-		{
-			//in info there must be only one arg, if there are several args return an error
-			if(args.length > 1) 
-			{
-				 event.getChannel().sendMessage("🔴Veuillez réassayer, "
-				 + "vous avez saisi trop d'arguments (voir #info)").queue();
-			}
-			
-			else
-			{
-				Mongo games = new Mongo("Party");
-				ArrayList<ActiveGames> tabRecup = new ArrayList<>();
-				tabRecup = games.displayGames();
-				for(int i = 0; i < tabRecup.size(); i++)
-				{
-					event.getChannel().sendMessage("ID: " + tabRecup.get(i).getId() 
-							+ " Type: " + tabRecup.get(i).getType()).queue();
-				}
-			}
 		}			
 	}	
 	
 /*--------------------------------------------------------------------------------------------*/
-	
+	/*
 	// send a private message to the gambler to inform him if he has won or lost
 	public static void sendResult(User user, String content) {
 	    user.openPrivateChannel().queue(channel -> {
 	        channel.sendMessage(content).queue();
 	    });
-	}
-	
+	}	*/
 }
