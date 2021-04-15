@@ -5,7 +5,6 @@ import java.util.Arrays;
 import com.isenteam.betgames.API.InfoAPI;
 import com.mashape.unirest.http.exceptions.UnirestException;
 
-import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
@@ -119,11 +118,11 @@ public class Commands extends ListenerAdapter{
 	}	
 	
 /*--------------------------------------------------------------------------------------------*/
-	
+	/*
 	// send a private message to the gambler to inform him if he has won or lost
 	public static void sendResult(User user, String content) {
 	    user.openPrivateChannel().queue(channel -> {
 	        channel.sendMessage(content).queue();
 	    });
-	}	
+	}	*/
 }

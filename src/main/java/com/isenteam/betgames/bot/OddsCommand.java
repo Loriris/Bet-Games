@@ -25,28 +25,27 @@ public class OddsCommand {
 		this.infos = infos;
 	}
 	
-	public void Odds() {
-		
+	public void Odds() 
+	{
+		ShowMessage mess = new ShowMessage(event);
 				
 		//in odds there must be 2 args, if there are more than 2 args return an error
 		if(this.args.length > 2)
 		{
-			 this.event.getChannel().sendMessage("🔴Veuillez réassayer, "
-			 + "vous avez saisi trop d'arguments (voir #info).").queue();
+			mess.showMess("🔴 Veuillez réassayer, vous avez saisi trop d'arguments (voir #info).", 0xCA0707);
 		}
 		//in odds there must be 2 args, if there are less than 2 args return an error
 		if(this.args.length < 2)
 		{
-			 this.event.getChannel().sendMessage("🔴Veuillez réassayer, "
-			 + "vous n'avez pas saisi assez d'arguments (voir #info).").queue();
+			mess.showMess("🔴Veuillez réassayer, vous n'avez pas saisi assez d'arguments (voir #info).", 0xCA0707);
 		}
 		//if the team exist in the array teamName
 		if(this.args.length == 2)
 		{
 			if(Arrays.stream(this.teamName).anyMatch(this.args[1]::equals) == false)
 			{
-				this.event.getChannel().sendMessage("🔴 L'équipe sélectionnée n'est pas valide, "
-					+ "saisir #teams pour voir les équipes disponibles.").queue();
+				mess.showMess("🔴 L'équipe sélectionnée n'est pas valide, "
+				+ "saisir #teams pour voir les équipes disponibles.", 0xCA0707);
 			}
 			
 			for(int i = 0; i<this.teamName.length; i++) 
@@ -65,9 +64,8 @@ public class OddsCommand {
 					this.coteEq2 = cal.coteEq2;
 					
 					float [] teamValue = {this.coteEq1, this.coteEq2};
-					
-					this.event.getChannel().sendMessage("Cote à " + teamValue[i] 
-					+ " pour l'équipe " + this.teamName[i] + ".").queue();	
+		
+					mess.showMess("Cote à " + teamValue[i] + " pour l'équipe " + this.teamName[i] + ".", 0x1A93D8);
 				}	
 			}
 		}
