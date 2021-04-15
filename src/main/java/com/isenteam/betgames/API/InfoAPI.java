@@ -18,7 +18,7 @@ public class InfoAPI
 {
 	private JsonObject partyInfo;
 	private String player;
-	private static String key = "RGAPI-a0d056dd-cf01-4448-ab56-d93627eb78b5"; 
+	public static String key = "RGAPI-a0d056dd-cf01-4448-ab56-d93627eb78b5"; 
 	private String region;
 	private Participant[] participant;
 
@@ -41,7 +41,10 @@ public class InfoAPI
 	    if(Boolean.compare(mongo.searchForExistingParty(this.partyInfo.get("gameId").getAsString()), false) == 0)
 	    {
 	    	mongo.insertParty(this.partyInfo);
+	    	
 	    }
+	    
+	    
 	}
 
 	public JsonObject getPartyInfo()

@@ -14,6 +14,7 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 //import com.mongodb.MongoCredential;
 //import com.mongodb.MongoClientOptions;
+import com.mongodb.client.model.Filters;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -82,7 +83,6 @@ public class Mongo {
              if(party.get("gameId").getAsString().contentEquals(id))
              {
             	 return true;
-            	 
              }
          }
  
@@ -92,6 +92,7 @@ public class Mongo {
 	public void insertParty(JsonObject party)
 	{
 		Document part = new Document("party",party.toString());
+		part.append("_id", party.get("gameId").getAsString());
         this.collection.insertOne(part);
 	}
 	
@@ -114,6 +115,23 @@ public class Mongo {
         
         return tab;
     }
+	
+	public void deleteParty(String id)
+	{
+
+        FindIterable<Document> iterDoc = this.collection.find();
+        Iterator it = iterDoc.iterator();
+        while (it.hasNext()) 
+        {
+        	Document doc = (Document) it.next();
+        	JsonObject docObj = JsonParser.parseString(doc.toJson()).getAsJsonObject();
+            JsonObject party = JsonParser.parseString(docObj.get("party").getAsString()).getAsJsonObject();
+            if(party.get("gameId").getAsString().contentEquals(id))
+            {
+            	this.collection.deleteOne(Filters.eq("_id", id));
+            }
+        }
+	}
 }	
 	
 	
