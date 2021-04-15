@@ -3,7 +3,6 @@ package com.isenteam.betgames.bot;
 import com.isenteam.betgames.API.InfoAPI;
 import com.mashape.unirest.http.exceptions.UnirestException;
 
-import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 
 public class TeamsCommand {

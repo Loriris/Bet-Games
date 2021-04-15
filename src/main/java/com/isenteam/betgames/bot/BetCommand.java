@@ -6,6 +6,8 @@ import java.util.Random;
 import com.isenteam.betgames.API.InfoAPI;
 import com.isenteam.betgames.bdd.Mongo;
 import com.mashape.unirest.http.exceptions.UnirestException;
+
+import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 
 public class BetCommand {
@@ -66,7 +68,12 @@ public class BetCommand {
 					}
 					else
 					{
-						this.event.getChannel().sendMessage("🟢 Paris validé.").queue();
+						//this.event.getChannel().sendMessage("🟢 Paris validé.").queue();
+						EmbedBuilder response = new EmbedBuilder();
+		    			response.setTitle("🟢 Paris validé.");
+		    			response.setColor(0x27AE1E);
+		    			this.event.getChannel().sendMessage(response.build()).queue();
+		    			response.clear(); //Resets this builder to default state.
 						
 						// perform an action to save the amount of money that was bet
 						
