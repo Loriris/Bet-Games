@@ -101,29 +101,37 @@
     padding-top: 6rem;
 }
 
-@media screen and (max-width: 1023px) {
-.container>.navbar .navbar-menu, .navbar>.container .navbar-menu {
-    margin-right: -.75rem;
-	}
-}
-@media screen and (max-width: 1023px) {
-.navbar-menu {
-    flex-grow: 1;
-    flex-shrink: 0;
-    box-shadow: none;
-	}
-}
-@media screen and (max-width: 1023px) {
-.navbar, .navbar-end, .navbar-menu, .navbar-start {
-    align-items: center;
-    display: flex;
-	}
-}
-
 @media screen and (max-width: 1023px){
 .hero.is-link .navbar-menu {
     background: none;
 	}
+	
+.hero-body-two {
+	padding: 10rem 1.5rem
+	}
+	
+.navbar, .navbar-end, .navbar-menu, .navbar-start {
+    align-items: center;
+    display: flex;
+	}
+	
+.navbar-start{
+	margin-left: auto;
+	}
+
+.navbar-end{
+	margin-right: auto;
+}
+	
+.navbar-menu {
+    flex-grow: 1;
+    flex-shrink: 0;
+	}
+	
+.container>.navbar .navbar-menu, .navbar>.container .navbar-menu {
+    margin-right: 0rem;
+	}
+
 }
 
 @media only screen and (min-width: 1024px){
