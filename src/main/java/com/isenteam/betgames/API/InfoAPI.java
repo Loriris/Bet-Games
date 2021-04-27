@@ -21,6 +21,7 @@ public class InfoAPI
 	public static String key = "RGAPI-a0d056dd-cf01-4448-ab56-d93627eb78b5"; 
 	private String region;
 	private Participant[] participant;
+	private String id;
 
 	
 	public InfoAPI(String playerToSet, String regionToSet) throws UnirestException
@@ -30,6 +31,13 @@ public class InfoAPI
 		this.participant = new Participant[10];
 	}
 	
+	public InfoAPI(String id) 
+	{
+		this.id = id;
+		this.participant = new Participant[10];
+	};
+	
+	//Pour appeler l'API riot
 	public void PartyInfo() throws UnirestException
 	{
 		HttpResponse <JsonNode> response = Unirest.get("https://" +  region + ".api.riotgames.com/lol/summoner/v4/summoners/by-name/" + player + "?api_key=" + key).asJson();
@@ -43,6 +51,13 @@ public class InfoAPI
 	    	
 	    }
 	}
+	
+	//Pour appeler la bdd
+	public void PartyInfoMongo()
+    {
+        Mongo mongo = new Mongo("Party");
+        this.partyInfo = mongo.RetreiveParty(this.id);
+    }
 
 	public JsonObject getPartyInfo()
 	{

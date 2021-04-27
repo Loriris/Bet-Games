@@ -12,35 +12,33 @@ public class OddsCommand {
 	private GuildMessageReceivedEvent event;
 	private String[] args, teamName;
 	private float coteEq1, coteEq2;
-	private InfoAPI infos;
 	
 	public OddsCommand(GuildMessageReceivedEvent event, String[] args, 
-			String[] teamName, float coteEq1, float coteEq2, InfoAPI infos) {
+			String[] teamName, float coteEq1, float coteEq2) {
 		
 		this.event = event;
 		this.args = args;
 		this.teamName = teamName;
 		this.coteEq1 = coteEq1;
 		this.coteEq2 = coteEq2;
-		this.infos = infos;
 	}
 	
 	public void Odds() 
 	{
 		ShowMessage mess = new ShowMessage(event);
 				
-		//in odds there must be 2 args, if there are more than 2 args return an error
-		if(this.args.length > 2)
+		//in odds there must be 3 args, if there are more than 3 args return an error
+		if(this.args.length > 3)
 		{
 			mess.showMess("🔴 Veuillez réassayer, vous avez saisi trop d'arguments (voir #info).", 0xCA0707);
 		}
-		//in odds there must be 2 args, if there are less than 2 args return an error
-		if(this.args.length < 2)
+		//in odds there must be 3 args, if there are less than 3 args return an error
+		if(this.args.length < 3)
 		{
 			mess.showMess("🔴Veuillez réassayer, vous n'avez pas saisi assez d'arguments (voir #info).", 0xCA0707);
 		}
 		//if the team exist in the array teamName
-		if(this.args.length == 2)
+		if(this.args.length == 3)
 		{
 			if(Arrays.stream(this.teamName).anyMatch(this.args[1]::equals) == false)
 			{
@@ -52,13 +50,18 @@ public class OddsCommand {
 			{
 				if(this.args[1].equalsIgnoreCase(this.teamName[i]))
 				{
+					InfoAPI infos = new InfoAPI(this.args[2]);
+		
+
 					// we get the odd of each teams with cal
-					CalculCote cal = new CalculCote(this.infos);
+					CalculCote cal = new CalculCote(infos);
 					try {
 						cal.calcul();
 					} catch (UnirestException e) {
+						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
+			
 					
 					this.coteEq1 = cal.coteEq1;
 					this.coteEq2 = cal.coteEq2;

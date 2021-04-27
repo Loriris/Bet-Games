@@ -25,7 +25,7 @@ public class BetgamesApplication {
 		SpringApplication.run(BetgamesApplication.class, args);
 		
 		//bot creation with adapted token	
-		/*
+		
 		String officiel = "NzgwMzgyMjMxNDExNjg3NDQ1.X7uRlg.Yc-yiu67ZbqSCN8Rcf7VIqG-CTQ";
 		String test = "ODI5NjIxNDk3Mjg2ODg1Mzk2.YG6zOg.ordrRLH9jD0B8G7P4-Y0ttnW9HA";
 		jda = JDABuilder.createDefault(officiel)
@@ -35,7 +35,7 @@ public class BetgamesApplication {
 
 		//command call
 		jda.addEventListener(new Commands());
-		jda.getPresence().setStatus(OnlineStatus.IDLE);*/
+		jda.getPresence().setStatus(OnlineStatus.IDLE);
 		
 		/*AccessSecretVersion secret = new AccessSecretVersion();
 		secret.accessSecretVersion();*/
