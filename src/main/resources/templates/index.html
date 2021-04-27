@@ -24,7 +24,7 @@
 	                    <div class="navbar-end">
 	                        <div class="navbar-item">
 	                            <div class="buttons">
-	                                <a class="button is-dark" href="https://github.com/Loriris/Bet-Games.git">Github</a>
+	                                <a class="button is-dark" onclick="window.open('https://github.com/Loriris/Bet-Games.git')">Github</a>
 	                            </div>
 	                        </div>
 	                    </div>
@@ -41,8 +41,8 @@
                     <p style="color: #2F4F4F; text-align: center; font-size: 24px">Venez parier sur vos jeux vidéo préférés et remporter un maximum de gain !</p>
                 </div>
                 <div class="second">
-                    <button class="button hero-button left"><img th:src="@{/images/discord-black-icon.png}" id="logo-discord"/><a href="https://discord.com/oauth2/authorize?client_id=780382231411687445&permissions=0&scope=bot">Ajouter à Discord</a></button>
-                    <button class="button hero-button right"><a th:href="@{commandes}">Voir les fonctionnalités</a></button>        
+                    <button class="button hero-button left" onclick="window.open('https://discord.com/oauth2/authorize?client_id=780382231411687445&permissions=0&scope=bot')"><img th:src="@{/images/discord-black-icon.png}" id="logo-discord"/>Ajouter à Discord</button>
+                    <button class="button hero-button right" onclick="window.location.href='/commandes'">Voir les fonctionnalités</button>        
                 </div>
             </div>
         </section> 
