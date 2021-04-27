@@ -6,6 +6,10 @@
     background: linear-gradient(#80CDE1, #FFCFFF);
 }
 
+.navbar-start {
+	color: #2F4F4F;
+}
+
 .button.hero-button.left {
     margin-left: auto;
     margin-right: 10px;
