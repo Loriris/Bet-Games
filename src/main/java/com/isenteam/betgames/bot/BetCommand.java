@@ -38,19 +38,19 @@ public class BetCommand {
 		int money, nb;
 		float gains, odd;
 		
-		// Check how many arguments were passed in, we need 3 args
-	    if(this.args.length < 3)
+		// Check how many arguments were passed in, we need 4 args
+	    if(this.args.length < 4)
 	    {
 	    	mess.showMess("🔴 Veuillez réassayer en verifiant si vous "
 	    	+ "avez bien saisi l'équipe et/ou le montant à parier (voir #info).", 0xCA0707);
 	    }
 	    
-	    if(this.args.length > 3)
+	    if(this.args.length > 4)
 	    {
 	    	mess.showMess("🔴 Veuillez réassayer, vous avez saisi trop d'arguments (voir #info).", 0xCA0707);
 	    }
 	    
-	    if(this.args.length == 3)
+	    if(this.args.length == 4)
 	    {
 	    	if(Arrays.stream(this.teamName).anyMatch(this.args[1]::equals) == false)
 			{
@@ -94,8 +94,8 @@ public class BetCommand {
 						odd = 1/teamValue[i];
 						//System.out.println("odd: " + odd);
 						
-						Bet monPari = new Bet(money,this.teamName[i],teamValue[i], this.regionServer, this.event.getAuthor().getName());
-						
+						Bet monPari = new Bet(money,this.teamName[i],teamValue[i], this.regionServer, this.event.getAuthor().getName(), infos.getPartyInfo().get("gameId").getAsString());
+						//.get("gameId").getAsString()
 						Mongo col = new Mongo("Bets");
 						col.insert(monPari);
 						

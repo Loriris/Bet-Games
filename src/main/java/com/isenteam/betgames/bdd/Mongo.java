@@ -66,6 +66,7 @@ public class Mongo {
 		doc.append("odd", bet.odd());
 		doc.append("server", bet.game());
 		doc.append("userId", bet.user());
+		doc.append("gameId", bet.getGameId());
 		
 		//insertion du document dans la collection "collection" (cad collectionTest)
 		this.collection.insertOne(doc);
@@ -132,6 +133,25 @@ public class Mongo {
             }
         }
 	}
+	
+	public JsonObject RetreiveParty(String id)
+    {
+        FindIterable<Document> iterDoc = this.collection.find();
+        Iterator it = iterDoc.iterator();
+        JsonObject party = null ;
+
+         while (it.hasNext()) {
+             Document doc = (Document) it.next();
+             JsonObject docObj = JsonParser.parseString(doc.toJson()).getAsJsonObject();
+             party = JsonParser.parseString(docObj.get("party").getAsString()).getAsJsonObject();
+             if(party.get("gameId").getAsString().contentEquals(id))
+             {
+                 return party;
+             }
+         }
+ 
+        return party;
+    }
 }	
 	
 	
