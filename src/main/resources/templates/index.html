@@ -14,17 +14,17 @@
 	            <div class="container">
 	                <div id="navMenu" class="navbar-menu">
 	                    <div class="navbar-start">
-	                        <a class="navbar-item">
+	                        <a class="navbar-item" th:href="@{index}">
 	                            Accueil
 	                        </a>
-	                        <a class="navbar-item">
+	                        <a class="navbar-item" th:href="@{commandes}">
 	                            Documentation
 	                        </a>
 	                    </div>
 	                    <div class="navbar-end">
 	                        <div class="navbar-item">
 	                            <div class="buttons">
-	                                <a class="button is-dark">Github</a>
+	                                <a class="button is-dark" href="https://github.com/Loriris/Bet-Games.git">Github</a>
 	                            </div>
 	                        </div>
 	                    </div>
@@ -32,7 +32,7 @@
 	            </div>
 	        </nav>
             <div class="hero-body">
-                <img th:src="@{/images/logo_bot_discord.jpg}" style="margin-left: auto; margin-right: auto; border-radius: 10px; width: 20%"/>
+                <img th:src="@{/images/logo_bot_discord.jpg}" id="logo-bet-games"/>
             </div>
         </section>
         <section class="hero is-dark is-fullheight-with-navbar">
@@ -41,8 +41,8 @@
                     <p style="color: #2F4F4F; text-align: center; font-size: 24px">Venez parier sur vos jeux vidéo préférés et remporter un maximum de gain !</p>
                 </div>
                 <div class="second">
-                    <button class="button hero-button left"><img th:src="@{/images/discord-black-icon.png}" style="width: 20%; padding-right:10px;"/><a href="https://discord.com/oauth2/authorize?client_id=780382231411687445&permissions=0&scope=bot">Ajouter à Discord</a></button>
-                    <button class="button hero-button right">Voir les fonctionnalités</button>        
+                    <button class="button hero-button left"><img th:src="@{/images/discord-black-icon.png}" id="logo-discord"/><a href="https://discord.com/oauth2/authorize?client_id=780382231411687445&permissions=0&scope=bot">Ajouter à Discord</a></button>
+                    <button class="button hero-button right"><a th:href="@{commandes}">Voir les fonctionnalités</a></button>        
                 </div>
             </div>
         </section> 
