@@ -26,7 +26,7 @@ public class BetgamesApplication {
 		
 		//bot creation with adapted token	
 		
-		String officiel = "NzgwMzgyMjMxNDExNjg3NDQ1.X7uRlg.Yc-yiu67ZbqSCN8Rcf7VIqG-CTQ";
+		/*String officiel = "NzgwMzgyMjMxNDExNjg3NDQ1.X7uRlg.Yc-yiu67ZbqSCN8Rcf7VIqG-CTQ";
 		String test = "ODI5NjIxNDk3Mjg2ODg1Mzk2.YG6zOg.ordrRLH9jD0B8G7P4-Y0ttnW9HA";
 		jda = JDABuilder.createDefault(officiel)
 				.setActivity(Activity.watching("Type #info to display all commands"))
