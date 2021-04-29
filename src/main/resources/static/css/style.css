@@ -6,6 +6,14 @@
     background: linear-gradient(#80CDE1, #FFCFFF);
 }
 
+.navbar-start {
+	color: #2F4F4F;
+}
+
+.hero.is-link a.navbar-item:hover{
+	background-color: unset;
+}
+
 .button.hero-button.left {
     margin-left: auto;
     margin-right: 10px;
@@ -24,6 +32,73 @@
     font-weight: bold;
 }
 
+@media only screen and (max-width: 1023px) {
+		
+.second{
+    display: grid;
+    padding-top: 6rem;
+	}
+	
+#logo-discord{
+	width: 15%; 
+	padding-right:10px;
+	}
+
+#cle{
+	width: 10%; 
+	padding-left:10px;
+	}
+	
+#logo-bet-games{
+	margin-left: auto; 
+	margin-right: auto; 
+	border-radius: 10px; 
+	width: 50%;
+}
+	
+.button.hero-button.left {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    margin-bottom: 5%;
+	}
+	
+.button.hero-button.right {
+    margin-left: auto;
+    margin-right: auto;
+	width: 50%;
+	margin-bottom: 5%;
+	}
+
+}
+
+
+@media only screen and (max-width: 466px) {
+	
+#logo-discord{
+	width: 20%; 
+	padding-right:10px;
+	}
+
+#cle{
+	width: 15%; 
+	padding-left:10px;
+	}
+	
+.button.hero-button.left {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    margin-bottom: 5%;
+	}
+	
+.button.hero-button.right {
+    margin-left: auto;
+    margin-right: auto;
+	width: 100%;
+	}
+}
+
 .hero-body-two{
     flex-grow: 1; 
     flex-shrink: 0;
@@ -36,9 +111,74 @@
     padding-top: 6rem;
 }
 
+@media screen and (max-width: 1023px){
+.hero.is-link .navbar-menu {
+    background: none;
+	}
+	
+.hero-body-two {
+	padding: 10rem 1.5rem
+	}
+	
+.navbar, .navbar-end, .navbar-menu, .navbar-start {
+    align-items: center;
+    display: flex;
+	}
+	
+.navbar-start{
+	margin-left: auto;
+	}
+
+.navbar-end{
+	margin-right: auto;
+}
+	
+.navbar-menu {
+    flex-grow: 1;
+    flex-shrink: 0;
+	}
+	
+.container>.navbar .navbar-menu, .navbar>.container .navbar-menu {
+    margin-right: 0rem;
+	}
+
+#byebye {
+	display: none;
+	}
+	
+#hi{
+	margin-left: auto;
+	margin-right: auto;
+	}
+}
+
+@media only screen and (min-width: 1024px){
+	
 .second{
     display: flex;
     padding-top: 6rem;
+	}
+
+#logo-discord{
+	width: 20%; 
+	padding-right:10px;
+	}
+	
+#cle{
+	width: 20%; 
+	padding-left:10px;
+	}
+
+#logo-bet-games{
+	margin-left: auto; 
+	margin-right: auto; 
+	border-radius: 10px; 
+	width: 20%;
+	}
+	
+#hi{
+	display: none;
+	}
 }
 
 .footer{

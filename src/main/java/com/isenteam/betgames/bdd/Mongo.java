@@ -66,6 +66,7 @@ public class Mongo {
 		doc.append("odd", bet.odd());
 		doc.append("server", bet.game());
 		doc.append("userId", bet.user());
+		doc.append("gameId", bet.getGameId());
 		
 		//insertion du document dans la collection "collection" (cad collectionTest)
 		this.collection.insertOne(doc);
@@ -128,7 +129,41 @@ public class Mongo {
             JsonObject party = JsonParser.parseString(docObj.get("party").getAsString()).getAsJsonObject();
             if(party.get("gameId").getAsString().contentEquals(id))
             {
-            	this.collection.deleteOne(Filters.eq("_id", id));
+            	this.collection.deleteMany(Filters.eq("_id", id));
+            }
+        }
+	}
+	
+	public JsonObject RetreiveParty(String id)
+    {
+        FindIterable<Document> iterDoc = this.collection.find();
+        Iterator it = iterDoc.iterator();
+        JsonObject party = null ;
+
+         while (it.hasNext()) {
+             Document doc = (Document) it.next();
+             JsonObject docObj = JsonParser.parseString(doc.toJson()).getAsJsonObject();
+             party = JsonParser.parseString(docObj.get("party").getAsString()).getAsJsonObject();
+             if(party.get("gameId").getAsString().contentEquals(id))
+             {
+                 return party;
+             }
+         }
+ 
+        return party;
+    }
+	
+	public void deleteBet(String id)
+	{
+
+        FindIterable<Document> iterDoc = this.collection.find();
+        Iterator it = iterDoc.iterator();
+        while (it.hasNext()) 
+        {
+        	Document doc = (Document) it.next();
+            if(doc.containsValue(id))
+            {
+            	this.collection.deleteMany(Filters.eq("gameId", id));
             }
         }
 	}

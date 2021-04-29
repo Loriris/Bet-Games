@@ -17,7 +17,7 @@ public class CalculCote {
 		
 	public void calcul() throws UnirestException {
 		
-    	infoC.PartyInfo();
+    	infoC.PartyInfoMongo();
     	infoC.retrieveParticipantsInfo();
 		for(int index = 0; index < infoC.getParticipant().length; index++)
 		{

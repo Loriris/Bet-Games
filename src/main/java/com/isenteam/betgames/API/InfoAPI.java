@@ -1,8 +1,6 @@
 package com.isenteam.betgames.API;
 
 
-import org.bson.Document;
-
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -21,6 +19,7 @@ public class InfoAPI
 	public static String key = "RGAPI-a0d056dd-cf01-4448-ab56-d93627eb78b5"; 
 	private String region;
 	private Participant[] participant;
+	private String id;
 
 	
 	public InfoAPI(String playerToSet, String regionToSet) throws UnirestException
@@ -30,22 +29,34 @@ public class InfoAPI
 		this.participant = new Participant[10];
 	}
 	
+	public InfoAPI(String id) 
+	{
+		this.id = id;
+		this.participant = new Participant[10];
+	};
+	
+	//Pour appeler l'API riot
 	public void PartyInfo() throws UnirestException
 	{
 		HttpResponse <JsonNode> response = Unirest.get("https://" +  region + ".api.riotgames.com/lol/summoner/v4/summoners/by-name/" + player + "?api_key=" + key).asJson();
 		JsonObject summonerInfo = JsonParser.parseString(response.getBody().toString()).getAsJsonObject();
 			      
 		HttpResponse <JsonNode> response2 = Unirest.get("https://"+ region + ".api.riotgames.com/lol/spectator/v4/active-games/by-summoner/" + summonerInfo.get("id").getAsString() + "?" + "api_key=" + key ).asJson();
-	    this.partyInfo = JsonParser.parseString(response2.getBody().toString()).getAsJsonObject();
+	    this.partyInfo = JsonParser.parseString(response2.getBody().toString()).getAsJsonObject();	   
 	    Mongo mongo = new Mongo("Party");
 	    if(Boolean.compare(mongo.searchForExistingParty(this.partyInfo.get("gameId").getAsString()), false) == 0)
 	    {
 	    	mongo.insertParty(this.partyInfo);
 	    	
 	    }
-	    
-	    
 	}
+	
+	//Pour appeler la bdd
+	public void PartyInfoMongo()
+    {
+        Mongo mongo = new Mongo("Party");
+        this.partyInfo = mongo.RetreiveParty(this.id);
+    }
 
 	public JsonObject getPartyInfo()
 	{

@@ -44,7 +44,7 @@ public class Commands extends ListenerAdapter{
 		// allow to know the odds of betting of the team you that you want	
 		if(args[0].equalsIgnoreCase(prefix + "odds"))
 		{	
-			OddsCommand oddsCom = new OddsCommand(event, args, teamName, coteEq1, coteEq2, infos);
+			OddsCommand oddsCom = new OddsCommand(event, args, teamName, coteEq1, coteEq2);
 			oddsCom.Odds();
 		}
 		
@@ -116,13 +116,4 @@ public class Commands extends ListenerAdapter{
 		    }
 		}			
 	}	
-	
-/*--------------------------------------------------------------------------------------------*/
-	/*
-	// send a private message to the gambler to inform him if he has won or lost
-	public static void sendResult(User user, String content) {
-	    user.openPrivateChannel().queue(channel -> {
-	        channel.sendMessage(content).queue();
-	    });
-	}	*/
 }

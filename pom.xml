@@ -9,7 +9,7 @@
 	</parent>
 	<groupId>com.isenteam</groupId>
 	<artifactId>betgames</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.3-SNAPSHOT</version>
 	<name>betgames</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
@@ -97,7 +97,30 @@
 		    <version>1.0</version>
 		</dependency>
 
+	  	<dependency>
+	    	<groupId>com.google.cloud</groupId>
+	    	<artifactId>google-cloud-secretmanager</artifactId>
+	  	</dependency>
+	  	  	
+  		<dependency>
+    		<groupId>com.google.cloud</groupId>
+    		<artifactId>google-cloud-storage</artifactId>
+  		</dependency>
+
 	</dependencies>
+	
+	<dependencyManagement>
+	  	<dependencies>
+	    	<dependency>
+	      		<groupId>com.google.cloud</groupId>
+	     		<artifactId>libraries-bom</artifactId>
+	      		<version>20.0.0</version>
+	      		<type>pom</type>
+	      		<scope>import</scope>
+	    	</dependency>
+	  </dependencies>
+	</dependencyManagement>
+	
 
 	<build>
 		<plugins>
