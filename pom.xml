@@ -9,7 +9,7 @@
 	</parent>
 	<groupId>com.isenteam</groupId>
 	<artifactId>betgames</artifactId>
-	<version>0.0.2-SNAPSHOT</version>
+	<version>0.0.3-SNAPSHOT</version>
 	<name>betgames</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
@@ -90,6 +90,12 @@
     		<groupId>org.springframework.boot</groupId>
     		<artifactId>spring-boot-starter-thymeleaf</artifactId>
     	</dependency>
+    	
+    	<dependency>
+		    <groupId>com.mongodb</groupId>
+		    <artifactId>mongo</artifactId>
+		    <version>1.0</version>
+		</dependency>
 
 	  	<dependency>
 	    	<groupId>com.google.cloud</groupId>
