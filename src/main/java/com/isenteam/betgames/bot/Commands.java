@@ -5,7 +5,6 @@ import java.util.Arrays;
 import com.isenteam.betgames.API.InfoAPI;
 import com.mashape.unirest.http.exceptions.UnirestException;
 
-import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
@@ -62,7 +61,7 @@ public class Commands extends ListenerAdapter{
 		//allow to bet on the selected team
 		if(args[0].equalsIgnoreCase(prefix + "bet"))
 		{
-			BetCommand betCom = new BetCommand(event, args, teamName, coteEq1, coteEq2, infos, regionServer);
+			BetCommand betCom = new BetCommand(event, args, teamName, coteEq1, coteEq2, regionServer);
 			betCom.BetComm();
 		}
 
@@ -71,7 +70,7 @@ public class Commands extends ListenerAdapter{
 		// allow to know the team available 
 		if(args[0].equalsIgnoreCase(prefix + "teams"))
 		{
-			TeamsCommand teamsCom = new TeamsCommand(event, args, infos);
+			TeamsCommand teamsCom = new TeamsCommand(event, args);
 			teamsCom.Teams();
 		}
 		
