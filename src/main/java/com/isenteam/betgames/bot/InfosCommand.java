@@ -29,7 +29,7 @@ public class InfosCommand {
 					+ " (pour le nom du joueur il faut écrire en un seul mot)", false);
 			info.addField("Pour connaitre les parties disponibles :", "#games", false);
 			info.addField("Pour connaitre les équipes disponibles :", "#teams", false);
-			info.addField("Pour connaitre une cote :", "#odds [nom_de_l'équipe]", false);
+			info.addField("Pour connaitre une cote :", "#odds [nom_de_l'équipe] [id_de_l'équipe]", false);
 			info.addField("Pour faire un paris :", "#bet [nom_de_l'équipe] [somme_engagée]", false);
 			info.addField("Liste serveurs :", "\"BR1\", \"EUN1\", \"EUW1\", \"LA1\", \r\n" + 
 			"\"LA2\", \"NA1\", \"OCE\", \"OC1\", \"RU1\", \"TR1\", \"JP1\", \"KR\", \"PBE\"", false);

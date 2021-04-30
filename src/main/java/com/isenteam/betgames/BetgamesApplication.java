@@ -10,9 +10,7 @@ import net.dv8tion.jda.api.OnlineStatus;
 import net.dv8tion.jda.api.entities.Activity;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.google.cloud.secretmanager.v1.AccessSecretVersionResponse;
 import com.isenteam.betgames.bot.Commands;
-import com.isenteam.betgames.secretsmanager.AccessSecretVersion;
 import com.mashape.unirest.http.exceptions.UnirestException;
 
 @SpringBootApplication
