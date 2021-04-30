@@ -33,7 +33,7 @@ public class BetgamesApplication {
 
 		//command call
 		jda.addEventListener(new Commands());
-		jda.getPresence().setStatus(OnlineStatus.IDLE);
+		jda.getPresence().setStatus(OnlineStatus.ONLINE);
 		
 		/*AccessSecretVersion secret = new AccessSecretVersion();
 		secret.accessSecretVersion();*/

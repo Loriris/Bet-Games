@@ -10,6 +10,10 @@
 	color: #2F4F4F;
 }
 
+#active-item:hover {
+	color: #80CDE1;
+}
+
 .hero.is-link a.navbar-item:hover{
 	background-color: unset;
 }
@@ -21,6 +25,12 @@
     background-color: #FFCFFF;
     color: #2F4F4F;
     font-weight: bold;
+    transition: .4s;
+}
+
+.button.hero-button.left:hover {
+    background-color: #88CDE3;
+    color: #FFFFFF;
 }
 
 .button.hero-button.right {
@@ -30,6 +40,12 @@
     width: 20%;
     margin-right: auto;
     font-weight: bold;
+    transition: .4s;
+}
+
+.button.hero-button.right:hover {
+    background-color: #88CDE3;
+    color: #FFFFFF;
 }
 
 @media only screen and (max-width: 1023px) {
@@ -52,7 +68,7 @@
 #logo-bet-games{
 	margin-left: auto; 
 	margin-right: auto; 
-	border-radius: 10px; 
+	border-radius: 100%; 
 	width: 50%;
 }
 	
@@ -63,11 +79,51 @@
     margin-bottom: 5%;
 	}
 	
+	
 .button.hero-button.right {
     margin-left: auto;
     margin-right: auto;
 	width: 50%;
 	margin-bottom: 5%;
+	}
+	
+.hero.is-link .navbar-menu {
+    background: none;
+	}
+	
+.hero-body-two {
+	padding: 10rem 1.5rem
+	}
+	
+.navbar, .navbar-end, .navbar-menu, .navbar-start {
+    align-items: center;
+    display: flex;
+	}
+	
+.navbar-start{
+	margin-left: auto;
+	}
+
+.navbar-end{
+	margin-right: auto;
+}
+	
+.navbar-menu {
+    flex-grow: 1;
+    flex-shrink: 0;
+	}
+	
+.container>.navbar .navbar-menu, .navbar>.container .navbar-menu {
+    margin-right: 0rem;
+	}
+
+#byebye {
+	display: none;
+	}
+	
+#hi{
+	margin-left: auto;
+	margin-right: auto;
 	}
 
 }
@@ -111,47 +167,6 @@
     padding-top: 6rem;
 }
 
-@media screen and (max-width: 1023px){
-.hero.is-link .navbar-menu {
-    background: none;
-	}
-	
-.hero-body-two {
-	padding: 10rem 1.5rem
-	}
-	
-.navbar, .navbar-end, .navbar-menu, .navbar-start {
-    align-items: center;
-    display: flex;
-	}
-	
-.navbar-start{
-	margin-left: auto;
-	}
-
-.navbar-end{
-	margin-right: auto;
-}
-	
-.navbar-menu {
-    flex-grow: 1;
-    flex-shrink: 0;
-	}
-	
-.container>.navbar .navbar-menu, .navbar>.container .navbar-menu {
-    margin-right: 0rem;
-	}
-
-#byebye {
-	display: none;
-	}
-	
-#hi{
-	margin-left: auto;
-	margin-right: auto;
-	}
-}
-
 @media only screen and (min-width: 1024px){
 	
 .second{
@@ -172,8 +187,8 @@
 #logo-bet-games{
 	margin-left: auto; 
 	margin-right: auto; 
-	border-radius: 10px; 
-	width: 20%;
+	border-radius: 100%; 
+	width: 25%;
 	}
 	
 #hi{
