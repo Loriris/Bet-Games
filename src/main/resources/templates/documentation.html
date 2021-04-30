@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+        <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Bet Games</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+        <link rel="stylesheet" th:href="@{/css/style.css}" type="text/css" />
+        <link rel="stylesheet" th:href="@{/css/styledoc.css}" type="text/css" />
+        <link rel="shortcut icon" th:href="@{/images/favicon-32x32.png}" />
+    </head>
+    <body>
+        <section class="hero is-link is-fullheight-with-navbar">
+	        <nav class="navbar">
+	            <div class="container">
+	                <div id="navMenu" class="navbar-menu">
+	                    <div class="navbar-start">
+	                    	<a class="navbar-item" th:href="@{index}">
+      							<img th:src="@{/images/bet-games-title.png}" id="bet-games-title">
+    						</a>
+	                        <a class="navbar-item" id="active-item" th:href="@{documentation}">
+	                            Documentation
+	                        </a>
+	                    </div>
+	                    <div class="navbar-end">
+	                        <div class="navbar-item">
+	                            <div class="buttons">
+	                                <a class="button is-dark" id="byebye" onclick="window.open('https://github.com/Loriris/Bet-Games.git')">Github</a>
+	                            </div>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	        </nav>
+            <div class="hero-body">
+            <article class="message is-info">
+				  <div class="message-header">
+				    Qu'est-ce que Bet-Games ?
+				  </div>
+				  <div class="message-body">
+				  	<div class="message-div">
+				   		<p>C'est en fait le nom de notre projet consistant à créer un bot sur le célèbre logiciel de discution <b>Discord</b>. En effet, axé sur les jeux vidéo, ce logiciel nous offre l'opportunité de pouvoir developper de multiple services dans ce domaine.</p>
+				   	</div>
+				   	<div class="message-div center-img">
+				   		<img th:src="@{/images/ampoule.png}" id="ampoule">
+				   	</div>
+				   	<div class="message-div">
+				   		<p>Suite à cela, nous avons eu l'idée de profiter de l'essor des paris en ligne et du leader des jeux de compétitions qui est en autre <b>League of Legends.</b>
+				   		Bon nombres de joueurs se lancent sur les champs de batailles pour s'affronter et prouver qu'ils meritent leurs places sur le podium, Pourquoi ne pas pimenter les choses ?</p>
+				   	</div>
+				   	<div class="message-div center-img">
+				   		<img th:src="@{/images/bank.png}" id="bank">
+				   	</div>
+					<div class="message-div">
+				   		<p>Si on vous dit que vous pouvez gagner de l'argent grâce à vos équipes de joueurs professionnels préférées ? Misez, Analysez et jouez à l'aide de notre bot Discord qui s'occupe de votre paris !
+				   		Venez découvrir comment fonctionne notre bot afin de le maîtriser à la perfection.</p>   
+				   	</div>
+				  </div>
+				</article>
+            </div>
+        </section>
+        <section class="hero is-dark is-fullheight-with-navbar">
+            <div class="hero-body-two">
+            	<h1 class="h1-title">FONCTIONNEMENT</h1>
+            	<article class="article-hero-body-two">
+            		<div class="div-in-article"> 
+            			<img th:src="@{/images/discordillustr.jpg}" id="discordillustr">
+            		</div>
+            		<div class="div-in-article">
+            			<p class="paragraph-article-body"><b><u>Étape 1</u> :</b> Ajoutez notre bot sur votre serveur discord favori, il vous faut simplement cliquer sur le bouton ci-dessous et se connecter sur votre compte pour désigner le serveur de votre choix.</p>
+            			<button class="button hero-button left" onclick="window.open('https://discord.com/oauth2/authorize?client_id=780382231411687445&permissions=0&scope=bot')"><img th:src="@{/images/discord-black-icon.png}" id="logo-discord"/>Ajouter à Discord</button>
+            		</div>
+            		<div class="div-in-article">
+            			<img th:src="@{/images/ajoutbot.png}" id="ajoutbot">
+            		</div>
+            	</article>
+            <div/>
+        </section>
+		<section class="hero is-link is-fullheight-with-navbar">
+            <div class="hero-body-two">
+            	<article class="article-hero-body-two">
+            		<div class="div-in-article">
+            			<p class="paragraph-article-body"><b><u>Étape 2</u> :</b> Une fois votre bot opérationnel, servez vous de votre salon textuel pour pouvoir communiquer avec le bot. Le préfix à utiliser est <strong><b>"#"</b></strong> suivit du nom de la commande souhaitée.</p>
+            		</div>
+            		<div class="div-in-article">
+            			<img th:src="@{/images/infoexemple.png}" id="infoexemple">
+            		</div>
+            	</article>
+				<div class="notification is-primary" id="commandes-notif">
+					<div class="container-div">
+						<div class="div-in-notif-start">
+							<img th:src="@{/images/warning.png}" class="warning">
+						</div>
+						<div class="div-in-notif-center">
+							<h1 class="h1-title" id="commandes">#COMMANDES</h1>
+						</div>
+						<div class="div-in-notif-end">
+							<img th:src="@{/images/warning.png}" class="warning">
+						</div>
+					</div>
+					<div>
+						<table class="table">
+							<thead>
+							    <tr>
+							       <th>Noms</th>
+								   <th>Description</th>
+								</tr>
+							</thead>
+							<tbody>
+							    <tr>
+							      <th>#info</th>
+							      <td>Permet d'afficher la liste des commandes disponible directement sur le salon textuel.</td>
+							    </tr>
+							    <tr>
+							      <th>#</th>
+							      <td></td>
+							    </tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+            </div>
+        </section> 
+        <footer class="footer">
+            <div class="content has-text-centered">
+                <p>
+                    <strong>&copy;2021 Bet-Games</strong> par <i>Thomas SCHMID</i>, <i>Alexis RAFÉ</i>, <i>Ines BEN-SLAMA</i> et <i>Loris MARTINEZ</i>.
+                </p>
+            </div>
+        </footer>
+    </body>
+</html>

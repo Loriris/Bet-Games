@@ -1,0 +1,145 @@
+@font-face {
+  font-family: "Berlin Sans FB Regular";
+  src: url("/polices/BerlinSansFBRegular.ttf");
+}
+
+#active-item{
+	color: #80CDE1;
+}
+
+.message.is-info .message-header {
+    background-color: #80CDE1;
+    color: #2F4F4F;
+}
+
+.hero.is-fullheight-with-navbar .hero-body{
+	display: block;
+}
+
+.message.is-info .message-body {
+    border-color: #80CDE1;
+    color: #2F4F4F;
+    background-color: #FFE5FF;
+}
+
+.message{
+	margin-left: 5%;
+	margin-right: 5%;
+}
+
+.message-div{
+	padding: 0.5rem 0rem;
+	font-family: "Berlin Sans FB Regular";
+}
+
+
+#ampoule{
+	width: 10%;
+}
+
+#bank{
+	width: 10%;
+}
+
+.center-img{
+	display: block;
+	text-align: center;
+}
+
+.h1-title{
+	text-align: center;
+	margin-bottom: 5%;
+	color: #2F4F4F;
+	font-size: 30px;
+	font-family: "Berlin Sans FB Regular";
+	font-weight: bold;
+}
+
+
+#discordillustr{
+	box-shadow: 2px 2px #2f4f4f;
+    border-radius: 40px;
+    width: 100%;
+}
+
+.article-hero-body-two{
+	display: flex;
+}
+
+#ajoutbot{
+    box-shadow: 2px 2px #2f4f4f;
+    border-radius: 10px;
+    width: 100%;
+}
+
+.div-in-article {
+    padding: 0.5rem 1rem;
+    width: 100%;
+    margin-top: auto;
+    margin-bottom: auto;
+    display: block;
+}
+
+.paragraph-article-body {
+    color: #2F4F4F;
+	font-family: "Berlin Sans FB Regular";
+	font-size: 18px;
+}
+
+.button.hero-button.left {
+    width: 60%;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5%;
+}
+
+#infoexemple{
+	box-shadow: 2px 2px #2f4f4f;
+    border-radius: 10px;
+    width: 100%;
+}
+
+#commandes{
+	margin-bottom: 0;
+}
+
+.warning {
+	width: 25%;
+}
+
+.container-div {
+	display: flex;
+	align-content: center;
+}
+
+.div-in-notif-start {
+	text-align: left;
+}
+
+.div-in-notif-center {
+	text-align: center;
+	margin-top: auto;
+	margin-bottom: auto;
+}
+
+.div-in-notif-end {
+	text-align: right;
+}
+
+.notification.is-primary{
+	background-color: #80CDE1;
+	width: 50%;
+	margin-top: 5%;
+	margin-left: auto;
+	margin-right: auto;
+	box-shadow: 1px 1px #2f4f4f; 
+}
+
+.table{
+	margin-top: 5%;
+	background-color: unset;
+	color: #2f4f4f;
+}
+
+
