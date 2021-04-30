@@ -18,16 +18,18 @@ import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import com.mongodb.client.FindIterable;
 
-//@Configuration
-//@EnableScheduling
+@Configuration
+@EnableScheduling
 public class BackgroundService {
 	
-	 @Scheduled(fixedDelay = 5000)
+	 @Scheduled(fixedDelay = 50000)
 	 public void demoServiceMethod() throws UnirestException
 	 {
-	     System.out.println("Method executed at every 5 seconds. Current time is :: "+ new Date());
-	     Mongo mongo = new Mongo("Party");
-	     FindIterable<Document> iterDoc = mongo.getCollection().find();
+	     System.out.println("Method executed at every 5 minutes. Current time is :: "+ new Date());
+	     Mongo mongoParty = new Mongo("Party");
+	     Mongo mongoBet = new Mongo("Bets");
+	     
+	     FindIterable<Document> iterDoc = mongoParty.getCollection().find();
 	     Iterator it = iterDoc.iterator();
 	         
 	     while (it.hasNext()) 
@@ -40,6 +42,8 @@ public class BackgroundService {
 		     {
 			     JsonObject jsonResponse = JsonParser.parseString(response2.getBody().toString()).getAsJsonObject();
 			     // fonction de thomas pour notifier le gagnant
+			     mongoParty.deleteParty(docObj.get("_id").getAsString());
+			     mongoBet.deleteBet(docObj.get("_id").getAsString());
 		     }
 	     }
 	 }

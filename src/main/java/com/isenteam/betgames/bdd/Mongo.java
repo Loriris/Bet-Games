@@ -129,7 +129,7 @@ public class Mongo {
             JsonObject party = JsonParser.parseString(docObj.get("party").getAsString()).getAsJsonObject();
             if(party.get("gameId").getAsString().contentEquals(id))
             {
-            	this.collection.deleteOne(Filters.eq("_id", id));
+            	this.collection.deleteMany(Filters.eq("_id", id));
             }
         }
 	}
@@ -152,6 +152,21 @@ public class Mongo {
  
         return party;
     }
+	
+	public void deleteBet(String id)
+	{
+
+        FindIterable<Document> iterDoc = this.collection.find();
+        Iterator it = iterDoc.iterator();
+        while (it.hasNext()) 
+        {
+        	Document doc = (Document) it.next();
+            if(doc.containsValue(id))
+            {
+            	this.collection.deleteMany(Filters.eq("gameId", id));
+            }
+        }
+	}
 }	
 	
 	

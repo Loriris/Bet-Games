@@ -10,9 +10,7 @@ import net.dv8tion.jda.api.OnlineStatus;
 import net.dv8tion.jda.api.entities.Activity;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.google.cloud.secretmanager.v1.AccessSecretVersionResponse;
 import com.isenteam.betgames.bot.Commands;
-import com.isenteam.betgames.secretsmanager.AccessSecretVersion;
 import com.mashape.unirest.http.exceptions.UnirestException;
 
 @SpringBootApplication
@@ -26,7 +24,7 @@ public class BetgamesApplication {
 		
 		//bot creation with adapted token	
 		
-		/*String officiel = "NzgwMzgyMjMxNDExNjg3NDQ1.X7uRlg.Yc-yiu67ZbqSCN8Rcf7VIqG-CTQ";
+		String officiel = "NzgwMzgyMjMxNDExNjg3NDQ1.X7uRlg.Yc-yiu67ZbqSCN8Rcf7VIqG-CTQ";
 		String test = "ODI5NjIxNDk3Mjg2ODg1Mzk2.YG6zOg.ordrRLH9jD0B8G7P4-Y0ttnW9HA";
 		jda = JDABuilder.createDefault(officiel)
 				.setActivity(Activity.watching("Type #info to display all commands"))
