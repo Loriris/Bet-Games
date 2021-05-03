@@ -18,8 +18,8 @@ import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import com.mongodb.client.FindIterable;
 
-@Configuration
-@EnableScheduling
+//@Configuration
+//@EnableScheduling
 public class BackgroundService {
 	
 	 @Scheduled(fixedDelay = 50000)
