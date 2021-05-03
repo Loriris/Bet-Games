@@ -17,7 +17,7 @@
 	                    	<a class="navbar-item" th:href="@{index}">
       							<img th:src="@{/images/bet-games-title.png}" id="bet-games-title">
     						</a>
-	                        <a class="navbar-item" th:href="@{commandes}">
+	                        <a class="navbar-item" id="active-item" th:href="@{documentation}">
 	                            Documentation
 	                        </a>
 	                    </div>
@@ -38,11 +38,11 @@
         <section class="hero is-dark is-fullheight-with-navbar">
             <div class="hero-body-two">
                 <div class="first">
-                    <p style="color: #2F4F4F; text-align: center; font-size: 24px">Venez parier sur vos jeux vidéo préférés et remporter un maximum de gain !</p>
+                    <p style="color: #2F4F4F; text-align: center; font-size: 24px">Venez parier sur votre jeu vidéo préféré et remporter un maximum de gain !</p>
                 </div>
                 <div class="second">
                     <button class="button hero-button left" onclick="window.open('https://discord.com/oauth2/authorize?client_id=780382231411687445&permissions=0&scope=bot')"><img th:src="@{/images/discord-black-icon.png}" id="logo-discord"/>Ajouter à Discord</button>
-                    <button class="button hero-button right" onclick="window.location.href='/commandes'">Voir les fonctionnalités<img th:src="@{/images/cle.png}" id="cle"/></button> 
+                    <button class="button hero-button right" onclick="window.location.href='/documentation'">Voir les fonctionnalités<img th:src="@{/images/cle.png}" id="cle"/></button> 
                    	<div class="buttons">
 	                 	<a class="button is-dark" id="hi" onclick="window.open('https://github.com/Loriris/Bet-Games.git')">Github</a>
 	                </div>       

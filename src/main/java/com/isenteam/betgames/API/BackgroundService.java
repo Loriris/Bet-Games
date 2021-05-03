@@ -23,7 +23,7 @@ import com.mongodb.client.FindIterable;
 public class BackgroundService {
 	
 	 @Scheduled(fixedDelay = 50000)
-	 public void demoServiceMethod() throws UnirestException
+	 public void backgroundServiceMethod() throws UnirestException
 	 {
 	     System.out.println("Method executed at every 5 minutes. Current time is :: "+ new Date());
 	     Mongo mongoParty = new Mongo("Party");
@@ -41,6 +41,15 @@ public class BackgroundService {
 		     if( response2.getStatus() == 200)
 		     {
 			     JsonObject jsonResponse = JsonParser.parseString(response2.getBody().toString()).getAsJsonObject();
+			     JsonArray team = jsonResponse.get("teams").getAsJsonArray();
+			     if(team.get(0).getAsJsonObject().get("win").getAsString() == "win")
+			     {
+			    	 //team 100 a gagné
+			     }
+			     else
+			     {
+			    	 //team 200 a gagné
+			     }
 			     // fonction de thomas pour notifier le gagnant
 			     mongoParty.deleteParty(docObj.get("_id").getAsString());
 			     mongoBet.deleteBet(docObj.get("_id").getAsString());
