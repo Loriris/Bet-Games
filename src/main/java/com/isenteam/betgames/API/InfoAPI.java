@@ -1,9 +1,14 @@
 package com.isenteam.betgames.API;
 
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+
+import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.google.gson.stream.JsonReader;
 import com.isenteam.betgames.bdd.Mongo;
 import com.isenteam.betgames.bot.Participant;
 import com.mashape.unirest.http.HttpResponse;
@@ -16,7 +21,7 @@ public class InfoAPI
 {
 	private JsonObject partyInfo;
 	private String player;
-	public static String key = "RGAPI-a0d056dd-cf01-4448-ab56-d93627eb78b5"; 
+	public static String key;
 	private String region;
 	private Participant[] participant;
 	private String id;
@@ -24,6 +29,7 @@ public class InfoAPI
 	
 	public InfoAPI(String playerToSet, String regionToSet) throws UnirestException
 	{
+		this.key = InfoAPI.getApiToken();
 		this.player = playerToSet;
 		this.region = regionToSet;
 		this.participant = new Participant[10];
@@ -31,6 +37,7 @@ public class InfoAPI
 	
 	public InfoAPI(String id) 
 	{
+		this.key = InfoAPI.getApiToken();
 		this.id = id;
 		this.participant = new Participant[10];
 	};
@@ -116,11 +123,19 @@ public class InfoAPI
 		return this.participant;
 	}
 	
-	public static void test() throws UnirestException
+	public static String getApiToken()
 	{
-		HttpResponse <JsonNode> ratioResponse = Unirest.get("https://euw1.api.riotgames.com/lol/league/v4/entries/by-summoner/FV3eZ9VuWLnwfoSRmPULmM3l3XbHej0huc4MA_MBORhGYJU?api_key=RGAPI-aaea0cfb-8d68-43c0-99cb-66629f1a8e9a").asJson();
-		JsonArray league = JsonParser.parseString(ratioResponse.getBody().toString()).getAsJsonArray();
-		System.out.println(league.get(0).getAsJsonObject().get("wins"));
-		System.out.println(league.get(0).getAsJsonObject().get("losses"));
+		Gson config = new Gson();
+		JsonReader reader = null;
+		try {
+			reader = new JsonReader(new FileReader("config.json"));
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		JsonObject conf = config.fromJson(reader, JsonObject.class);
+		return conf.get("token-riot").getAsString();
+		
+		
 	}
 }

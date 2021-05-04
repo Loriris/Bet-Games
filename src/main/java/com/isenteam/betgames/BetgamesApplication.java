@@ -1,5 +1,7 @@
 package com.isenteam.betgames;
 
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 
 import javax.security.auth.login.LoginException;
@@ -10,6 +12,9 @@ import net.dv8tion.jda.api.OnlineStatus;
 import net.dv8tion.jda.api.entities.Activity;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.stream.JsonReader;
 import com.isenteam.betgames.bot.Commands;
 import com.mashape.unirest.http.exceptions.UnirestException;
 
@@ -23,10 +28,10 @@ public class BetgamesApplication {
 		SpringApplication.run(BetgamesApplication.class, args);
 		
 		//bot creation with adapted token	
-		
-		String officiel = "NzgwMzgyMjMxNDExNjg3NDQ1.X7uRlg.Yc-yiu67ZbqSCN8Rcf7VIqG-CTQ";
-		String test = "ODI5NjIxNDk3Mjg2ODg1Mzk2.YG6zOg.ordrRLH9jD0B8G7P4-Y0ttnW9HA";
-		jda = JDABuilder.createDefault(officiel)
+		Gson config = new Gson();
+		JsonReader reader = new JsonReader(new FileReader("config.json"));
+		JsonObject conf = config.fromJson(reader, JsonObject.class);
+		jda = JDABuilder.createDefault(conf.get("test-token").getAsString())
 				.setActivity(Activity.watching("Type #info to display all commands"))
 				.build()
 				.awaitReady(); //This method will block until JDA has reached the status JDA.Status.CONNECTED.
