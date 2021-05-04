@@ -30,9 +30,7 @@ public class listBetor {
 		this.win = win;
 	}
 	
-	listBetor() {
-		
-	}
+	listBetor() {}
 	
 	public String getBetorName() {
 		return this.betorName;
@@ -64,9 +62,4 @@ public class listBetor {
 		}
 		return betors;
 	}
-		
-	
 }
-
-
-
