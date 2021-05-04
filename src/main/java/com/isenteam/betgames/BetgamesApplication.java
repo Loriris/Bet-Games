@@ -42,7 +42,5 @@ public class BetgamesApplication {
 		
 		/*AccessSecretVersion secret = new AccessSecretVersion();
 		secret.accessSecretVersion();*/
-		
 	}
-
 }
