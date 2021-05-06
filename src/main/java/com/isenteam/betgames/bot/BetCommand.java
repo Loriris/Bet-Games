@@ -102,7 +102,8 @@ public class BetCommand {
 							odd = 1/teamValue[i];
 							
 							Bet monPari = new Bet(money,this.teamName[i],teamValue[i], this.regionServer, 
-									this.event.getAuthor().getName(), infos.getPartyInfo().get("gameId").getAsString());
+									this.event.getAuthor().getName(), infos.getPartyInfo().get("gameId").getAsString(), 
+									this.event.getAuthor().getId());
 							Mongo col = new Mongo("Bets");
 							col.insert(monPari);
 							
@@ -110,12 +111,12 @@ public class BetCommand {
 							{
 								gains = money * teamValue[i];
 								Float.toString(gains);
-								sendResult(this.event.getAuthor(), "😀 Gagner, votre gain est de " + gains + "€ sur la partie " 
+								sendResult(User.fromId(monPari.userId()), "😀 Gagné, votre gain est de " + gains + "€ sur la partie " 
 								+ infos.getPartyInfo().get("gameId").getAsString());
 							}
 							else
 							{
-								sendResult(this.event.getAuthor(), "😥 Perdu");
+								sendResult(User.fromId(monPari.userId()), "😥 Perdu");
 							}
 						}
 					}
