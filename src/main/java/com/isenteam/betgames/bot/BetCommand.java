@@ -110,15 +110,15 @@ public class BetCommand {
 							
 							if(nb < odd*10)
 							{
-								//event.getChannel().sendMessage("😀 Gagner").queue();
+								//event.getChannel().sendMessage("😀 Gagné").queue();
 								gains = money * teamValue[i];
 								Float.toString(gains);
-								sendResult(this.event.getAuthor(), "😀 Gagner, votre gain est de " + gains + "€");
+								sendResult(this.event.getAuthor(), "😀 Vous avez Gagné, votre gain est de " + gains + "€");
 							}
 							else
 							{
 								//event.getChannel().sendMessage("😥 Perdu").queue();
-								sendResult(this.event.getAuthor(), "😥 Perdu");
+								sendResult(this.event.getAuthor(), "😥 Vous avez Perdu");
 							}
 						}
 					}

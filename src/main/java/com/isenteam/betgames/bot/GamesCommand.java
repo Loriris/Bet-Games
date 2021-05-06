@@ -24,7 +24,7 @@ public class GamesCommand {
 		//in info there must be only one arg, if there are several args return an error
 		if(this.args.length > 1) 
 		{
-			mess.showMess("🔴 Veuillez réassayer, vous avez saisi trop d'arguments (voir #info).", 0xCA0707);
+			mess.showMess("🔴 Veuillez réessayer, vous avez saisi trop d'arguments (voir #info).", 0xCA0707);
 		}
 		
 		else
