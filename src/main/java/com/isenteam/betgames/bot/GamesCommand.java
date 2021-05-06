@@ -24,7 +24,7 @@ public class GamesCommand {
 		//in info there must be only one arg, if there are several args return an error
 		if(this.args.length > 1) 
 		{
-			mess.showMess("🔴 Veuillez réassayer, vous avez saisi trop d'arguments (voir #info).", 0xCA0707);
+			mess.showMess("🔴 Veuillez réessayer, vous avez saisi trop d'arguments (voir #info).", 0xCA0707);
 		}
 		
 		else
@@ -34,7 +34,7 @@ public class GamesCommand {
 			tabRecup = games.displayGames();
 			for(int i = 0; i < tabRecup.size(); i++)
 			{
-				mess.showMess("ID: " + tabRecup.get(i).getId() + "		Type: " + tabRecup.get(i).getType(), 0x1A93D8);
+				mess.showMess("ID: " + tabRecup.get(i).getId() + "		Connexion with player: " + tabRecup.get(i).getPlayer(), 0x1A93D8);
 			}
 		}
 	}

@@ -47,8 +47,7 @@ public class InfoAPI
 	    Mongo mongo = new Mongo("Party");
 	    if(Boolean.compare(mongo.searchForExistingParty(this.partyInfo.get("gameId").getAsString()), false) == 0)
 	    {
-	    	mongo.insertParty(this.partyInfo);
-	    	
+	    	mongo.insertParty(this.partyInfo, this.player);
 	    }
 	}
 	

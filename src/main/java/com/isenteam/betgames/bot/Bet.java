@@ -12,17 +12,20 @@ public class Bet {
 	//partie 
 	private String game;
 	//gambler
-	private String user;
+	private String userName;
 	
 	private String gameId;
 	
-	public Bet(long bet, String team, float teamValue, String game, String user, String gameId) {
+	private String userId;
+	
+	public Bet(long bet, String team, float teamValue, String game, String userName, String gameId, String userId) {
 		this.bet = bet;
 		this.team = team;
 		this.odd = teamValue;
 		this.game = game;
-		this.user = user;
+		this.userName = userName;
 		this.gameId = gameId;
+		this.userId = userId;
 	}
 	
 	public long bet() {
@@ -49,7 +52,11 @@ public class Bet {
 		return this.game;
 	}
 	
-	public String user() {
-		return this.user;
+	public String userName() {
+		return this.userName;
+	}
+	
+	public String userId() {
+		return this.userId;
 	}
 }

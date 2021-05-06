@@ -65,8 +65,9 @@ public class Mongo {
 		doc.append("team", bet.team());
 		doc.append("odd", bet.odd());
 		doc.append("server", bet.game());
-		doc.append("userId", bet.user());
+		doc.append("userName", bet.userName());
 		doc.append("gameId", bet.getGameId());
+		doc.append("userId", bet.userId());
 		
 		//insertion du document dans la collection "collection" (cad collectionTest)
 		this.collection.insertOne(doc);
@@ -90,10 +91,11 @@ public class Mongo {
 		return false;
     }
 	
-	public void insertParty(JsonObject party)
+	public void insertParty(JsonObject party, String player)
 	{
 		Document part = new Document("party",party.toString());
 		part.append("_id", party.get("gameId").getAsString());
+		part.append("_player", player);
         this.collection.insertOne(part);
 	}
 	
@@ -110,7 +112,7 @@ public class Mongo {
         	JsonObject docObj = JsonParser.parseString(doc.toJson()).getAsJsonObject(); 
         	//recuperation données partie
             JsonObject party = JsonParser.parseString(docObj.get("party").getAsString()).getAsJsonObject();
-            ActiveGames active = new ActiveGames(party.get("gameId").getAsString(), party.get("gameType").getAsString());
+            ActiveGames active = new ActiveGames(party.get("gameId").getAsString(), party.get("gameType").getAsString(), doc.get("_player").toString());
             tab.add(active);
         }
         

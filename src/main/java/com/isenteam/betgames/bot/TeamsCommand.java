@@ -59,7 +59,7 @@ public class TeamsCommand {
 				for(int i = 0; i<infos.getParticipant().length; i++) 
 				{
 					mess.showMess("Equipe " + infos.getParticipant()[i].getTeam() + "  disponible," + 
-					" champion " + infos.getParticipant()[i].getChampion(), 0x1A93D8);
+					"    Champion, " + infos.getParticipant()[i].getChampion() + "    Joueur " + infos.getParticipant()[i].getName(), 0x1A93D8);
 				}		
 		    }
 		}

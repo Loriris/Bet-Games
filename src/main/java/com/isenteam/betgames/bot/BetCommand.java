@@ -98,27 +98,27 @@ public class BetCommand {
 					
 							Random rand = new Random();
 							nb =rand.nextInt(10);
-							//System.out.println("nb: " + nb);
 							
 							odd = 1/teamValue[i];
-							//System.out.println("odd: " + odd);
 							
-							Bet monPari = new Bet(money,this.teamName[i],teamValue[i], this.regionServer, this.event.getAuthor().getName(), infos.getPartyInfo().get("gameId").getAsString());
-							//.get("gameId").getAsString()
+							Bet monPari = new Bet(money,this.teamName[i],teamValue[i], this.regionServer, 
+									this.event.getAuthor().getName(), infos.getPartyInfo().get("gameId").getAsString(), 
+									this.event.getAuthor().getId());
 							Mongo col = new Mongo("Bets");
 							col.insert(monPari);
 							
 							if(nb < odd*10)
 							{
-								//event.getChannel().sendMessage("😀 Gagner").queue();
 								gains = money * teamValue[i];
 								Float.toString(gains);
-								sendResult(this.event.getAuthor(), "😀 Gagner, votre gain est de " + gains + "€");
+
+								sendResult(User.fromId(monPari.userId()), "😀 Vous avez gagné, votre gain est de " + gains + "€ sur la partie " 
+
+								+ infos.getPartyInfo().get("gameId").getAsString());
 							}
 							else
 							{
-								//event.getChannel().sendMessage("😥 Perdu").queue();
-								sendResult(this.event.getAuthor(), "😥 Perdu");
+								sendResult(User.fromId(monPari.userId()), "😥 Vous avez perdu");
 							}
 						}
 					}
@@ -128,9 +128,10 @@ public class BetCommand {
 	}
 	
 	// send a private message to the gambler to inform him if he has won or lost
-		public static void sendResult(User user, String content) {
-		    user.openPrivateChannel().queue(channel -> {
-		        channel.sendMessage(content).queue();
-		    });
-		}	
+	public static void sendResult(User user, String content) 
+	{
+		user.openPrivateChannel().queue(channel -> {
+			channel.sendMessage(content).queue();
+			});
+	}	
 }

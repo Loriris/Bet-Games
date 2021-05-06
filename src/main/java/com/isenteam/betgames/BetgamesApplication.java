@@ -9,6 +9,7 @@ import net.dv8tion.jda.api.OnlineStatus;
 import net.dv8tion.jda.api.entities.Activity;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import com.isenteam.betgames.bot.Commands;
+
 import com.mashape.unirest.http.exceptions.UnirestException;
 
 @SpringBootApplication
@@ -19,7 +20,7 @@ public class BetgamesApplication {
 
 	public static void main(String[] args) throws LoginException, InterruptedException, UnirestException, IOException {
 		SpringApplication.run(BetgamesApplication.class, args);
-		
+
 		//bot creation with adapted token	
 		jda = JDABuilder.createDefault(System.getenv("TOKEN_API"))
 				.setActivity(Activity.watching("Type #info to display all commands"))

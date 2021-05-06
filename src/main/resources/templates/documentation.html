@@ -8,6 +8,7 @@
         <link rel="stylesheet" th:href="@{/css/style.css}" type="text/css" />
         <link rel="stylesheet" th:href="@{/css/styledoc.css}" type="text/css" />
         <link rel="shortcut icon" th:href="@{/images/favicon-32x32.png}" />
+	    <script src="https://kit.fontawesome.com/b98adfbb97.js" crossorigin="anonymous"></script>
     </head>
     <body>
         <section class="hero is-link is-fullheight-with-navbar">
@@ -64,14 +65,14 @@
             	<h1 class="h1-title">FONCTIONNEMENT</h1>
             	<article class="article-hero-body-two">
             		<div class="div-in-article"> 
-            			<img th:src="@{/images/discordillustr.jpg}" id="discordillustr">
+            			<img th:src="@{/images/discordillustr.jpg}" class="img-article">
             		</div>
             		<div class="div-in-article">
             			<p class="paragraph-article-body"><b><u>Étape 1</u> :</b> Ajoutez notre bot sur votre serveur discord favori, il vous faut simplement cliquer sur le bouton ci-dessous et se connecter sur votre compte pour désigner le serveur de votre choix.</p>
             			<button class="button hero-button left" onclick="window.open('https://discord.com/oauth2/authorize?client_id=780382231411687445&permissions=0&scope=bot')"><img th:src="@{/images/discord-black-icon.png}" id="logo-discord"/>Ajouter à Discord</button>
             		</div>
             		<div class="div-in-article">
-            			<img th:src="@{/images/ajoutbot.png}" id="ajoutbot">
+            			<img th:src="@{/images/ajoutbot.png}" class="img-article">
             		</div>
             	</article>
             <div/>
@@ -83,7 +84,7 @@
             			<p class="paragraph-article-body"><b><u>Étape 2</u> :</b> Une fois votre bot opérationnel, servez vous de votre salon textuel pour pouvoir communiquer avec le bot. Le préfix à utiliser est <strong><b>"#"</b></strong> suivit du nom de la commande souhaitée.</p>
             		</div>
             		<div class="div-in-article">
-            			<img th:src="@{/images/infoexemple.png}" id="infoexemple">
+            			<img th:src="@{/images/infoexemple.png}" class="img-article">
             		</div>
             	</article>
 				<div class="notification is-primary" id="commandes-notif">
@@ -109,11 +110,31 @@
 							<tbody>
 							    <tr>
 							      <th>#info</th>
-							      <td>Permet d'afficher la liste des commandes disponible directement sur le salon textuel.</td>
+							      <td>Pour avoir un rappel de la liste de commandes disponibles directement sur le salon textuel</td>
+							    </tr>
+							    <tr>
+							      <th>#connexion</th>
+							      <td>Pour se connecter à une partie</td>
+							    </tr>
+							    <tr>
+							      <th>#games</th>
+							      <td>Pour connaître les parties disponibles</td>
+							    </tr>
+							    <tr>
+							      <th>#teams</th>
+							      <td>Pour connaître les équipes disponibles</td>
+							    </tr>
+							   	<tr>
+							      <th>#odds</th>
+							      <td>Pour connaître une cote</td>
 							    </tr>
 							    <tr>
 							      <th>#bet</th>
-							      <td></td>
+							      <td>Pour faire un paris</td>
+							    </tr>
+							   	<tr>
+							      <th>Liste des serveurs</th>
+							      <td>"BR1", "EUN1", "EUW1", "LA1", "LA2", "NA1", "OCE", "OC1", "RU1", "TR1", "JP1", "KR", "PBE"</td>
 							    </tr>
 							</tbody>
 						</table>
@@ -121,6 +142,68 @@
 				</div>
             </div>
         </section> 
+        <section class="hero is-dark is-fullheight-with-navbar">
+            <div class="hero-body-two">
+				<article class="article-hero-body-two middle">
+				   	<div class="div-in-article border">
+            			<p class="paragraph-article-body cmd"><b>#connexion</b>  </p>
+            			<p class="paragraph-article-body cmd-explication">[Nom du joueur attaché] [Région (voir la liste disponible)]</p>
+            		</div>
+            		<div class="div-in-article">
+            			<p class="paragraph-article-body"><b><u>Étape 3</u> :</b> Vous êtes maintenant prêt à parier ! Pour se connecter à la partie de votre joueur au choix, effectuez la
+            			commande <b>#connexion</b> sans oublier la région.</p>
+            			<p class="paragraph-article-body"> Afin de vous aider à trouver une partie, vous pouvez utiliser le site <a id="porofessor" onclick="window.open('https://porofessor.gg/fr/')"><u>Porofessor.gg</u></a> .</p>
+            		</div>
+            		<div class="div-in-article"> 
+            			<img th:src="@{/images/connexion.png}" class="img-article">
+            		</div>
+            	</article>
+            	<article class="article-hero-body-two middle">
+				   	<div class="div-in-article">
+            			<img th:src="@{/images/games.png}" class="img-article">
+            		</div>
+            		<div class="div-in-article">
+            			<p class="paragraph-article-body"><b><u>Étape 4</u> :</b> Vous pouvez à partir de ces deux commandes, connaître l'identifiant de la partie jouée (plusieurs parties sont disponibles), 
+            			le nom de la team (<span id="bleue">bleue</span> = <b>100</b>, <span id="rouge">rouge</span> = <b>200</b>) et la composition</p>
+            		</div>
+            		<div class="div-in-article border"> 
+						<p class="paragraph-article-body cmd"><b>#games</b>  </p>
+						<p class="paragraph-article-body cmd"><b>#teams</b>  </p>
+            			<p class="paragraph-article-body cmd-explication">[ID de la partie souhaitée]</p>
+            		</div>
+            	</article>
+            <div/>
+        </section>
+        <section class="hero is-link is-fullheight-with-navbar">
+            <div class="hero-body-two">
+				<article class="article-hero-body-two middle">
+				   	<div class="div-in-article border">
+            			<p class="paragraph-article-body cmd"><b>#odds</b>  </p>
+            			<p class="paragraph-article-body cmd-explication">[Nom de l'équipe] [ID de la partie]</p>
+            			<p class="paragraph-article-body cmd"><b>#bet</b>  </p>
+            			<p class="paragraph-article-body cmd-explication">[Nom de l'équipe] [Mise] [ID de la partie]</p>
+            		</div>
+            		<div class="div-in-article">
+            			<p class="paragraph-article-body"><b><u>Étape 5</u> :</b> Pour connaître la cote de l'équipe de votre choix <b>#odds</b> et enfin pariez <b>#bet</b> (<u>l'exemple</u> mise 20€).</p> 
+            		</div>
+            		<div class="div-in-article"> 
+            			<img th:src="@{/images/paris.png}" class="img-article">
+            		</div>
+            	</article>
+         		<article class="article-hero-body-two middle">
+				   	<div class="div-in-article ">
+						<img th:src="@{/images/notification.png}" class="img-article">
+            		</div>
+            		<div class="div-in-article">
+            			<p class="paragraph-article-body paraf-mid"><i class="fas fa-fire-alt"></i> Félicitation !!! <i class="fas fa-fire-alt"></i> </p>
+            			<p class="paragraph-article-body paraf-mid"><i class="fas fa-money-bill-wave"></i> Vous avez remporté 37.4€ <i class="fas fa-money-bill-wave"></i></p> 
+            		</div>
+            		<div class="div-in-article"> 
+            			<img th:src="@{/images/prive.png}" class="img-article">
+            		</div>
+            	</article>
+            <div/>
+        </section>
         <footer class="footer">
             <div class="content has-text-centered">
                 <p>
