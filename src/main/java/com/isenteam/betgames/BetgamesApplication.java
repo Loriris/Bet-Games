@@ -39,7 +39,7 @@ public class BetgamesApplication {
 		Gson config = new Gson();
 		JsonReader reader = new JsonReader(new FileReader("config.json"));
 		JsonObject conf = config.fromJson(reader, JsonObject.class);
-		jda = JDABuilder.createDefault(conf.get("official-token").getAsString())
+		jda = JDABuilder.createDefault(conf.get("test-token").getAsString())
 				.setActivity(Activity.watching("Type #info to display all commands"))
 				.build()
 				.awaitReady(); //This method will block until JDA has reached the status JDA.Status.CONNECTED.

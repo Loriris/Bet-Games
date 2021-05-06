@@ -111,7 +111,9 @@ public class BetCommand {
 							{
 								gains = money * teamValue[i];
 								Float.toString(gains);
+
 								sendResult(User.fromId(monPari.userId()), "😀 Vous avez gagné, votre gain est de " + gains + "€ sur la partie " 
+
 								+ infos.getPartyInfo().get("gameId").getAsString());
 							}
 							else
