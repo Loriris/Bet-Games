@@ -34,7 +34,7 @@ public class GamesCommand {
 			tabRecup = games.displayGames();
 			for(int i = 0; i < tabRecup.size(); i++)
 			{
-				mess.showMess("ID: " + tabRecup.get(i).getId() + "		Type: " + tabRecup.get(i).getType(), 0x1A93D8);
+				mess.showMess("ID: " + tabRecup.get(i).getId() + "		Connexion with player: " + tabRecup.get(i).getPlayer(), 0x1A93D8);
 			}
 		}
 	}
