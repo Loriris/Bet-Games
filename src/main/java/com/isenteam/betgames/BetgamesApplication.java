@@ -1,6 +1,5 @@
 package com.isenteam.betgames;
 
-
 import java.io.IOException;
 import javax.security.auth.login.LoginException;
 import org.springframework.boot.SpringApplication;
@@ -16,7 +15,7 @@ import com.mashape.unirest.http.exceptions.UnirestException;
 public class BetgamesApplication {
 
 	//jda creation 
-	private static JDA jda;
+	public static JDA jda;
 
 	public static void main(String[] args) throws LoginException, InterruptedException, UnirestException, IOException {
 		SpringApplication.run(BetgamesApplication.class, args);
@@ -29,8 +28,5 @@ public class BetgamesApplication {
 		//command call
 		jda.addEventListener(new Commands());
 		jda.getPresence().setStatus(OnlineStatus.ONLINE);
-		
-		/*AccessSecretVersion secret = new AccessSecretVersion();
-		secret.accessSecretVersion();*/
 	}
 }
