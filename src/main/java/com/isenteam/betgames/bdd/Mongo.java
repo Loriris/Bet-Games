@@ -65,7 +65,7 @@ public class Mongo {
 		doc.append("team", bet.team());
 		doc.append("odd", bet.odd());
 		doc.append("server", bet.game());
-		doc.append("userId", bet.user());
+		doc.append("userName", bet.userName());
 		doc.append("gameId", bet.getGameId());
 		
 		//insertion du document dans la collection "collection" (cad collectionTest)
