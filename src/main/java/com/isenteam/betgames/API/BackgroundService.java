@@ -31,6 +31,7 @@ public class BackgroundService {
 	     System.out.println("Method executed at every 5 minutes. Current time is :: "+ new Date());
 	     Mongo mongoParty = new Mongo("Party");
 	     Mongo mongoBet = new Mongo("Bets");
+	     InfoAPI init = new InfoAPI();
 	     
 	     FindIterable<Document> iterDoc = mongoParty.getCollection().find();
 	     Iterator it = iterDoc.iterator();
@@ -41,7 +42,6 @@ public class BackgroundService {
 	    	 JsonObject docObj = JsonParser.parseString(doc.toJson()).getAsJsonObject();
 	    	 JsonObject party = JsonParser.parseString(docObj.get("party").getAsString()).getAsJsonObject();
 	    	 HttpResponse <JsonNode> response2 = Unirest.get("https://euw1.api.riotgames.com/lol/match/v4/matches/"+ docObj.get("_id").getAsString() + "?api_key=" + InfoAPI.key ).asJson();
-	    	 //HttpResponse <JsonNode> response2 = Unirest.get("https://euw1.api.riotgames.com/lol/match/v4/matches/5252365482?api_key=RGAPI-62fce52d-8da6-49d4-8344-ba2cc76b3f38").asJson();
 	    	 System.out.println("Status: " + response2.getStatus());
 	    	 if( response2.getStatus() == 200)
 		     { 	 

@@ -36,6 +36,11 @@ public class InfoAPI
 		this.participant = new Participant[10];
 	};
 	
+	public InfoAPI() 
+	{
+		this.key = System.getenv("TOKEN_RIOT");
+	};
+	
 	//Pour appeler l'API riot
 	public void PartyInfo() throws UnirestException
 	{
