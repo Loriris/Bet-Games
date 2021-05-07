@@ -1,14 +1,8 @@
 package com.isenteam.betgames.API;
 
-
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-
-import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.google.gson.stream.JsonReader;
 import com.isenteam.betgames.bdd.Mongo;
 import com.isenteam.betgames.bot.Participant;
 import com.mashape.unirest.http.HttpResponse;
@@ -29,7 +23,7 @@ public class InfoAPI
 	
 	public InfoAPI(String playerToSet, String regionToSet) throws UnirestException
 	{
-		this.key = InfoAPI.getApiToken();
+		this.key = System.getenv("TOKEN_RIOT");
 		this.player = playerToSet;
 		this.region = regionToSet;
 		this.participant = new Participant[10];
@@ -37,7 +31,7 @@ public class InfoAPI
 	
 	public InfoAPI(String id) 
 	{
-		this.key = InfoAPI.getApiToken();
+		this.key = System.getenv("TOKEN_RIOT");
 		this.id = id;
 		this.participant = new Participant[10];
 	};
@@ -120,21 +114,5 @@ public class InfoAPI
 	public Participant[] getParticipant()
 	{
 		return this.participant;
-	}
-	
-	public static String getApiToken()
-	{
-		Gson config = new Gson();
-		JsonReader reader = null;
-		try {
-			reader = new JsonReader(new FileReader("config.json"));
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		JsonObject conf = config.fromJson(reader, JsonObject.class);
-		return conf.get("token-riot").getAsString();
-		
-		
 	}
 }

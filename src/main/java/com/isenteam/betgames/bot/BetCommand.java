@@ -1,16 +1,13 @@
 package com.isenteam.betgames.bot;
 
 import java.util.Arrays;
-import java.util.Random;
 
-import com.isenteam.betgames.BetgamesApplication;
 import com.isenteam.betgames.API.InfoAPI;
 import com.isenteam.betgames.bdd.Mongo;
 import com.mashape.unirest.http.exceptions.UnirestException;
 
 import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
-import net.dv8tion.jda.api.requests.RestAction;
 
 public class BetCommand {
 	
@@ -34,9 +31,7 @@ public class BetCommand {
 	{
 		ShowMessage mess = new ShowMessage(event);
 		
-		int nb;
 		long money;
-		float gains;
 		
 		// Check how many arguments were passed in, we need 4 args
 	    if(this.args.length < 4)
@@ -103,10 +98,9 @@ public class BetCommand {
 									this.event.getAuthor().getId());
 							Mongo col = new Mongo("Bets");
 							col.insert(monPari);
-							
+
 							sendResult(this.event.getAuthor(), "Votre pari sur la partie" + 
-							infos.getPartyInfo().get("gameId").getAsString() + "a bien été enregistré.");
-								
+							infos.getPartyInfo().get("gameId").getAsString() + "a bien été enregistré.");						
 						}
 					}
 				}

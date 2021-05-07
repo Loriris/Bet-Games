@@ -55,18 +55,11 @@
 	font-weight: bold;
 }
 
-
-#discordillustr{
-	box-shadow: 2px 2px #2f4f4f;
-    border-radius: 40px;
-    width: 100%;
-}
-
 .article-hero-body-two{
 	display: flex;
 }
 
-#ajoutbot{
+.img-article{
     box-shadow: 2px 2px #2f4f4f;
     border-radius: 10px;
     width: 100%;
@@ -78,6 +71,10 @@
     margin-top: auto;
     margin-bottom: auto;
     display: block;
+}
+
+.div-in-article.border {
+	border: dashed #2F4F4F;
 }
 
 .paragraph-article-body {
@@ -92,12 +89,6 @@
     margin-left: auto;
     margin-right: auto;
     margin-top: 5%;
-}
-
-#infoexemple{
-	box-shadow: 2px 2px #2f4f4f;
-    border-radius: 10px;
-    width: 100%;
 }
 
 #commandes{
@@ -131,9 +122,10 @@
 	background-color: #80CDE1;
 	width: 50%;
 	margin-top: 5%;
+	margin-bottom: 5%;
 	margin-left: auto;
 	margin-right: auto;
-	box-shadow: 1px 1px #2f4f4f; 
+	box-shadow: 1px 1px 1px 1px #2f4f4f; 
 }
 
 .table{
@@ -142,4 +134,44 @@
 	color: #2f4f4f;
 }
 
+.article-hero-body-two.middle {
+	margin-bottom: 5%;
+}
 
+.paragraph-article-body.cmd{
+	font-size: 32px;
+	text-align: center;
+}
+
+.paragraph-article-body.cmd-explication{
+	font-size: 15px;
+	text-align: center;
+}
+
+#porofessor{
+	color: #1E90FF;
+}
+
+#bleue {
+	color: #6495ED;
+}
+
+#rouge {
+	color: #DC143C;
+}
+
+.fas.fa-fire-alt {
+	color: #DC143C;
+}
+
+.fas.fa-exclamation-triangle{
+	color: #DC143C;
+}
+
+.fas.fa-money-bill-wave{
+	color: #2E8B57;
+}
+
+.paragraph-article-body.paraf-mid {
+	text-align: center;
+}
