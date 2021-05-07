@@ -36,7 +36,7 @@ public class BetgamesApplication {
 		}
 		*/
 		//bot creation with adapted token	
-		Gson config = new Gson();
+		/*Gson config = new Gson();
 		JsonReader reader = new JsonReader(new FileReader("config.json"));
 		JsonObject conf = config.fromJson(reader, JsonObject.class);
 		jda = JDABuilder.createDefault(conf.get("test-token").getAsString())
