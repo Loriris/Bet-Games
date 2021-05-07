@@ -61,13 +61,13 @@ public class Mongo {
 
 	public void insert(Bet bet) {
 		//Cr�ation d'un document qui contiendra pour le champ bet la valeur de la mise 
-		Document doc = new Document("bet", bet.bet());
-		doc.append("team", bet.team());
-		doc.append("odd", bet.odd());
-		doc.append("server", bet.game());
-		doc.append("userName", bet.userName());
+		Document doc = new Document("bet", bet.getBet());
+		doc.append("team", bet.getTeam());
+		doc.append("odd", bet.getOdd());
+		doc.append("server", bet.getGame());
+		doc.append("userName", bet.getUserName());
 		doc.append("gameId", bet.getGameId());
-		doc.append("userId", bet.userId());
+		doc.append("userId", bet.getUserId());
 		
 		//insertion du document dans la collection "collection" (cad collectionTest)
 		this.collection.insertOne(doc);
@@ -121,7 +121,6 @@ public class Mongo {
 	
 	public void deleteParty(String id)
 	{
-
         FindIterable<Document> iterDoc = this.collection.find();
         Iterator it = iterDoc.iterator();
         while (it.hasNext()) 
@@ -157,7 +156,6 @@ public class Mongo {
 	
 	public void deleteBet(String id)
 	{
-
         FindIterable<Document> iterDoc = this.collection.find();
         Iterator it = iterDoc.iterator();
         while (it.hasNext()) 

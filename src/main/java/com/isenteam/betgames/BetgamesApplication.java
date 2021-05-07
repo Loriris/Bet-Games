@@ -23,18 +23,11 @@ import com.mashape.unirest.http.exceptions.UnirestException;
 public class BetgamesApplication {
 
 	//jda creation 
-	private static JDA jda;
+	public static JDA jda;
 
 	public static void main(String[] args) throws LoginException, InterruptedException, UnirestException, IOException {
 		SpringApplication.run(BetgamesApplication.class, args);
-		/*
-		List<listBetor> betors = listBetor.getList("5249068267", "100");
-		for(int i =0; i < betors.size(); i++)
-		{
-			System.out.print(betors.get(i).getBetorName()+ "    ");
-			System.out.println(betors.get(i).getWin());
-		}
-		*/
+		
 		//bot creation with adapted token	
 		Gson config = new Gson();
 		JsonReader reader = new JsonReader(new FileReader("config.json"));
@@ -47,8 +40,5 @@ public class BetgamesApplication {
 		//command call
 		jda.addEventListener(new Commands());
 		jda.getPresence().setStatus(OnlineStatus.ONLINE);
-				
-		/*AccessSecretVersion secret = new AccessSecretVersion();
-		secret.accessSecretVersion();*/
 	}
 }

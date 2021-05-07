@@ -27,15 +27,47 @@ public class Bet {
 		this.gameId = gameId;
 		this.userId = userId;
 	}
-	
-	public long bet() {
-		return this.bet;
+
+	public long getBet() {
+		return bet;
 	}
-	
-	public String team() {
-		return this.team;
+
+	public void setBet(long bet) {
+		this.bet = bet;
 	}
-	
+
+	public String getTeam() {
+		return team;
+	}
+
+	public void setTeam(String team) {
+		this.team = team;
+	}
+
+	public float getOdd() {
+		return odd;
+	}
+
+	public void setOdd(float odd) {
+		this.odd = odd;
+	}
+
+	public String getGame() {
+		return game;
+	}
+
+	public void setGame(String game) {
+		this.game = game;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
 	public String getGameId() {
 		return gameId;
 	}
@@ -44,19 +76,13 @@ public class Bet {
 		this.gameId = gameId;
 	}
 
-	public float odd() {
-		return this.odd;
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 	
-	public String game() {
-		return this.game;
-	}
 	
-	public String userName() {
-		return this.userName;
-	}
-	
-	public String userId() {
-		return this.userId;
-	}
 }

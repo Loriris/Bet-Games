@@ -13,41 +13,76 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class listBetor {
-	private String betorName;
+	private String betorId;
 	private boolean win;
+	private long bet;
+	private float odd;
+	
+	listBetor(String name, boolean win, long bet, float odd) {
+		this.betorId = name;
+		this.win = win;
+		this.bet = bet;
+		this.odd = odd;
+	}
 	
 	listBetor(String name, boolean win) {
-		this.betorName = name;
+		this.betorId = name;
 		this.win = win;
 	}
 	
 	listBetor() {}
 	
-	public String getBetorName() {
-		return this.betorName;
-	}
 	
-	public boolean getWin() {
-		return this.win;
+	public String getBetorId() {
+		return betorId;
 	}
-	
+
+	public void setBetorId(String betorId) {
+		this.betorId = betorId;
+	}
+
+	public boolean isWin() {
+		return win;
+	}
+
+	public void setWin(boolean win) {
+		this.win = win;
+	}
+
+	public long getBet() {
+		return bet;
+	}
+
+	public void setBet(long bet) {
+		this.bet = bet;
+	}
+
+	public float getOdd() {
+		return odd;
+	}
+
+	public void setOdd(float odd) {
+		this.odd = odd;
+	}
+
 	public static List<listBetor> getList(String game_id, String team) {
 		Mongo db = new Mongo("Bets");
-		List<Document> doc = new ArrayList<Document>();
 		List<listBetor> betors = new ArrayList<listBetor>();
 		FindIterable<Document> iterator = db.getCollection().find(eq("gameId", game_id));
 		Iterator it = iterator.iterator();
 		while(it.hasNext()) {
 			Document document = (Document) it.next();
 			JsonObject bet = JsonParser.parseString(document.toJson()).getAsJsonObject();
-			String name = bet.get("userId").getAsString();
+			String id = bet.get("userId").getAsString();
 			String _team = bet.get("team").getAsString();
+			long money = bet.get("bet").getAsLong();
+			float _odd = bet.get("odd").getAsFloat();
 			listBetor betor = new listBetor();
 			if(team.equals(_team)) {
-				betor = new listBetor(name, true);
+				betor = new listBetor(id, true, money, _odd);
 			}
 			else {
-				betor = new listBetor(name, false);
+				betor = new listBetor(id, false);
 			}
 			betors.add(betor);
 		}
