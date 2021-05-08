@@ -36,6 +36,7 @@ Nous avons essentiellement développé notre bot discord sous JAVA avec :
 * [Spring Boot](https://spring.io/projects/spring-boot) -  Framework de développement applicatif JAVA (front-end)
 * [Eclipse](https://www.eclipse.org/) - Editeur de textes
 * [Spring tools](https://spring.io/tools) - Editeur de textes
+* [Mongodb](https://www.mongodb.com/) - Base de donnée NoSQL 
 * [Google Cloud Platform](https://cloud.google.com/) - Gestion cloud et base de donnée
 * [Thymeleaf](https://www.thymeleaf.org/) - Java XML/XHTML/HTML5 Template Engine
 
