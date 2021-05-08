@@ -7,7 +7,7 @@ Bienvenue sur notre projet de paris en ligne esportif sur League of Legends, mis
 ## Pour commencer
 
 <div align="center">
-    <img src="src/main/resources/static/images/logo_bot_discord.jpg" style="width: 300px; border-radius: 50%;"</img> 
+    <img src="src/main/resources/static/images/logo_bot_discord.jpg" width="200px"</img> 
 </div>
 
 ### Pré-requis
