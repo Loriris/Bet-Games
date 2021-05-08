@@ -6,7 +6,7 @@ Bienvenue sur notre projet de paris en ligne esportif sur League of Legends, mis
 
 ## Pour commencer
 
-![Alt text](/blob/main/src/main/resources/static/images/logo_bot_discord.jpg?raw=true "Bet-Games logo")
+![Alt text](src/main/resources/static/images/logo_bot_discord.jpg?raw=true "Bet-Games logo")
 
 ### Pré-requis
 
