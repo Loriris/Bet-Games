@@ -1,38 +1,36 @@
 # Bet-Games
-_(juste en dessous des badges sympatiques à placer)_
 
-[![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)](http://forthebadge.com)  [![forthebadge](http://forthebadge.com/images/badges/powered-by-electricity.svg)](http://forthebadge.com)
+[![forthebadge](https://forthebadge.com/images/badges/uses-html.svg)](https://forthebadge.com)
 
-Bienvenue sur notre projet de paris en ligne esportive sur League of Legends, miser et remporter des gains sur votre jeu vidéo préféré avec notre bot discord !
+Bienvenue sur notre projet de paris en ligne esportif sur League of Legends, misez et remportez des gains sur votre jeu vidéo préféré avec notre bot discord !
 
 ## Pour commencer
 
-Entrez ici les instructions pour bien débuter avec votre projet...
+![Alt text](/blob/main/src/main/resources/static/images/logo_bot_discord.jpg?raw=true "Bet-Games logo")
 
 ### Pré-requis
 
 - Discord
 - Bonne connection internet
-- Majeur
+- Majeur [![forthebadge](https://forthebadge.com/images/badges/ages-18.svg)](https://forthebadge.com)
 - Minimum d'expérience de paris en ligne
 - Minimum d'expérience sur League of Legends
 
 ### Installation
 
-Les étapes pour installer votre programme....
-
-Dites ce qu'il faut faire...
-
-_exemple_: Executez la commande ``telnet mapscii.me`` pour commencer ensuite [...]
+Ajoutez notre bot discord sur votre serveur discord à partir de notre site web.  
 
 ## Fabriqué avec
 
-Nous avons essentiellement développer notre bot discord sous Java avec :
+[![forthebadge](https://forthebadge.com/images/badges/made-with-java.svg)](https://forthebadge.com)
+
+Nous avons essentiellement développé notre bot discord sous JAVA avec :
 
 * [Spring Boot](https://spring.io/projects/spring-boot) -  Framework de développement applicatif JAVA (front-end)
 * [Eclipse](https://www.eclipse.org/) - Editeur de textes
 * [Spring tools](https://spring.io/tools) - Editeur de textes
 * [Google Cloud Platform](https://cloud.google.com/) - Gestion cloud et base de donnée
+* [Thymeleaf](https://www.thymeleaf.org/) - Java XML/XHTML/HTML5 Template Engine
 
 ## Versions
 
