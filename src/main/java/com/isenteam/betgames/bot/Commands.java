@@ -110,7 +110,7 @@ public class Commands extends ListenerAdapter{
 					} catch (UnirestException e) {
 						e.printStackTrace();
 					}
-	    			mess.showMess("🟢 connexion effectuée.", 0x27AE1E);
+	    			mess.showMess("🟢 Connexion effectuée.", 0x27AE1E);
 	    		}
 		    }
 		}			

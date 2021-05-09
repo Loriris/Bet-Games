@@ -22,12 +22,12 @@ public class BetgamesApplication {
 		SpringApplication.run(BetgamesApplication.class, args);
 
 		//bot creation with adapted token	
-		/*jda = JDABuilder.createDefault(System.getenv("TOKEN_API"))
+		jda = JDABuilder.createDefault(System.getenv("TOKEN_API"))
 				.setActivity(Activity.watching("Type #info to display all commands"))
 				.build()
 				.awaitReady(); //This method will block until JDA has reached the status JDA.Status.CONNECTED.
 		//command call
 		jda.addEventListener(new Commands());
-		jda.getPresence().setStatus(OnlineStatus.ONLINE);*/
+		jda.getPresence().setStatus(OnlineStatus.ONLINE);
 	}
 }

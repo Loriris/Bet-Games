@@ -1,7 +1,6 @@
 package com.isenteam.betgames.bot;
 
 import java.util.Arrays;
-import java.util.Random;
 
 import com.isenteam.betgames.API.InfoAPI;
 import com.isenteam.betgames.bdd.Mongo;
@@ -32,8 +31,7 @@ public class BetCommand {
 	{
 		ShowMessage mess = new ShowMessage(event);
 		
-		int money, nb;
-		float gains, odd;
+		long money;
 		
 		// Check how many arguments were passed in, we need 4 args
 	    if(this.args.length < 4)
@@ -79,7 +77,7 @@ public class BetCommand {
 						}
 						else
 						{
-			    			mess.showMess("🟢 Paris validé.", 0x27AE1E);
+			    			mess.showMess("🟢 Pari validé.", 0x27AE1E);
 							
 							// perform an action to save the amount of money that was bet
 							
@@ -95,31 +93,14 @@ public class BetCommand {
 							this.coteEq2 = cal.coteEq2;
 							float [] teamValue = {this.coteEq1, this.coteEq2};
 							
-					
-							Random rand = new Random();
-							nb =rand.nextInt(10);
-							
-							odd = 1/teamValue[i];
-							
 							Bet monPari = new Bet(money,this.teamName[i],teamValue[i], this.regionServer, 
 									this.event.getAuthor().getName(), infos.getPartyInfo().get("gameId").getAsString(), 
 									this.event.getAuthor().getId());
 							Mongo col = new Mongo("Bets");
 							col.insert(monPari);
-							
-							if(nb < odd*10)
-							{
-								gains = money * teamValue[i];
-								Float.toString(gains);
 
-								sendResult(User.fromId(monPari.userId()), "😀 Vous avez gagné, votre gain est de " + gains + "€ sur la partie " 
-
-								+ infos.getPartyInfo().get("gameId").getAsString());
-							}
-							else
-							{
-								sendResult(User.fromId(monPari.userId()), "😥 Vous avez perdu");
-							}
+							sendResult(this.event.getAuthor(), "Votre pari sur la partie" + 
+							infos.getPartyInfo().get("gameId").getAsString() + "a bien été enregistré.");						
 						}
 					}
 				}
