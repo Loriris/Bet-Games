@@ -27,7 +27,7 @@ Nous avons eu l'idée de développer un bot discord pour le plaisir des parieurs
 
 Ajoutez notre bot sur votre serveur discord en cliquant sur ce bouton :point_down: :point_down:
 
-<div align="left">
+<div align="center">
     <a href="https://discord.com/oauth2/authorize?client_id=780382231411687445&permissions=0&scope=bot"><img src="src/main/resources/static/images/boutondiscord.png" width="200px"</img> </a>
 </div>
 
