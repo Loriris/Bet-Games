@@ -2,7 +2,7 @@
 
 Bienvenue sur notre projet de paris en ligne esportif sur League of Legends, misez et remportez des gains sur votre jeu vidéo préféré avec notre bot discord :bangbang: :fire:
 
-[![forthebadge](https://forthebadge.com/images/badges/uses-html.svg)](https://forthebadge.com)
+[![forthebadge](https://forthebadge.com/images/badges/uses-html.svg)](https://playbet-games.fr/)
 
 ## Pour commencer
 
@@ -11,7 +11,7 @@ League of Legends est considéré comme le jeu de compétition le plus joué au 
 Nous avons eu l'idée de développer un bot discord pour le plaisir des parieurs qui souhaiteraient remporter des gains :moneybag: grâce à leurs joueurs préférés ! Prendre part eux aussi à la compétition et miser sur leur équipe du moment. (pour plus d'information, cliquez sur l'image)
 
 <div align="center">
-    <a href=""><img src="src/main/resources/static/images/logo_bot_discord.jpg" width="200px"</img> </a>
+    <a href="https://playbet-games.fr/"><img src="src/main/resources/static/images/logo_bot_discord.jpg" width="200px"</img> </a>
 </div>
 
 ### Pré-requis
@@ -31,8 +31,11 @@ Ajoutez notre bot sur votre serveur discord en cliquant sur ce bouton :point_dow
     <a href="https://discord.com/oauth2/authorize?client_id=780382231411687445&permissions=0&scope=bot"><img src="src/main/resources/static/images/boutondiscord.png" width="200px"</img> </a>
 </div>
 
-Informez vous des commandes à utiliser grâce au préfixe **#**, la liste des commandes ce fait grâce à **#info** directement sur votre salon textuel. :memo:
-    
+Informez vous des commandes à utiliser grâce au préfixe ####**#**, la liste des commandes ce fait grâce à **#info** directement sur votre salon textuel. :memo:
+
+N'hésitez pas à visiter notre site web pour faire vos premiers pas avec notre bot discord :robot:
+
+🌎 https://playbet-games.fr/ 🌎
 
 ## Fabriqué avec :wrench:
 
