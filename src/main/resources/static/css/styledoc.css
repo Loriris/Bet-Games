@@ -3,6 +3,136 @@
   src: url("/polices/BerlinSansFBRegular.ttf");
 }
 
+@media only screen and (min-width: 1024px){
+	
+#ampoule{
+	width: 10%;
+	}
+
+#bank{
+	width: 10%;
+	}
+
+.article-hero-body-two{
+	display: flex;
+	width: 80%;
+	}
+
+.button.hero-button.left {
+    width: 60%;
+	}
+
+.div-in-article {
+    padding: 0.5rem 1rem;
+	}
+	
+.img-article {
+	width: 100%;
+	}
+
+.notification.is-primary{
+	width: 50%;
+	}
+
+.paragraph-article-body{
+	font-size: 18px;
+	}
+
+.warning {
+	width: 25%;
+	}
+}
+
+@media only screen and (max-width: 1023px) {
+	
+#ampoule{
+	width: 20%;
+	}
+
+#bank{
+	width: 20%;
+	}
+
+.message.is-info .message-body {
+    font-size: 20px;
+    text-align: justify;
+	}
+
+.message.is-info .message-header {
+    font-size: 20px;
+	}
+	
+.article-hero-body-two{
+	display: block;
+    width: 80%;
+	}
+
+.div-in-article {
+    padding: 1.5rem 1rem;
+	}
+
+.img-article {
+	width: 70%;
+	}
+
+.warning{
+	width: 70%
+}
+
+#commandes{
+	font-size: 25px;
+}
+	
+.paragraph-article-body {
+    font-size: 25px;
+    }
+    
+.notification.is-primary {
+    width: 85%;
+    }
+
+.table td, .table th {
+    font-size: 20px;
+    }
+}
+
+@media only screen and (max-width: 466px) {
+	
+#ampoule{
+	width: 40%;
+	}
+
+#bank{
+	width: 40%;
+	}
+
+.message.is-info .message-body {
+    font-size: 20px;
+    text-align: left;
+	}
+	
+.img-article {
+	width: 100%;
+	}
+
+.paragraph-article-body {
+    font-size: 20px;
+    text-align: left;
+    }
+    
+.article-hero-body-two{
+    width: 100%;
+	}
+
+.notification.is-primary {
+    width: 100%;
+	}
+	
+.table td, .table th {
+    font-size: 15px;
+	}
+}
+
 #active-item{
 	color: #80CDE1;
 }
@@ -32,15 +162,6 @@
 	font-family: "Berlin Sans FB Regular";
 }
 
-
-#ampoule{
-	width: 10%;
-}
-
-#bank{
-	width: 10%;
-}
-
 .center-img{
 	display: block;
 	text-align: center;
@@ -55,19 +176,14 @@
 	font-weight: bold;
 }
 
-.article-hero-body-two{
-	display: flex;
-}
-
 .img-article{
     box-shadow: 2px 2px #2f4f4f;
     border-radius: 10px;
-    width: 100%;
 }
 
+	
 .div-in-article {
-    padding: 0.5rem 1rem;
-    width: 100%;
+	width: 100%;
     margin-top: auto;
     margin-bottom: auto;
     display: block;
@@ -80,23 +196,11 @@
 .paragraph-article-body {
     color: #2F4F4F;
 	font-family: "Berlin Sans FB Regular";
-	font-size: 18px;
 }
 
-.button.hero-button.left {
-    width: 60%;
-    display: flex;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 5%;
-}
 
 #commandes{
 	margin-bottom: 0;
-}
-
-.warning {
-	width: 25%;
 }
 
 .container-div {
@@ -120,7 +224,6 @@
 
 .notification.is-primary{
 	background-color: #80CDE1;
-	width: 50%;
 	margin-top: 5%;
 	margin-bottom: 5%;
 	margin-left: auto;
@@ -128,10 +231,24 @@
 	box-shadow: 1px 1px 1px 1px #2f4f4f; 
 }
 
+.button.hero-button.left {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5%;
+}
+
 .table{
 	margin-top: 5%;
 	background-color: unset;
 	color: #2f4f4f;
+}
+
+	
+.article-hero-body-two{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
 }
 
 .article-hero-body-two.middle {
