@@ -25,10 +25,10 @@ import com.mongodb.client.FindIterable;
 @EnableScheduling
 public class BackgroundService {
 	
-	 @Scheduled(fixedDelay = 50000)
+	 @Scheduled(fixedDelay = 300000)
 	 public void backgroundServiceMethod() throws UnirestException
 	 {
-	     System.out.println("Method executed at every 5 minutes. Current time is :: "+ new Date());
+	     System.out.println("Method executed at every 5 minutes.");
 	     Mongo mongoParty = new Mongo("Party");
 	     Mongo mongoBet = new Mongo("Bets");
 	     InfoAPI init = new InfoAPI();
