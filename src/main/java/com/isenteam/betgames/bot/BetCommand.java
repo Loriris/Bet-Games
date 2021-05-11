@@ -99,8 +99,8 @@ public class BetCommand {
 							Mongo col = new Mongo("Bets");
 							col.insert(monPari);
 
-							sendResult(this.event.getAuthor(), "Votre pari sur la partie" + 
-							infos.getPartyInfo().get("gameId").getAsString() + "a bien été enregistré.");						
+							sendResult(this.event.getAuthor(), "Votre pari sur la partie " + 
+							infos.getPartyInfo().get("gameId").getAsString() + " a bien été enregistré.");						
 						}
 					}
 				}
