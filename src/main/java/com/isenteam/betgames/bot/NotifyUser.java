@@ -38,7 +38,7 @@ public class NotifyUser {
         	if(Boolean.compare(this.betors.get(i).isWin(), true) == 0) 
         	{
         		sendResult(userBet, "😀 Win, you won " + gains + 
-        				"BGtokens with the game n° " + this.gameId + ".");
+        				" BGtokens with the game n° " + this.gameId + ".");
         	}
         	else
         	{

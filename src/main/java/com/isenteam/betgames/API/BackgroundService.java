@@ -77,7 +77,7 @@ public class BackgroundService {
 			    	 }
 			    	 else
 			    	 {
-			    		 mongoUser.CreateUser(betorBet);
+			    		 mongoUser.createUser(betorBet);
 			    	 }
 			     }
 		     }

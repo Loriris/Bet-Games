@@ -7,13 +7,8 @@ import com.isenteam.betgames.bot.ActiveGames;
 import com.isenteam.betgames.bot.Bet;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoClient;
-//import com.mongodb.MongoClientSettings;
-//import com.mongodb.ConnectionString;
 import com.mongodb.client.MongoCollection;
-//import com.mongodb.ServerAddress;
 import com.mongodb.client.MongoDatabase;
-//import com.mongodb.MongoCredential;
-//import com.mongodb.MongoClientOptions;
 import com.mongodb.client.model.Filters;
 
 import java.util.ArrayList;
@@ -21,14 +16,13 @@ import java.util.Iterator;
 
 import org.bson.Document;
 
-//import java.util.Arrays;
 
 public class Mongo {
 	private MongoClient mClient;
 	private MongoDatabase database;
 	private MongoCollection<Document> collection;
 	
-	public Mongo( String collection) {
+	public Mongo(String collection) {
 		this.mClient = MongoClients.create("mongodb://admin:FyxEhu9vj4NEQn7A2n@34.89.161.106:27017");
 		this.database = mClient.getDatabase("BetData");
 		this.collection = database.getCollection(collection);
@@ -137,7 +131,7 @@ public class Mongo {
         }
 	}
 	
-	public JsonObject RetreiveParty(String id)
+	public JsonObject retreiveParty(String id)
     {
         FindIterable<Document> iterDoc = this.collection.find();
         Iterator it = iterDoc.iterator();
@@ -291,11 +285,6 @@ public class Mongo {
         		}
         		
         		Document content = doc;
-        		/*
-        		System.out.println("gain " + (doc.getDouble("totalGain").floatValue() + gain));
-        		System.out.println("win " + (doc.getInteger("win") + win));
-        		System.out.println("lose " + (doc.getInteger("lose") + lose));
-        		*/
             	content.put("win", doc.getInteger("win") + win);
             	content.put("lose", doc.getInteger("lose") + lose);
             	content.put("totalGain", doc.getDouble("totalGain").floatValue() + gain);
@@ -306,7 +295,7 @@ public class Mongo {
         }
 	}
 	
-	public void CreateUser(ArrayList<Bet> allBet)
+	public void createUser(ArrayList<Bet> allBet)
 	{
 		Document User = new Document();
 		User.append("name", allBet.get(0).getUserName());
@@ -328,11 +317,6 @@ public class Mongo {
 				gain = gain - allBet.get(i).getBet();
 			}
 		}
-		/*
-		System.out.println("gain " + gain);
-		System.out.println("win " + win);
-		System.out.println("lose " + lose);
-		*/
 		User.append("win", win);
 		User.append("lose", lose);
 		User.append("totalGain", gain);
