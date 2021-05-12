@@ -72,8 +72,8 @@ public class OddsCommand {
 						}
 				
 						
-						this.coteEq1 = cal.coteEq1;
-						this.coteEq2 = cal.coteEq2;
+						this.coteEq1 = cal.getCoteEq1();
+						this.coteEq2 = cal.getCoteEq2();
 						
 						float [] teamValue = {this.coteEq1, this.coteEq2};
 			 

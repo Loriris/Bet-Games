@@ -92,7 +92,7 @@ public class InfoAPI
 			}
 			HttpResponse <JsonNode> ratioResponse = Unirest.get("https://euw1.api.riotgames.com/lol/league/v4/entries/by-summoner/"+ participantArray.get(index).getAsJsonObject().get("summonerId").getAsString()  + "?api_key=" + key).asJson();
 			JsonArray league = JsonParser.parseString(ratioResponse.getBody().toString()).getAsJsonArray();
-			if( league.isJsonNull() == true)
+			if(league.size() == 0 )
 			{
 				ratio = 0;
 			}

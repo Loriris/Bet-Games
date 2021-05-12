@@ -68,6 +68,8 @@ public class Mongo {
 		doc.append("userName", bet.getUserName());
 		doc.append("gameId", bet.getGameId());
 		doc.append("userId", bet.getUserId());
+		doc.append("done", "false");
+		doc.append("done", "null");
 		
 		//insertion du document dans la collection "collection" (cad collectionTest)
 		this.collection.insertOne(doc);
@@ -154,19 +156,204 @@ public class Mongo {
         return party;
     }
 	
-	public void deleteBet(String id)
+	public void doneBet(String id, String team)
 	{
         FindIterable<Document> iterDoc = this.collection.find();
         Iterator it = iterDoc.iterator();
         while (it.hasNext()) 
         {
         	Document doc = (Document) it.next();
-            if(doc.containsValue(id))
+            if(doc.containsValue(id) && doc.getString("team").equals(team))
             {
-            	this.collection.deleteMany(Filters.eq("gameId", id));
+            	Document content = doc;
+            	content.put("done", "true");
+            	content.put("status","win");
+            	content.put("_id", doc.getObjectId("_id"));
+            	Document update = new Document("$set", content);
+            	this.collection.updateOne(Filters.eq("_id", doc.getObjectId("_id")), update);
+            }
+            else if(doc.containsValue(id) && !doc.getString("team").equals(team))
+            {
+            	Document content = doc;
+            	content.put("done", "true");
+            	content.put("status","lose");
+            	content.put("_id", doc.getObjectId("_id"));
+            	Document update = new Document("$set", content);
+            	this.collection.updateOne(Filters.eq("_id", doc.getObjectId("_id")), update);
             }
         }
 	}
+	
+	public ArrayList<Bet> displayBetNotDone(String id)
+    {
+		//tous les doc de la collection
+        FindIterable<Document> iterDoc = this.collection.find();
+        Iterator it = iterDoc.iterator();
+        ArrayList<Bet> tab = new ArrayList<>();
+        while (it.hasNext()) 
+        {
+        	Document doc = (Document) it.next();
+        	//recuperation de tous le doc
+        	if(doc.getString("userId").equals(id) && doc.containsValue("false"))
+        	{
+                Bet active = new Bet(doc.getLong("bet"), doc.getString("team"), doc.getDouble("odd").floatValue(), doc.getString("userName"), doc.getString("gameId"), doc.getString("userId"), doc.getString("done"), doc.getString("status"));
+                tab.add(active);
+        	}
+        	
+        }
+        
+        return tab;
+    }
+	
+	
+	public ArrayList<Bet> displayAllBet(String userId)
+    {
+		//tous les doc de la collection
+        FindIterable<Document> iterDoc = this.collection.find();
+        Iterator it = iterDoc.iterator();
+        ArrayList<Bet> tab = new ArrayList<>();
+        while (it.hasNext()) 
+        {
+        	Document doc = (Document) it.next();
+        	if(doc.getString("userId").equals(userId))
+        	{
+        		 Bet active = new Bet(doc.getLong("bet"), doc.getString("team"), doc.getDouble("odd").floatValue(), doc.getString("userName"), doc.getString("gameId"), doc.getString("userId"), doc.getString("done"), doc.getString("status"));
+                 tab.add(active);
+        	}
+           
+        	
+        }
+        
+        return tab;
+    }
+	
+	public ArrayList<Bet> displayBetDone(String userId)
+    {
+		//tous les doc de la collection
+        FindIterable<Document> iterDoc = this.collection.find();
+        Iterator it = iterDoc.iterator();
+        ArrayList<Bet> tab = new ArrayList<>();
+        while (it.hasNext()) 
+        {
+        	Document doc = (Document) it.next();
+        	if(doc.getString("userId").equals(userId) && !doc.containsValue("false"))
+        	{
+                Bet active = new Bet(doc.getLong("bet"), doc.getString("team"), doc.getDouble("odd").floatValue(), doc.getString("userName"), doc.getString("gameId"), doc.getString("userId"), doc.getString("done"), doc.getString("status"));
+                tab.add(active);
+        	}
+        	
+        }
+        
+        return tab;
+    }
+	
+	public ArrayList<Bet> displayBetDoneOnParty(String id, String gameId)
+    {
+		//tous les doc de la collection
+        FindIterable<Document> iterDoc = this.collection.find();
+        Iterator it = iterDoc.iterator();
+        ArrayList<Bet> tab = new ArrayList<>();
+        while (it.hasNext()) 
+        {
+        	Document doc = (Document) it.next();
+        	//recuperation de tous le doc
+        	if(doc.getString("userId").equals(id) && !doc.containsValue("false") && doc.getString("gameId").equals(gameId))
+        	{
+                Bet active = new Bet(doc.getLong("bet"), doc.getString("team"), doc.getDouble("odd").floatValue(), doc.getString("userName"), doc.getString("gameId"), doc.getString("userId"), doc.getString("done"), doc.getString("status"));
+                tab.add(active);
+        	}
+        	
+        }
+        
+        return tab;
+    }
+	
+	public void updateUserInfo(ArrayList<Bet> allBet)
+	{
+		FindIterable<Document> iterDoc = this.collection.find();
+        Iterator it = iterDoc.iterator();
+        while (it.hasNext()) 
+        {
+        	Document doc = (Document) it.next();
+        	if(doc.containsValue(allBet.get(0).getUserId()))
+        	{
+        		int win = 0;
+        		int lose = 0;
+        		float gain = 0;
+        		for(int i =0; i<allBet.size(); i++)
+        		{
+        			if(allBet.get(i).getStatus().equals("win"))
+        			{
+        				win++;
+        				gain = gain + allBet.get(i).getOdd()*allBet.get(0).getBet(); 
+        			}
+        			else
+        			{
+        				lose++;
+        				gain = gain - allBet.get(i).getBet();
+        			}
+        		}
+        		
+        		Document content = doc;
+        		System.out.println("gain " + (doc.getDouble("totalGain").floatValue() + gain));
+        		System.out.println("win " + (doc.getInteger("win") + win));
+        		System.out.println("lose " + (doc.getInteger("lose") + lose));
+            	content.put("win", doc.getInteger("win") + win);
+            	content.put("lose", doc.getInteger("lose") + lose);
+            	content.put("totalGain", doc.getDouble("totalGain").floatValue() + gain);
+            	Document update = new Document("$set", content);
+            	this.collection.updateOne(Filters.eq("_id", allBet.get(0).getUserId()), update);
+        	}
+        	
+        }
+	}
+	
+	public void CreateUser(ArrayList<Bet> allBet)
+	{
+		Document User = new Document();
+		User.append("name", allBet.get(0).getUserName());
+		User.append("_id", allBet.get(0).getUserId());
+		int win = 0;
+		int lose = 0;
+		float gain = 0;
+		for(int i =0; i<allBet.size(); i++)
+		{
+			
+			if(allBet.get(i).getStatus().equals("win"))
+			{
+				win++;
+				gain = gain + allBet.get(i).getOdd()*allBet.get(0).getBet();
+			}
+			else
+			{
+				lose++;
+				gain = gain - allBet.get(i).getBet();
+			}
+		}
+		System.out.println("gain " + gain);
+		System.out.println("win " + win);
+		System.out.println("lose " + lose);
+		User.append("win", win);
+		User.append("lose", lose);
+		User.append("totalGain", gain);
+		this.collection.insertOne(User);
+	}
+	
+	public Boolean isUserExist(String id)
+	{
+		FindIterable<Document> iterDoc = this.collection.find();
+        Iterator it = iterDoc.iterator();
+        while (it.hasNext()) 
+        {
+        	Document doc = (Document) it.next();
+        	if(doc.containsValue(id))
+        	{
+        		return true;
+        	}
+        }
+        return false;
+	}
+	
 }	
 	
 	

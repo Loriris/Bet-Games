@@ -89,8 +89,8 @@ public class BetCommand {
 								e.printStackTrace();
 							}
 							
-							this.coteEq1 = cal.coteEq1;
-							this.coteEq2 = cal.coteEq2;
+							this.coteEq1 = cal.getCoteEq1();
+							this.coteEq2 = cal.getCoteEq2();
 							float [] teamValue = {this.coteEq1, this.coteEq2};
 							
 							Bet monPari = new Bet(money,this.teamName[i],teamValue[i], this.regionServer, 

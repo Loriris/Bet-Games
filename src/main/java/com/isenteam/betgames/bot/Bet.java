@@ -17,6 +17,10 @@ public class Bet {
 	private String gameId;
 	
 	private String userId;
+
+	private String done;
+	 
+	private String status;
 	
 	public Bet(long bet, String team, float teamValue, String game, String userName, String gameId, String userId) {
 		this.bet = bet;
@@ -27,6 +31,18 @@ public class Bet {
 		this.gameId = gameId;
 		this.userId = userId;
 	}
+	
+	public Bet(long bet, String team, float teamValue, String userName, String gameId, String userId, String doneToSet, String statusToSet) {
+		this.bet = bet;
+		this.team = team;
+		this.odd = teamValue;
+		this.userName = userName;
+		this.gameId = gameId;
+		this.userId = userId;
+		this.done = doneToSet;
+		this.status = statusToSet;
+	}
+
 
 	public long getBet() {
 		return bet;
@@ -82,6 +98,14 @@ public class Bet {
 
 	public void setUserId(String userId) {
 		this.userId = userId;
+	}
+	
+	public String getDone() {
+		return done;
+	}
+
+	public String getStatus() {
+		return status;
 	}
 	
 	
