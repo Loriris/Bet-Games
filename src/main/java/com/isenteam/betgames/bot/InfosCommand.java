@@ -19,7 +19,6 @@ public class InfosCommand {
 		{
 			 this.event.getChannel().sendMessage("🔴 Please try again by entering #info because you gave too many arguments.").queue();
 		}
-		
 		else
 		{
 			EmbedBuilder info = new EmbedBuilder();
@@ -31,6 +30,8 @@ public class InfosCommand {
 			info.addField("To know the available teams :", "#teams [game_id]", false);
 			info.addField("To know the odd :", "#odds [team_color] [game_id]", false);
 			info.addField("To make a bet :", "#bet [team_color] [amount_to_bet] [game_id]", false);
+			info.addField("To know the current bets :", "#betgoing", false);
+			info.addField("To know your wallet :", "#wallet", false);
 			info.addField("Servers list :", "\"BR1\", \"EUN1\", \"EUW1\", \"LA1\", \r\n" + 
 			"\"LA2\", \"NA1\", \"OCE\", \"OC1\", \"RU1\", \"TR1\", \"JP1\", \"KR\", \"PBE\"", false);
 			info.addField("Visit our website for further information (only fr for the moment)", "https://playbet-games.fr/", false);
