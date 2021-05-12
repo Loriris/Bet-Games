@@ -12,7 +12,8 @@ public class Commands extends ListenerAdapter{
 	
 	//prefix to used for the bot to recognize that it's being spoken to
 	private static String prefix = "#";
-	private String [] teamName = {"100", "200"};
+	//private String [] teamName = {"100", "200"};
+	private String [] teamName = {"Blue", "Red"};
 	
 	private InfoAPI infos;
 		
@@ -77,19 +78,19 @@ public class Commands extends ListenerAdapter{
 /*--------------------------------------------------------------------------------------------*/
 		
 		// Return the pseudo and the region to use in the LoL API
-		if(args[0].equalsIgnoreCase(prefix + "connexion"))
+		if(args[0].equalsIgnoreCase(prefix + "connection"))
 		{
 			// Check how many arguments were passed in, we need 3 args
 		    if(args.length < 3)
 		    {
-		        mess.showMess("🔴 Veuillez réassayer en verifiant si vous "
-		        + "avez bien saisi le bon pseudo et/ou la bonne région (voir #info).", 0xCA0707);
+		        mess.showMess("🔴 Please try again by checking if you've entered "
+		        		+ "the correct nickname and/or region (see #info).", 0xCA0707);
 		        
 		    }
 		    
 		    if(args.length > 3)
 		    {
-		    	mess.showMess("🔴 Veuillez réassayer, vous avez saisi trop d'arguments (voir #info).", 0xCA0707);
+		    	mess.showMess("🔴 Please try again, you have entered too many arguments (see #info).", 0xCA0707);
 		    }
 		    
 		    if(args.length == 3)
@@ -98,7 +99,7 @@ public class Commands extends ListenerAdapter{
 		    	
 	    		if(Arrays.stream(serverName).anyMatch(args[2]::equals) == false)
 	    		{
-	    			mess.showMess("🔴 Veuillez réassayer, le serveur saisie n'existe pas (voir #info).", 0xCA0707);
+	    			mess.showMess("🔴 Please try again, the server you entered doesn't exist (see #info).", 0xCA0707);
 	    		}
 	    		else
 	    		{
@@ -110,7 +111,7 @@ public class Commands extends ListenerAdapter{
 					} catch (UnirestException e) {
 						e.printStackTrace();
 					}
-	    			mess.showMess("🟢 Connexion effectuée.", 0x27AE1E);
+	    			mess.showMess("🟢 Connected.", 0x27AE1E);
 	    		}
 		    }
 		}			

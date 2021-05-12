@@ -1,4 +1,4 @@
-package com.isenteam.betgames.bot;
+ package com.isenteam.betgames.bot;
 
 import java.util.Arrays;
 
@@ -36,13 +36,13 @@ public class BetCommand {
 		// Check how many arguments were passed in, we need 4 args
 	    if(this.args.length < 4)
 	    {
-	    	mess.showMess("🔴 Veuillez réassayer en verifiant si vous "
-	    	+ "avez bien saisi l'équipe et/ou le montant à parier (voir #info).", 0xCA0707);
+	    	mess.showMess("🔴 Please try again by checking whether you have entered "
+	    			+ "the team and/or the amount to bet (see #info).", 0xCA0707);
 	    }
 	    
 	    if(this.args.length > 4)
 	    {
-	    	mess.showMess("🔴 Veuillez réassayer, vous avez saisi trop d'arguments (voir #info).", 0xCA0707);
+	    	mess.showMess("🔴 Please try again, you have entered too many arguments (see #info).", 0xCA0707);
 	    }
 	    
 	    if(this.args.length == 4)
@@ -54,15 +54,14 @@ public class BetCommand {
 	    	Mongo mongo = new Mongo("Party");
 		    if(Boolean.compare(mongo.searchForExistingParty(this.args[3]), false) == 0)
 		    {
-		    	mess.showMess("🔴 L'ID saisie n'est pas valide, verifiez les "
-		    	+ "parties disponibles avec la commande #games.", 0xCA0707);
+		    	mess.showMess("🔴 The ID entered isn't valid, check the available "
+		    			+ "games with the command #games.", 0xCA0707);
 		    }
 		    else 
 		    {
 		    	if(Arrays.stream(this.teamName).anyMatch(this.args[1]::equals) == false)
 				{
-		    		mess.showMess("🔴 L'équipe sélectionnée n'est pas valide, "
-					+ "saisir #teams pour voir les équipes disponibles.", 0xCA0707);
+		    		mess.showMess("🔴 The selected team isn't valid, enter #teams to see available teams.", 0xCA0707);
 				}
 		    	
 		    	for(int i = 0; i<this.teamName.length; i++) 
@@ -72,12 +71,12 @@ public class BetCommand {
 						money = Integer.parseInt(this.args[2]);
 						if(money <=0 || money>100000)
 						{
-							mess.showMess("🔴 Le montant selectionné n'est pas valide, "
-							+ "les valeurs doivent être comprises entre 1 et 100 000.", 0xCA0707);
+							mess.showMess("🔴 The selected amount isn't valid, "
+									+ "values must be between 1 and 100,000.", 0xCA0707);
 						}
 						else
 						{
-			    			mess.showMess("🟢 Pari validé.", 0x27AE1E);
+			    			mess.showMess("🟢 Validated Bet.", 0x27AE1E);
 							
 							// perform an action to save the amount of money that was bet
 							
@@ -99,8 +98,8 @@ public class BetCommand {
 							Mongo col = new Mongo("Bets");
 							col.insert(monPari);
 
-							sendResult(this.event.getAuthor(), "Votre pari sur la partie " + 
-							infos.getPartyInfo().get("gameId").getAsString() + " a bien été enregistré.");						
+							sendResult(this.event.getAuthor(), "Your bet on the game " + 
+							infos.getPartyInfo().get("gameId").getAsString() + " was successfully recorded.");						
 						}
 					}
 				}

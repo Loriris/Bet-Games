@@ -37,12 +37,12 @@ public class NotifyUser {
             //if win, else lost
         	if(Boolean.compare(this.betors.get(i).isWin(), true) == 0) 
         	{
-        		sendResult(userBet, "😀 Gagné, votre gain est de " + gains + 
-        				"€ sur la partie " + this.gameId + ".");
+        		sendResult(userBet, "😀 Win, you won " + gains + 
+        				"BGtokens with the game n° " + this.gameId + ".");
         	}
         	else
         	{
-        		sendResult(userBet, "😥 Vous avez perdu.");
+        		sendResult(userBet, "😥 You've lost on the game n° " + this.gameId + ".");
         	}
 		} 
 	}
