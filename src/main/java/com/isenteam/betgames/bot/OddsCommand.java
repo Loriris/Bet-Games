@@ -31,12 +31,12 @@ public class OddsCommand {
 		//in odds there must be 3 args, if there are more than 3 args return an error
 		if(this.args.length > 3)
 		{
-			mess.showMess("🔴 Veuillez réassayer, vous avez saisi trop d'arguments (voir #info).", 0xCA0707);
+			mess.showMess("🔴 Please try again, you have entered too many arguments (see #info).", 0xCA0707);
 		}
 		//in odds there must be 3 args, if there are less than 3 args return an error
 		if(this.args.length < 3)
 		{
-			mess.showMess("🔴Veuillez réassayer, vous n'avez pas saisi assez d'arguments (voir #info).", 0xCA0707);
+			mess.showMess("🔴 Please try again, you haven't entered enough arguments (see #info).", 0xCA0707);
 		}
 		//if the team exist in the array teamName
 		if(this.args.length == 3)
@@ -44,15 +44,13 @@ public class OddsCommand {
 			Mongo mongo = new Mongo("Party");
 		    if(Boolean.compare(mongo.searchForExistingParty(this.args[2]), false) == 0)
 		    {
-		    	mess.showMess("🔴 L'ID saisie n'est pas valide, verifiez les "
-		    	+ "parties disponibles avec la commande #games.", 0xCA0707);
+		    	mess.showMess("🔴 The ID entered isn't valid, check the available games with the command #games.", 0xCA0707);
 		    }
 		    else
 		    {
 				if(Arrays.stream(this.teamName).anyMatch(this.args[1]::equals) == false)
 				{
-					mess.showMess("🔴 L'équipe sélectionnée n'est pas valide, "
-					+ "saisir #teams pour voir les équipes disponibles.", 0xCA0707);
+					mess.showMess("🔴 The selected team isn't valid, enter #teams to see available teams.", 0xCA0707);
 				}
 				
 				for(int i = 0; i<this.teamName.length; i++) 
@@ -77,7 +75,7 @@ public class OddsCommand {
 						
 						float [] teamValue = {this.coteEq1, this.coteEq2};
 			 
-						mess.showMess("Cote à " + teamValue[i] + " pour l'équipe " + this.teamName[i] + ".", 0x1A93D8);
+						mess.showMess("Odds of " + teamValue[i] + " for the " + this.teamName[i] + " team.", 0x1A93D8);
 					}	
 				}
 		    }

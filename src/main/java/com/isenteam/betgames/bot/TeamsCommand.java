@@ -24,15 +24,13 @@ public class TeamsCommand {
 		//in team there must 2 arg, if there are more than 2 args return an error
 		if(this.args.length > 2) 
 		{
-			mess.showMess("🔴Veuillez réassayer, vous avez "
-			+ "saisi trop d'arguments (voir #info)", 0xCA0707);
+			mess.showMess("🔴 Please try again, you have entered too many arguments (see #info).", 0xCA0707);
 		}
 		
 		//in team there must 2 arg, if there are less than 2 args return an error
 		if(this.args.length < 2) 
 		{
-			 mess.showMess("🔴 Veuillez réassayer en verifiant si vous avez bien "
-			 + "saisi l'ID de la partie (voir #info).", 0xCA0707);
+			 mess.showMess("🔴 Please try again by checking if you have entered the game ID (see #info).", 0xCA0707);
 		}
 		
 		//if the team exist in the array teamName
@@ -41,8 +39,7 @@ public class TeamsCommand {
 			Mongo mongo = new Mongo("Party");
 		    if(Boolean.compare(mongo.searchForExistingParty(this.args[1]), false) == 0)
 		    {
-		    	mess.showMess("🔴 L'ID saisie n'est pas valide, verifiez les "
-		    	+ "parties disponibles avec la commande #games.", 0xCA0707);
+		    	mess.showMess("🔴 The ID entered isn't valid, check the available games with the command #games.", 0xCA0707);
 		    }
 		    else
 		    {
@@ -58,8 +55,8 @@ public class TeamsCommand {
 				}
 				for(int i = 0; i<infos.getParticipant().length; i++) 
 				{
-					mess.showMess("Equipe " + infos.getParticipant()[i].getTeam() + "  disponible," + 
-					"    Champion, " + infos.getParticipant()[i].getChampion() + "    Joueur " + infos.getParticipant()[i].getName(), 0x1A93D8);
+					mess.showMess("Team " + infos.getParticipant()[i].getTeam() + "  available," + 
+					"    Champion: " + infos.getParticipant()[i].getChampion() + ",    Player: " + infos.getParticipant()[i].getName(), 0x1A93D8);
 				}		
 		    }
 		}

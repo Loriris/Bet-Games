@@ -17,22 +17,23 @@ public class InfosCommand {
 		//in info there must be only one arg, if there are several args return an error
 		if(this.args.length > 1)
 		{
-			 this.event.getChannel().sendMessage("🔴Veuillez réassayer en saisissant #info "
-			 + "car vous avez donné trop d'arguments").queue();
+			 this.event.getChannel().sendMessage("🔴 Please try again by entering #info because you gave too many arguments.").queue();
 		}
 		
 		else
 		{
 			EmbedBuilder info = new EmbedBuilder();
-			info.setTitle("Liste des commandes :");
-			info.addField("Pour se connecter à une partie :", "#connexion [pseudo_joueur] [region]"
-					+ " (pour le nom du joueur il faut écrire en un seul mot)", false);
-			info.addField("Pour connaitre les parties disponibles :", "#games", false);
-			info.addField("Pour connaitre les équipes disponibles :", "#teams [id_de_la_partie]", false);
-			info.addField("Pour connaitre une cote :", "#odds [nom_de_l'équipe] [id_de_la_partie]", false);
-			info.addField("Pour faire un paris :", "#bet [nom_de_l'équipe] [somme_engagée] [id_de_la_partie]", false);
-			info.addField("Liste serveurs :", "\"BR1\", \"EUN1\", \"EUW1\", \"LA1\", \r\n" + 
+			info.setTitle("Commands list :");
+			info.addField("To connect to a game :", "#connection [player's_nickname_that_you're_watching] [region]"
+					+ " (for the player's name, it is necessary to write in one word), "
+					+ "you can bet on live games with porofessor: https://porofessor.gg/ ", false);
+			info.addField("To know the available games and their ID :", "#games", false);
+			info.addField("To know the available teams :", "#teams [game_id]", false);
+			info.addField("To know the odd :", "#odds [team_color] [game_id]", false);
+			info.addField("To make a bet :", "#bet [team_color] [amount_to_bet] [game_id]", false);
+			info.addField("Servers list :", "\"BR1\", \"EUN1\", \"EUW1\", \"LA1\", \r\n" + 
 			"\"LA2\", \"NA1\", \"OCE\", \"OC1\", \"RU1\", \"TR1\", \"JP1\", \"KR\", \"PBE\"", false);
+			info.addField("Visit our website for further information (only fr for the moment)", "https://playbet-games.fr/", false);
 			info.setColor(0x9003fc);
 			this.event.getChannel().sendMessage(info.build()).queue();
 			info.clear(); //Resets this builder to default state.
