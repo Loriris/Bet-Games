@@ -12,7 +12,6 @@ public class Commands extends ListenerAdapter{
 	
 	//prefix to used for the bot to recognize that it's being spoken to
 	private static String prefix = "#";
-	//private String [] teamName = {"100", "200"};
 	private String [] teamName = {"blue", "red"};
 	
 	private InfoAPI infos;
@@ -73,6 +72,15 @@ public class Commands extends ListenerAdapter{
 		{
 			TeamsCommand teamsCom = new TeamsCommand(event, args);
 			teamsCom.Teams();
+		}
+		
+/*--------------------------------------------------------------------------------------------*/
+		
+		// allow to know the team available 
+		if(args[0].equalsIgnoreCase(prefix + "betgoing"))
+		{
+			BetgoingCommand betgoingCom = new BetgoingCommand(event, args);
+			betgoingCom.betGoing();
 		}
 		
 /*--------------------------------------------------------------------------------------------*/

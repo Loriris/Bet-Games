@@ -41,8 +41,6 @@ public class CalculCote {
 					denoEq2--;
 					System.out.println("deno2 " + denoEq2);
 				}
-					
-
 			}
 		}
 		
@@ -62,6 +60,4 @@ public class CalculCote {
 	public float getCoteEq2() {
 		return coteEq2;
 	}
-	
-	
 }

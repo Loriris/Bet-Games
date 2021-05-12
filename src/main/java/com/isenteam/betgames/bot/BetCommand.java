@@ -27,6 +27,13 @@ public class BetCommand {
 		this.regionServer = regionServer;	
 	}
 	
+	public BetCommand(GuildMessageReceivedEvent event, String[] args) {
+		
+		this.event = event;
+		this.args = args;
+		
+	}
+
 	public void BetComm() 
 	{
 		ShowMessage mess = new ShowMessage(event);

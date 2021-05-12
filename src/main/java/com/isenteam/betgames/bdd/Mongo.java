@@ -7,13 +7,8 @@ import com.isenteam.betgames.bot.ActiveGames;
 import com.isenteam.betgames.bot.Bet;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoClient;
-//import com.mongodb.MongoClientSettings;
-//import com.mongodb.ConnectionString;
 import com.mongodb.client.MongoCollection;
-//import com.mongodb.ServerAddress;
 import com.mongodb.client.MongoDatabase;
-//import com.mongodb.MongoCredential;
-//import com.mongodb.MongoClientOptions;
 import com.mongodb.client.model.Filters;
 
 import java.util.ArrayList;
@@ -198,7 +193,6 @@ public class Mongo {
                 Bet active = new Bet(doc.getLong("bet"), doc.getString("team"), doc.getDouble("odd").floatValue(), doc.getString("userName"), doc.getString("gameId"), doc.getString("userId"), doc.getString("done"), doc.getString("status"));
                 tab.add(active);
         	}
-        	
         }
         
         return tab;
@@ -219,10 +213,7 @@ public class Mongo {
         		 Bet active = new Bet(doc.getLong("bet"), doc.getString("team"), doc.getDouble("odd").floatValue(), doc.getString("userName"), doc.getString("gameId"), doc.getString("userId"), doc.getString("done"), doc.getString("status"));
                  tab.add(active);
         	}
-           
-        	
         }
-        
         return tab;
     }
 	
