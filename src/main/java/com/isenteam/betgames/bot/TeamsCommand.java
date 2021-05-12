@@ -55,7 +55,16 @@ public class TeamsCommand {
 				}
 				for(int i = 0; i<infos.getParticipant().length; i++) 
 				{
-					mess.showMess("Team " + infos.getParticipant()[i].getTeam() + "  available," + 
+					String colorTeam = "";
+					if(infos.getParticipant()[i].getTeam() == 100)
+					{
+						colorTeam = "blue";
+					}
+					else if(infos.getParticipant()[i].getTeam() == 200)
+					{
+						colorTeam = "red";
+					}
+					mess.showMess("Team " + colorTeam + "  available," + 
 					"    Champion: " + infos.getParticipant()[i].getChampion() + ",    Player: " + infos.getParticipant()[i].getName(), 0x1A93D8);
 				}		
 		    }
