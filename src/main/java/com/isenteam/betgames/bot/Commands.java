@@ -13,7 +13,7 @@ public class Commands extends ListenerAdapter{
 	//prefix to used for the bot to recognize that it's being spoken to
 	private static String prefix = "#";
 	//private String [] teamName = {"100", "200"};
-	private String [] teamName = {"Blue", "Red"};
+	private String [] teamName = {"blue", "red"};
 	
 	private InfoAPI infos;
 		

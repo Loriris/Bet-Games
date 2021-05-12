@@ -27,7 +27,9 @@ public class CalculCote {
 				totRatioEq1 += ratio;
 				if(ratio == 0)
 				{
+					
 					denoEq1--;
+					System.out.println("deno1 " + denoEq2);
 				}
 			}	
 			else
@@ -35,7 +37,9 @@ public class CalculCote {
 				totRatioEq2 += ratio;
 				if(ratio == 0)
 				{
+					
 					denoEq2--;
+					System.out.println("deno2 " + denoEq2);
 				}
 					
 
@@ -44,6 +48,8 @@ public class CalculCote {
 		
 		ratioEq1 = totRatioEq1/denoEq1;
 		ratioEq2 = totRatioEq2/denoEq2;
+		System.out.println(ratioEq1);
+		System.out.println(ratioEq2);
 		
 		coteEq1 = (float) (Math.round((1/ratioEq1) *100.0)/100.0);
 		coteEq2 = (float) (Math.round((1/ratioEq2) *100.0)/100.0);

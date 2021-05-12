@@ -21,7 +21,7 @@ public class InfoAPI
 	private String id;
 
 	
-	public InfoAPI(String playerToSet, String regionToSet) throws UnirestException
+	public InfoAPI(String playerToSet, String regionToSet)
 	{
 		this.key = System.getenv("TOKEN_RIOT");
 		this.player = playerToSet;
@@ -60,7 +60,7 @@ public class InfoAPI
 	public void PartyInfoMongo()
     {
         Mongo mongo = new Mongo("Party");
-        this.partyInfo = mongo.RetreiveParty(this.id);
+        this.partyInfo = mongo.retreiveParty(this.id);
     }
 
 	public JsonObject getPartyInfo()
@@ -90,7 +90,7 @@ public class InfoAPI
 					break;
 				}
 			}
-			HttpResponse <JsonNode> ratioResponse = Unirest.get("https://euw1.api.riotgames.com/lol/league/v4/entries/by-summoner/"+ participantArray.get(index).getAsJsonObject().get("summonerId").getAsString()  + "?api_key=" + key).asJson();
+			HttpResponse <JsonNode> ratioResponse = Unirest.get("https://"+ this.partyInfo.get("platformId").getAsString() +".api.riotgames.com/lol/league/v4/entries/by-summoner/"+ participantArray.get(index).getAsJsonObject().get("summonerId").getAsString()  + "?api_key=" + key).asJson();
 			JsonArray league = JsonParser.parseString(ratioResponse.getBody().toString()).getAsJsonArray();
 			if(league.size() == 0 )
 			{
