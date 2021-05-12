@@ -21,7 +21,7 @@ public class GamesCommand {
 		
 		ShowMessage mess = new ShowMessage(event);
 		
-		//in info there must be only one arg, if there are several args return an error
+		//in games there must be only one arg, if there are several args return an error
 		if(this.args.length > 1) 
 		{
 			mess.showMess("🔴 Please try again, you have entered too many arguments (see #info).", 0xCA0707);

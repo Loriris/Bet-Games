@@ -69,7 +69,7 @@ public class Mongo {
 		doc.append("gameId", bet.getGameId());
 		doc.append("userId", bet.getUserId());
 		doc.append("done", "false");
-		doc.append("done", "null");
+		doc.append("status", "null");
 		
 		//insertion du document dans la collection "collection" (cad collectionTest)
 		this.collection.insertOne(doc);
@@ -199,7 +199,6 @@ public class Mongo {
                 Bet active = new Bet(doc.getLong("bet"), doc.getString("team"), doc.getDouble("odd").floatValue(), doc.getString("userName"), doc.getString("gameId"), doc.getString("userId"), doc.getString("done"), doc.getString("status"));
                 tab.add(active);
         	}
-        	
         }
         
         return tab;
@@ -220,10 +219,7 @@ public class Mongo {
         		 Bet active = new Bet(doc.getLong("bet"), doc.getString("team"), doc.getDouble("odd").floatValue(), doc.getString("userName"), doc.getString("gameId"), doc.getString("userId"), doc.getString("done"), doc.getString("status"));
                  tab.add(active);
         	}
-           
-        	
         }
-        
         return tab;
     }
 	
@@ -295,9 +291,11 @@ public class Mongo {
         		}
         		
         		Document content = doc;
+        		/*
         		System.out.println("gain " + (doc.getDouble("totalGain").floatValue() + gain));
         		System.out.println("win " + (doc.getInteger("win") + win));
         		System.out.println("lose " + (doc.getInteger("lose") + lose));
+        		*/
             	content.put("win", doc.getInteger("win") + win);
             	content.put("lose", doc.getInteger("lose") + lose);
             	content.put("totalGain", doc.getDouble("totalGain").floatValue() + gain);
@@ -330,9 +328,11 @@ public class Mongo {
 				gain = gain - allBet.get(i).getBet();
 			}
 		}
+		/*
 		System.out.println("gain " + gain);
 		System.out.println("win " + win);
 		System.out.println("lose " + lose);
+		*/
 		User.append("win", win);
 		User.append("lose", lose);
 		User.append("totalGain", gain);
