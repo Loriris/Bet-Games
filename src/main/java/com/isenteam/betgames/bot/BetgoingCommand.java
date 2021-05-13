@@ -35,8 +35,7 @@ public class BetgoingCommand {
 			//boucle sur l'array list
 			for(int i = 0; i < tab.size(); i++)
 			{
-				System.out.println("oui");
-				BetCommand.sendResult(this.event.getAuthor(), "There is a bet of " + tab.get(i).getBet() + 
+				BetCommand.sendResult(this.event.getAuthor(), "💬 There is a bet of " + tab.get(i).getBet() + 
 						" on the team " + tab.get(i).getTeam() + " (odd : " + tab.get(i).getOdd() 
 						+ ") for the game " + tab.get(i).getGameId() + ".");
 			}

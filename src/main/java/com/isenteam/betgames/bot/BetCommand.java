@@ -38,7 +38,7 @@ public class BetCommand {
 	{
 		ShowMessage mess = new ShowMessage(event);
 		
-		long money;
+		double money;
 		
 		// Check how many arguments were passed in, we need 4 args
 	    if(this.args.length < 4)
@@ -75,7 +75,7 @@ public class BetCommand {
 				{
 					if(this.args[1].equalsIgnoreCase(this.teamName[i]) && this.args[2].isEmpty() == false)
 					{
-						money = Integer.parseInt(this.args[2]);
+						money = Double.parseDouble(this.args[2]);
 						if(money <=0 || money>100000)
 						{
 							mess.showMess("🔴 The selected amount isn't valid, "

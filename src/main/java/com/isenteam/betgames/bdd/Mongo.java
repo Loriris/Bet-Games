@@ -269,7 +269,7 @@ public class Mongo {
         	{
         		int win = 0;
         		int lose = 0;
-        		float gain = 0;
+        		double gain = 0;
         		for(int i =0; i<allBet.size(); i++)
         		{
         			if(allBet.get(i).getStatus().equals("win"))
@@ -291,7 +291,6 @@ public class Mongo {
             	Document update = new Document("$set", content);
             	this.collection.updateOne(Filters.eq("_id", allBet.get(0).getUserId()), update);
         	}
-        	
         }
 	}
 	
@@ -302,7 +301,7 @@ public class Mongo {
 		User.append("_id", allBet.get(0).getUserId());
 		int win = 0;
 		int lose = 0;
-		float gain = 0;
+		double gain = 0;
 		for(int i =0; i<allBet.size(); i++)
 		{
 			

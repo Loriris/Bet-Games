@@ -4,7 +4,7 @@ package com.isenteam.betgames.bot;
 public class Bet {
 	
 	//mise
-	private long bet;
+	private double bet;
 	//equipe
 	private String team;
 	//cote
@@ -22,8 +22,8 @@ public class Bet {
 	 
 	private String status;
 	
-	public Bet(long bet, String team, float teamValue, String game, String userName, String gameId, String userId) {
-		this.bet = bet;
+	public Bet(double money, String team, float teamValue, String game, String userName, String gameId, String userId) {
+		this.bet = money;
 		this.team = team;
 		this.odd = teamValue;
 		this.game = game;
@@ -32,7 +32,7 @@ public class Bet {
 		this.userId = userId;
 	}
 	
-	public Bet(long bet, String team, float teamValue, String userName, String gameId, String userId, String doneToSet, String statusToSet) {
+	public Bet(double bet, String team, float teamValue, String userName, String gameId, String userId, String doneToSet, String statusToSet) {
 		this.bet = bet;
 		this.team = team;
 		this.odd = teamValue;
@@ -44,11 +44,11 @@ public class Bet {
 	}
 
 
-	public long getBet() {
+	public double getBet() {
 		return bet;
 	}
 
-	public void setBet(long bet) {
+	public void setBet(double bet) {
 		this.bet = bet;
 	}
 
