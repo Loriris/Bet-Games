@@ -16,7 +16,7 @@
 	            <div class="container">
 	                <div id="navMenu" class="navbar-menu">
 	                    <div class="navbar-start">
-	                    	<a class="navbar-item" th:href="@{index}">
+	                    	<a class="navbar-item" th:href="@{accueil}">
       							<img th:src="@{/images/bet-games-title.png}" id="bet-games-title">
     						</a>
 	                        <a class="navbar-item" id="active-item" th:href="@{documentation}">
@@ -47,13 +47,13 @@
 				   	</div>
 				   	<div class="message-div">
 				   		<p>Suite à cela, nous avons eu l'idée de profiter de l'essor des paris en ligne et du leader des jeux de compétitions qui est entre autres <b>League of Legends.</b>
-				   		Bon nombres de joueurs se lancent sur les champs de bataille pour s'affronter et prouver qu'ils méritent leur place sur le podium, Pourquoi ne pas pimenter les choses ?</p>
+				   		Bon nombre de joueurs se lancent sur les champs de bataille pour s'affronter et prouver qu'ils méritent leur place sur le podium, pourquoi ne pas pimenter les choses ?</p>
 				   	</div>
 				   	<div class="message-div center-img">
 				   		<img th:src="@{/images/bank.png}" id="bank">
 				   	</div>
 					<div class="message-div">
-				   		<p>Si on vous dit que vous pouvez gagner de l'argent grâce à vos équipes de joueurs professionnels préférés ? Misez, Analysez et Jouez à l'aide de notre bot Discord qui s'occupe de votre paris !
+				   		<p>Si on vous disait que vous pouvez gagner de l'argent grâce à vos équipes de joueurs professionnels préférés ? Misez, Analysez et Jouez à l'aide de notre bot Discord qui s'occupe de votre paris !
 				   		Venez découvrir comment fonctionne notre bot afin de le maîtriser à la perfection.</p>   
 				   	</div>
 				  </div>
@@ -68,7 +68,7 @@
             			<img th:src="@{/images/discordillustr.jpg}" class="img-article">
             		</div>
             		<div class="div-in-article">
-            			<p class="paragraph-article-body"><b><u>Étape 1</u> :</b> Ajoutez notre bot sur votre serveur discord favori, il vous faut simplement cliquer sur le bouton ci-dessous et se connecter sur votre compte pour désigner le serveur de votre choix.</p>
+            			<p class="paragraph-article-body"><b><u>Étape 1</u> :</b> Ajoutez notre bot sur votre serveur discord favori en cliquant sur le bouton ci-dessous, connectez vous sur votre compte et sélectionner le serveur de votre choix.</p>
             			<button class="button hero-button left" onclick="window.open('https://discord.com/oauth2/authorize?client_id=780382231411687445&permissions=0&scope=bot')"><img th:src="@{/images/discord-black-icon.png}" id="logo-discord"/>Ajouter à Discord</button>
             		</div>
             		<div class="div-in-article">
@@ -113,7 +113,7 @@
 							      <td>Pour avoir un rappel de la liste de commandes disponibles directement sur le salon textuel</td>
 							    </tr>
 							    <tr>
-							      <th>#connexion</th>
+							      <th>#connection</th>
 							      <td>Pour se connecter à une partie</td>
 							    </tr>
 							    <tr>
@@ -146,12 +146,12 @@
             <div class="hero-body-two">
 				<article class="article-hero-body-two middle">
 				   	<div class="div-in-article border">
-            			<p class="paragraph-article-body cmd"><b>#connexion</b>  </p>
-            			<p class="paragraph-article-body cmd-explication">[Nom du joueur attaché <i class="fas fa-exclamation-triangle"></i>] [Région]</p>
+            			<p class="paragraph-article-body cmd"><b>#connection</b>  </p>
+            			<p class="paragraph-article-body cmd-explication">[pseudo du joueur sur lequel vous voulez parier (tout en attaché <i class="fas fa-exclamation-triangle"></i>)] [région]</p>
             		</div>
             		<div class="div-in-article">
-            			<p class="paragraph-article-body"><b><u>Étape 3</u> :</b> Vous êtes maintenant prêt à parier ! Pour se connecter à la partie de votre joueur au choix, effectuez la
-            			commande <b>#connexion</b> sans oublier la région (voir la liste disponible).</p>
+            			<p class="paragraph-article-body"><b><u>Étape 3</u> :</b> Vous êtes maintenant prêt à parier ! Pour se connecter à la partie du joueur de votre choix, effectuez la
+            			commande <b>#connection</b> sans oublier la région (voir la liste disponible).</p>
             			<p class="paragraph-article-body"> Afin de vous aider à trouver une partie, vous pouvez utiliser le site <a id="porofessor" onclick="window.open('https://porofessor.gg/fr/')"><u>Porofessor.gg</u></a> .</p>
             		</div>
             		<div class="div-in-article"> 
@@ -164,7 +164,7 @@
             		</div>
             		<div class="div-in-article">
             			<p class="paragraph-article-body"><b><u>Étape 4</u> :</b> Vous pouvez à partir de ces deux commandes, connaître l'identifiant de la partie jouée (plusieurs parties sont disponibles), 
-            			le nom de la team (<span id="bleue">bleue</span> = <b>100</b>, <span id="rouge">rouge</span> = <b>200</b>) et la composition.</p>
+            			le nom de la team (<span id="bleue">bleue</span> ou <span id="rouge">red</span>) et la composition.</p>
             		</div>
             		<div class="div-in-article border"> 
 						<p class="paragraph-article-body cmd"><b>#games</b>  </p>
@@ -179,12 +179,12 @@
 				<article class="article-hero-body-two middle">
 				   	<div class="div-in-article border">
             			<p class="paragraph-article-body cmd"><b>#odds</b>  </p>
-            			<p class="paragraph-article-body cmd-explication">[Nom de l'équipe] [ID de la partie]</p>
+            			<p class="paragraph-article-body cmd-explication">[Couelur de l'équipe] [ID de la partie]</p>
             			<p class="paragraph-article-body cmd"><b>#bet</b>  </p>
-            			<p class="paragraph-article-body cmd-explication">[Nom de l'équipe] [Mise] [ID de la partie]</p>
+            			<p class="paragraph-article-body cmd-explication">[Couleur de l'équipe] [Mise] [ID de la partie]</p>
             		</div>
             		<div class="div-in-article">
-            			<p class="paragraph-article-body"><b><u>Étape 5</u> :</b> Pour connaître la cote de l'équipe de votre choix <b>#odds</b> et enfin pariez <b>#bet</b> (<u>l'exemple</u> mise 20€).</p> 
+            			<p class="paragraph-article-body"><b><u>Étape 5</u> :</b> Pour connaitre la cote de l'équipe de votre choix, utilisez la commande #odds et enfin pour parier #bet (sur l'exemple ci-contre nous réalisons un pari de 20 BGjetons sur l'équipe bleue de la partie n°3903749466).</p> 
             		</div>
             		<div class="div-in-article"> 
             			<img th:src="@{/images/paris.png}" class="img-article">
@@ -196,7 +196,7 @@
             		</div>
             		<div class="div-in-article">
             			<p class="paragraph-article-body paraf-mid"><i class="fas fa-fire-alt"></i> Félicitation !!! <i class="fas fa-fire-alt"></i> </p>
-            			<p class="paragraph-article-body paraf-mid"><i class="fas fa-money-bill-wave"></i> Vous avez remporté 37.4€ <i class="fas fa-money-bill-wave"></i></p> 
+            			<p class="paragraph-article-body paraf-mid mini"><i class="fas fa-money-bill-wave"></i> Vous avez remporté 36.4 BGjetons <i class="fas fa-money-bill-wave"></i></p> 
             		</div>
             		<div class="div-in-article"> 
             			<img th:src="@{/images/prive.png}" class="img-article">
@@ -207,12 +207,40 @@
 	           	</div>   
             <div/>
         </section>
-        <footer class="footer">
+       <footer class="footer">
             <div class="content has-text-centered">
-                <p>
-                    <strong>&copy;2021 Bet-Games</strong> par <i>Thomas SCHMID</i>, <i>Alexis RAFÉ</i>, <i>Ines BEN-SLAMA</i> et <i>Loris MARTINEZ</i>.
-                </p>
+            	<div class="footer-mid">
+	                <p>
+	                    <strong>&copy;2021 Bet-Games</strong> par <i>Thomas SCHMID</i>, <i>Alexis RAFÉ</i>, <i>Ines BEN-SLAMA</i> et <i>Loris MARTINEZ</i>.
+	                </p>
+            	</div>
+            	<div class="footer-right">
+	                <div class="dropdown">
+					  <div class="dropdown-trigger">
+					    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+					      <span><img th:src="@{/images/france.png}" id="france"> Français</span>
+					      <span class="icon is-small">
+					        <i class="fas fa-angle-down" aria-hidden="true"></i>
+					      </span>
+					    </button>
+					  </div>
+					  <div class="dropdown-menu" id="dropdown-menu" role="menu">
+					    <div class="dropdown-content">
+					      <a th:href="@{/en/documentation}" class="dropdown-item">
+					        <img th:src="@{/images/english.png}" id="english"> English
+					      </a>
+					    </div>
+					  </div>
+					</div>
+            	</div>
             </div>
         </footer>
     </body>
+    <script type="text/javascript">
+ 		var dropdown = document.querySelector('.dropdown');
+		dropdown.addEventListener('click', function(event) {
+		  event.stopPropagation();
+		  dropdown.classList.toggle('is-active');
+		});
+	</script>
 </html>

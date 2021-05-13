@@ -76,11 +76,20 @@ public class Commands extends ListenerAdapter{
 		
 /*--------------------------------------------------------------------------------------------*/
 		
-		// allow to know the team available 
+		// allow to know the bet you take on unfinished games 
 		if(args[0].equalsIgnoreCase(prefix + "betgoing"))
 		{
 			BetgoingCommand betgoingCom = new BetgoingCommand(event, args);
 			betgoingCom.betGoing();
+		}
+		
+/*--------------------------------------------------------------------------------------------*/
+		
+		// allows you to know your wallet
+		if(args[0].equalsIgnoreCase(prefix + "wallet"))
+		{
+			//BetgoingCommand betgoingCom = new BetgoingCommand(event, args);
+			//betgoingCom.betGoing();
 		}
 		
 /*--------------------------------------------------------------------------------------------*/
