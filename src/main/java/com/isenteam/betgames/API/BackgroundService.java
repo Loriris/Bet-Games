@@ -23,8 +23,8 @@ import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import com.mongodb.client.FindIterable;
 
-@Configuration
-@EnableScheduling
+//@Configuration
+//@EnableScheduling
 public class BackgroundService {
 	
 	 @Scheduled(fixedDelay = 50000)
@@ -44,7 +44,7 @@ public class BackgroundService {
 	    	 Document doc = (Document) it.next();
 	    	 JsonObject docObj = JsonParser.parseString(doc.toJson()).getAsJsonObject();
 	    	 JsonObject party = JsonParser.parseString(docObj.get("party").getAsString()).getAsJsonObject();
-	    	 HttpResponse <JsonNode> response2 = Unirest.get("https://euw1.api.riotgames.com/lol/match/v4/matches/"+ docObj.get("_id").getAsString() + "?api_key=" + InfoAPI.key ).asJson();
+	    	 HttpResponse <JsonNode> response2 = Unirest.get("https://"+ party.get("platformId").getAsString()+".api.riotgames.com/lol/match/v4/matches/"+ docObj.get("_id").getAsString() + "?api_key=" + InfoAPI.key ).asJson();
 	    	 //System.out.println("Status: " + response2.getStatus());
 	    	 if( response2.getStatus() == 200)
 		     { 	 
@@ -52,21 +52,21 @@ public class BackgroundService {
 			     JsonArray team = jsonResponse.get("teams").getAsJsonArray();
 			     if(team.get(0).getAsJsonObject().get("win").getAsString() == "win")
 			     {
-			    	 //team 100 a gagné
-			    	 betors = listBetor.getList(jsonResponse.get("gameId").getAsString(), "100");
-			    	 mongoBet.doneBet(docObj.get("_id").getAsString(), "100");
+			    	 //team blue a gagné
+			    	 betors = listBetor.getList(jsonResponse.get("gameId").getAsString(), "blue");
+			    	 mongoBet.doneBet(docObj.get("_id").getAsString(), "blue");
 			    	 NotifyUser notif = new NotifyUser(betors, jsonResponse.get("gameId").getAsString());
 			    	 notif.notif(); 
 			     }
 			     else
 			     {
-			    	 //team 200 a gagné
-			    	 betors = listBetor.getList(jsonResponse.get("gameId").getAsString(), "200");
-			    	 mongoBet.doneBet(docObj.get("_id").getAsString(), "200");
+			    	 //team red a gagné
+			    	 betors = listBetor.getList(jsonResponse.get("gameId").getAsString(), "red");
+			    	 mongoBet.doneBet(docObj.get("_id").getAsString(), "red");
 			    	 NotifyUser notif = new NotifyUser(betors, jsonResponse.get("gameId").getAsString());
 			    	 notif.notif();
 			     }
-			     mongoParty.deleteParty(docObj.get("_id").getAsString());
+			     //mongoParty.deleteParty(docObj.get("_id").getAsString());
 			     
 			     for(int index = 0 ; index < betors.size(); index++)
 			     {
