@@ -5,6 +5,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.isenteam.betgames.bot.ActiveGames;
 import com.isenteam.betgames.bot.Bet;
+import com.isenteam.betgames.bot.User;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;
@@ -335,6 +336,37 @@ public class Mongo {
         	}
         }
         return false;
+	}
+	
+	public User retreiveUser(String id)
+	{
+		FindIterable<Document> iterDoc = this.collection.find();
+        Iterator it = iterDoc.iterator();
+        User user = null;
+        while (it.hasNext()) 
+        {
+        	Document doc = (Document) it.next();
+        	if(doc.containsValue(id))
+        	{
+        		user = new User(doc.getString("_id"), doc.getString("name"), doc.getInteger("win"), doc.getInteger("lose"), doc.getDouble("totalGain").floatValue());
+        		return user;
+        	}
+        }
+        return user;
+	}
+	
+	public ArrayList<User> retreiveAllUser()
+	{
+		ArrayList<User> tab = new ArrayList<>();;
+		FindIterable<Document> iterDoc = this.collection.find();
+        Iterator it = iterDoc.iterator();
+        while (it.hasNext())
+        {
+        	Document doc = (Document) it.next();
+        	User user = new User(doc.getString("_id"), doc.getString("name"), doc.getInteger("win"), doc.getInteger("lose"), doc.getDouble("totalGain").floatValue());
+            tab.add(user);
+        }
+        return tab;
 	}
 	
 }	
