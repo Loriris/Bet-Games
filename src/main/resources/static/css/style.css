@@ -153,6 +153,14 @@
     margin-right: auto;
 	width: 100%;
 	}
+	
+.has-text-centered {
+    display: block;
+	}
+
+.footer-right {
+    padding: 2rem;
+	}
 }
 
 .hero-body-two{
@@ -194,8 +202,35 @@
 #hi{
 	display: none;
 	}
+
+.has-text-centered {
+    display: flex;
+	}
 }
 
 .footer{
-    padding: 3rem 1.5rem 3rem;
+    padding: 3rem 1.5rem 5rem;
+}
+
+.footer-mid{
+	margin-left: auto;
+}
+
+.footer-right{
+	margin-right: auto;
+    margin-left: auto;
+}
+
+.fas.fa-exclamation{
+	color: #2F4F4F;
+}
+
+#france{
+	border: solid 1px;
+	width: 20px;
+}
+
+#english{
+	border: solid 1px;
+	width: 20px;
 }

@@ -194,6 +194,7 @@
 }
 
 .paragraph-article-body {
+	text-align: left;
     color: #2F4F4F;
 	font-family: "Berlin Sans FB Regular";
 }
@@ -291,4 +292,8 @@
 
 .paragraph-article-body.paraf-mid {
 	text-align: center;
+}
+
+.paragraph-article-body.paraf-mid.mini {
+	font-size: 15px;
 }
