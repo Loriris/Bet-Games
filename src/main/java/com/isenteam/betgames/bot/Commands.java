@@ -33,9 +33,12 @@ public class Commands extends ListenerAdapter{
 		
 		String[] commandsName = {"#info", "#odds", "#games", "#bet", "#teams", "#betgoing", "#wallet", "#connection"};
 		
-		if(Arrays.stream(commandsName).anyMatch(args[0]::equals) == false && args[0].substring(0, 1) == "#")
+		if(Arrays.stream(commandsName).anyMatch(args[0]::equals) == false)
 		{
-			mess.showMess("🔴 Please try again, the command you entered doesn't exist (see #info).", 0xCA0707);
+			if(args[0].substring(0, 1).equalsIgnoreCase("#"))
+			{
+				mess.showMess("🔴 Please try again, the command you entered doesn't exist (see #info).", 0xCA0707);
+			}
 		}
 		else
 		{
