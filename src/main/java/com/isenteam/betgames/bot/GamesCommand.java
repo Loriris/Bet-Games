@@ -32,9 +32,16 @@ public class GamesCommand {
 			Mongo games = new Mongo("Party");
 			ArrayList<ActiveGames> tabRecup = new ArrayList<>();
 			tabRecup = games.displayGames();
-			for(int i = 0; i < tabRecup.size(); i++)
+			if(tabRecup.size() == 0)
 			{
-				mess.showMess("ID: " + tabRecup.get(i).getId() + "		Connection with player: " + tabRecup.get(i).getPlayer(), 0x1A93D8);
+				mess.showMess("🔴 There is no game currently.", 0xCA0707);
+			}
+			else
+			{
+				for(int i = 0; i < tabRecup.size(); i++)
+				{
+					mess.showMess("ID: " + tabRecup.get(i).getId() + "		Connection with player: " + tabRecup.get(i).getPlayer(), 0x1A93D8);
+				}
 			}
 		}
 	}

@@ -32,9 +32,9 @@ public class BetgoingCommand {
 			Mongo mongo = new Mongo("Bets");
 			ArrayList<Bet> tab = mongo.displayBetNotDone(this.event.getAuthor().getId()); 
 			
-			if(tab == null)
+			if(tab.size() == 0)
 			{
-				BetCommand.sendResult(this.event.getAuthor(), "There are no current bet.");
+				BetCommand.sendResult(this.event.getAuthor(), "🔴 There are no current bets.");
 			}
 
 			//boucle sur l'array list

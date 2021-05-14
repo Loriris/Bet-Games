@@ -34,7 +34,7 @@ public class InfosCommand {
 			info.addField("To know your wallet :", "#wallet", false);
 			info.addField("Servers list :", "\"BR1\", \"EUN1\", \"EUW1\", \"LA1\", \r\n" + 
 			"\"LA2\", \"NA1\", \"OCE\", \"OC1\", \"RU1\", \"TR1\", \"JP1\", \"KR\", \"PBE\"", false);
-			info.addField("Visit our website for further information (only fr for the moment)", "https://playbet-games.fr/", false);
+			info.addField("Visit our website for further information : ", "https://playbet-games.fr/", false);
 			info.setColor(0x9003fc);
 			this.event.getChannel().sendMessage(info.build()).queue();
 			info.clear(); //Resets this builder to default state.
