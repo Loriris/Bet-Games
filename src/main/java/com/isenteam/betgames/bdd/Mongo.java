@@ -191,7 +191,7 @@ public class Mongo {
         	//recuperation de tous le doc
         	if(doc.getString("userId").equals(id) && doc.containsValue("false"))
         	{
-                Bet active = new Bet(doc.getLong("bet"), doc.getString("team"), doc.getDouble("odd").floatValue(), doc.getString("userName"), doc.getString("gameId"), doc.getString("userId"), doc.getString("done"), doc.getString("status"));
+                Bet active = new Bet(doc.getDouble("bet"), doc.getString("team"), doc.getDouble("odd").floatValue(), doc.getString("userName"), doc.getString("gameId"), doc.getString("userId"), doc.getString("done"), doc.getString("status"));
                 tab.add(active);
         	}
         }
@@ -211,7 +211,7 @@ public class Mongo {
         	Document doc = (Document) it.next();
         	if(doc.getString("userId").equals(userId))
         	{
-        		 Bet active = new Bet(doc.getLong("bet"), doc.getString("team"), doc.getDouble("odd").floatValue(), doc.getString("userName"), doc.getString("gameId"), doc.getString("userId"), doc.getString("done"), doc.getString("status"));
+        		 Bet active = new Bet(doc.getDouble("bet"), doc.getString("team"), doc.getDouble("odd").floatValue(), doc.getString("userName"), doc.getString("gameId"), doc.getString("userId"), doc.getString("done"), doc.getString("status"));
                  tab.add(active);
         	}
         }
@@ -229,7 +229,7 @@ public class Mongo {
         	Document doc = (Document) it.next();
         	if(doc.getString("userId").equals(userId) && !doc.containsValue("false"))
         	{
-                Bet active = new Bet(doc.getLong("bet"), doc.getString("team"), doc.getDouble("odd").floatValue(), doc.getString("userName"), doc.getString("gameId"), doc.getString("userId"), doc.getString("done"), doc.getString("status"));
+                Bet active = new Bet(doc.getDouble("bet"), doc.getString("team"), doc.getDouble("odd").floatValue(), doc.getString("userName"), doc.getString("gameId"), doc.getString("userId"), doc.getString("done"), doc.getString("status"));
                 tab.add(active);
         	}
         	
@@ -250,7 +250,7 @@ public class Mongo {
         	//recuperation de tous le doc
         	if(doc.getString("userId").equals(id) && !doc.containsValue("false") && doc.getString("gameId").equals(gameId))
         	{
-                Bet active = new Bet(doc.getLong("bet"), doc.getString("team"), doc.getDouble("odd").floatValue(), doc.getString("userName"), doc.getString("gameId"), doc.getString("userId"), doc.getString("done"), doc.getString("status"));
+                Bet active = new Bet(doc.getDouble("bet"), doc.getString("team"), doc.getDouble("odd").floatValue(), doc.getString("userName"), doc.getString("gameId"), doc.getString("userId"), doc.getString("done"), doc.getString("status"));
                 tab.add(active);
         	}
         	
@@ -270,18 +270,18 @@ public class Mongo {
         	{
         		int win = 0;
         		int lose = 0;
-        		double gain = 0;
+        		float gain = 0;
         		for(int i =0; i<allBet.size(); i++)
         		{
         			if(allBet.get(i).getStatus().equals("win"))
         			{
         				win++;
-        				gain = gain + allBet.get(i).getOdd()*allBet.get(0).getBet(); 
+        				gain = (float) (gain + allBet.get(i).getOdd()*allBet.get(0).getBet()); 
         			}
         			else
         			{
         				lose++;
-        				gain = gain - allBet.get(i).getBet();
+        				gain = (float) (gain - allBet.get(i).getBet());
         			}
         		}
         		
@@ -302,19 +302,19 @@ public class Mongo {
 		User.append("_id", allBet.get(0).getUserId());
 		int win = 0;
 		int lose = 0;
-		double gain = 0;
+		float gain = 0;
 		for(int i =0; i<allBet.size(); i++)
 		{
 			
 			if(allBet.get(i).getStatus().equals("win"))
 			{
 				win++;
-				gain = gain + allBet.get(i).getOdd()*allBet.get(0).getBet();
+				gain = (float) (gain + allBet.get(i).getOdd()*allBet.get(0).getBet());
 			}
 			else
 			{
 				lose++;
-				gain = gain - allBet.get(i).getBet();
+				gain = (float) (gain - allBet.get(i).getBet());
 			}
 		}
 		User.append("win", win);
