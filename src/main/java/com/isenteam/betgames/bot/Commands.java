@@ -3,7 +3,6 @@ package com.isenteam.betgames.bot;
 
 import java.util.Arrays;
 
-import com.google.rpc.context.AttributeContext.Response;
 import com.isenteam.betgames.API.InfoAPI;
 import com.mashape.unirest.http.exceptions.UnirestException;
 
@@ -134,7 +133,7 @@ public class Commands extends ListenerAdapter{
 		    			try
 		    			{
 							infos = new InfoAPI(args[1], args[2]);
-							int resultat = infos.PartyInfo();
+							int resultat = infos.partyInfo();
 							if(resultat == 404)
 							{
 								mess.showMess("🔴 Please try again, the player's nickname you entered doesn't exist.", 0xCA0707);
@@ -146,10 +145,9 @@ public class Commands extends ListenerAdapter{
 						} catch (UnirestException e) {
 							e.printStackTrace();
 						} 
-		    			
 		    		}
 			    }
 			}
-		}	
+		}				
 	}	
 }

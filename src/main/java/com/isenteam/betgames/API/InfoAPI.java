@@ -42,28 +42,28 @@ public class InfoAPI
 	};
 	
 	//Pour appeler l'API riot
-	public int PartyInfo() throws UnirestException
+	public int partyInfo() throws UnirestException
 	{
 		HttpResponse <JsonNode> response = Unirest.get("https://" +  region + ".api.riotgames.com/lol/summoner/v4/summoners/by-name/" + player + "?api_key=" + key).asJson();
-		if(response.getStatus() != 200)
+		if(response.getStatus() == 200)
 		{
-			return response.getStatus();
+			JsonObject summonerInfo = JsonParser.parseString(response.getBody().toString()).getAsJsonObject();
+			HttpResponse <JsonNode> response2 = Unirest.get("https://"+ region + ".api.riotgames.com/lol/spectator/v4/active-games/by-summoner/" + summonerInfo.get("id").getAsString() + "?" + "api_key=" + key ).asJson();
+			if(response2.getStatus() == 200)
+			{
+				 this.partyInfo = JsonParser.parseString(response2.getBody().toString()).getAsJsonObject();	   
+				 Mongo mongo = new Mongo("Party");
+				 if(Boolean.compare(mongo.searchForExistingParty(this.partyInfo.get("gameId").getAsString()), false) == 0)
+				 {
+				    	mongo.insertParty(this.partyInfo, this.player);
+				 }
+			}
 		}
-		JsonObject summonerInfo = JsonParser.parseString(response.getBody().toString()).getAsJsonObject();
-		
-		HttpResponse <JsonNode> response2 = Unirest.get("https://"+ region + ".api.riotgames.com/lol/spectator/v4/active-games/by-summoner/" + summonerInfo.get("id").getAsString() + "?" + "api_key=" + key ).asJson();
-	    this.partyInfo = JsonParser.parseString(response2.getBody().toString()).getAsJsonObject();	   
-	   
-	    Mongo mongo = new Mongo("Party");
-	    if(Boolean.compare(mongo.searchForExistingParty(this.partyInfo.get("gameId").getAsString()), false) == 0)
-	    {
-	    	mongo.insertParty(this.partyInfo, this.player);
-	    }
 		return response.getStatus();
 	}
 	
 	//Pour appeler la bdd
-	public void PartyInfoMongo()
+	public void partyInfoMongo()
     {
         Mongo mongo = new Mongo("Party");
         this.partyInfo = mongo.retreiveParty(this.id);

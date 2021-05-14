@@ -44,7 +44,7 @@ public class TeamsCommand {
 		    else
 		    {
 				InfoAPI infos = new InfoAPI(this.args[1]);
-				infos.PartyInfoMongo();
+				infos.partyInfoMongo();
 				try
 				{
 					infos.retrieveParticipantsInfo();
