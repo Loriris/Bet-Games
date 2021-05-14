@@ -66,7 +66,7 @@ public class BackgroundService {
 			    	 NotifyUser notif = new NotifyUser(betors, jsonResponse.get("gameId").getAsString());
 			    	 notif.notif();
 			     }
-			     //mongoParty.deleteParty(docObj.get("_id").getAsString());
+			     mongoParty.deleteParty(docObj.get("_id").getAsString());
 			     
 			     for(int index = 0 ; index < betors.size(); index++)
 			     {
