@@ -56,7 +56,7 @@ public class BetCommand {
 	    {
 	    	
 	    	InfoAPI infos = new InfoAPI(this.args[3]);
-	    	infos.PartyInfoMongo();
+	    	infos.partyInfoMongo();
 	    	
 	    	Mongo mongo = new Mongo("Party");
 		    if(Boolean.compare(mongo.searchForExistingParty(this.args[3]), false) == 0)

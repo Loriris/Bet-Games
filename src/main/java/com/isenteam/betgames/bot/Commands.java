@@ -123,7 +123,7 @@ public class Commands extends ListenerAdapter{
 	    			try
 	    			{
 						infos = new InfoAPI(args[1], args[2]);
-						infos.PartyInfo();
+						infos.partyInfo();
 						//System.out.println(infos.getPartyInfo());
 					} catch (UnirestException e) {
 						e.printStackTrace();
