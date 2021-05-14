@@ -31,6 +31,11 @@ public class BetgoingCommand {
 		{
 			Mongo mongo = new Mongo("Bets");
 			ArrayList<Bet> tab = mongo.displayBetNotDone(this.event.getAuthor().getId()); 
+			
+			if(tab == null)
+			{
+				BetCommand.sendResult(this.event.getAuthor(), "There are no current bet.");
+			}
 
 			//boucle sur l'array list
 			for(int i = 0; i < tab.size(); i++)

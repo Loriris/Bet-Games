@@ -2,6 +2,8 @@ package com.isenteam.betgames.bot;
 
 
 import java.util.Arrays;
+
+import com.google.rpc.context.AttributeContext.Response;
 import com.isenteam.betgames.API.InfoAPI;
 import com.mashape.unirest.http.exceptions.UnirestException;
 
@@ -30,9 +32,9 @@ public class Commands extends ListenerAdapter{
 		ShowMessage mess = new ShowMessage(event);
 		
 		
-		String[] commandsName = {"info", "odds", "games", "bet", "teams", "betgoing", "wallet", "connection"};
+		String[] commandsName = {"#info", "#odds", "#games", "#bet", "#teams", "#betgoing", "#wallet", "#connection"};
 		
-		if(Arrays.stream(commandsName).anyMatch(args[0]::equals) == false)
+		if(Arrays.stream(commandsName).anyMatch(args[0]::equals) == false && args[0].substring(0, 1) == "#")
 		{
 			mess.showMess("🔴 Please try again, the command you entered doesn't exist (see #info).", 0xCA0707);
 		}
@@ -97,8 +99,8 @@ public class Commands extends ListenerAdapter{
 			// allows you to know your wallet
 			if(args[0].equalsIgnoreCase(prefix + "wallet"))
 			{
-				//BetgoingCommand betgoingCom = new BetgoingCommand(event, args);
-				//betgoingCom.betGoing();
+				WalletCommand walletCom = new WalletCommand(event, args);
+				walletCom.walletComm();
 			}
 			
 			/*--------------------------------------------------------------------------------------------*/
@@ -132,12 +134,19 @@ public class Commands extends ListenerAdapter{
 		    			try
 		    			{
 							infos = new InfoAPI(args[1], args[2]);
-							infos.PartyInfo();
-							//System.out.println(infos.getPartyInfo());
+							int resultat = infos.PartyInfo();
+							if(resultat == 404)
+							{
+								mess.showMess("🔴 Please try again, the player's nickname you entered doesn't exist.", 0xCA0707);
+							}
+							else
+							{
+								mess.showMess("🟢 Connected.", 0x27AE1E);
+							}
 						} catch (UnirestException e) {
 							e.printStackTrace();
 						} 
-		    			mess.showMess("🟢 Connected.", 0x27AE1E);
+		    			
 		    		}
 			    }
 			}
