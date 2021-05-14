@@ -23,11 +23,11 @@ import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import com.mongodb.client.FindIterable;
 
-//@Configuration
-//@EnableScheduling
+@Configuration
+@EnableScheduling
 public class BackgroundService {
 	
-	 @Scheduled(fixedDelay = 50000)
+	 @Scheduled(fixedDelay = 300000)
 	 public void backgroundServiceMethod() throws UnirestException
 	 {
 	     System.out.println("Method executed at every 5 minutes.");
