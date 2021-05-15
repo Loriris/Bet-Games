@@ -25,11 +25,12 @@ public class InfosCommand {
 			info.setTitle("Commands list :");
 			info.addField("To connect to a game :", "#connection [player's_nickname_that_you're_watching] [region]"
 					+ " (for the player's name, it is necessary to write in one word), "
-					+ "you can bet on live games with porofessor: https://porofessor.gg/ ", false);
+					+ "you can find real time games with porofessor: https://porofessor.gg/ ", false);
 			info.addField("To know the available games and their ID :", "#games", false);
 			info.addField("To know the available teams :", "#teams [game_id]", false);
-			info.addField("To know the odd :", "#odds [team_color] [game_id]", false);
-			info.addField("To make a bet :", "#bet [team_color] [amount_to_bet] [game_id] (the amount can have the form x or x.y)", false);
+			info.addField("To know the odd :", "#odds [team_color] [game_id] (team_color: blue | red)", false);
+			info.addField("To make a bet :", "#bet [team_color] [amount_to_bet] [game_id] "
+					+ "(the amount can have the form x or x.y, team_color: blue | red)", false);
 			info.addField("To know the current bets :", "#betgoing", false);
 			info.addField("To know your wallet :", "#wallet", false);
 			info.addField("Servers list :", "\"BR1\", \"EUN1\", \"EUW1\", \"LA1\", \r\n" + 

@@ -36,8 +36,8 @@ public class WalletCommand {
 			else
 			{
 				BetCommand.sendResult(this.event.getAuthor(), "💬 You currently have " + userWallet.getGain() 
-				+ " tokens in your wallet, you have a total of " + userWallet.getWin() + " win(s) and " 
-				+ userWallet.getLose() + " losse(s).");
+				+ " BGtokens in your wallet, you have a total of " + userWallet.getWin() + " win(s) and " 
+				+ userWallet.getLose() + " loss(es).");
 			}
 		}
 	}

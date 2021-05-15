@@ -64,9 +64,11 @@ public class TeamsCommand {
 					{
 						colorTeam = "red";
 					}
-					mess.showMess("Team " + colorTeam + "  available," + 
-					"    Champion: " + infos.getParticipant()[i].getChampion() + ",    Player: " + infos.getParticipant()[i].getName(), 0x1A93D8);
-				}		
+					mess.showMess("Player " + infos.getParticipant()[i].getName() + " of the [" + colorTeam 
+					+ "] team is playing with character [" + infos.getParticipant()[i].getChampion() + "].", 0x1A93D8);
+				}
+				mess.showMess("Enter #odds [team_color] [game_id] (team_color: blue | red) "
+				+ "to know the odds on this game (game_id: " + this.args[1] + ").", 0x9003fc);
 		    }
 		}
 	}

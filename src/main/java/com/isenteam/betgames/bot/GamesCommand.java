@@ -40,7 +40,8 @@ public class GamesCommand {
 			{
 				for(int i = 0; i < tabRecup.size(); i++)
 				{
-					mess.showMess("ID: " + tabRecup.get(i).getId() + "		Connection with player: " + tabRecup.get(i).getPlayer(), 0x1A93D8);
+					mess.showMess("games_id: " + tabRecup.get(i).getId() + "		Player " + 
+				tabRecup.get(i).getPlayer() + " is currently playing on this game.", 0x1A93D8);
 				}
 			}
 		}
