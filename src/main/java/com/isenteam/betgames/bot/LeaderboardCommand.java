@@ -41,9 +41,9 @@ public class LeaderboardCommand {
 			{
 				for (int i = 0; i < leaderBoard.size(); i++) //(Math.round((1/ratioEq1) *100.0)/100.0)
 				{
-					mess.showMess(leaderBoard.get(i).getName() + " has " + (Math.round((leaderBoard.get(i).getGain()) *100.0)/100.0)
-					+ " BGtokens in his wallet with a record of " + leaderBoard.get(i).getWin() + 
-					" win(s) and " + leaderBoard.get(i).getLose() + " loss(es).", 0x1A93D8);
+					mess.showMess(leaderBoard.get(i).getName() + " has " + (Math.round((leaderBoard.get(i).getLeaderBoardScore()) *100.0)/100.0)
+					+ " BGtokens in his wallet with a record of " + leaderBoard.get(i).getLeaderBoardWin() + 
+					" win(s) and " + leaderBoard.get(i).getLeaderBoardLose() + " loss(es).", 0x1A93D8);
 				}
 			}
 		}

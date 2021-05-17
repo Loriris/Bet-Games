@@ -354,7 +354,8 @@ public class Mongo {
         	Document doc = (Document) it.next();
         	if(doc.containsValue(id))
         	{
-        		user = new User(doc.getString("_id"), doc.getString("name"), doc.getInteger("win"), doc.getInteger("lose"), doc.getDouble("totalGain").floatValue(), doc.getDouble("leaderBoardScore").floatValue());
+        		user = new User(doc.getString("_id"), doc.getString("name"), doc.getInteger("win"), doc.getInteger("lose"), doc.getDouble("totalGain").floatValue(), 
+        				doc.getDouble("leaderBoardScore").floatValue(), doc.getInteger("lose"), doc.getInteger("win"));
         		return user;
         	}
         }
@@ -369,7 +370,8 @@ public class Mongo {
         while (it.hasNext())
         {
         	Document doc = (Document) it.next();
-        	User user = new User(doc.getString("_id"), doc.getString("name"), doc.getInteger("win"), doc.getInteger("lose"), doc.getDouble("totalGain").floatValue(), doc.getDouble("leaderBoardScore").floatValue());
+        	User user = new User(doc.getString("_id"), doc.getString("name"), doc.getInteger("win"), doc.getInteger("lose"), doc.getDouble("totalGain").floatValue(), 
+        			doc.getDouble("leaderBoardScore").floatValue(), doc.getInteger("leaderBoardLose"), doc.getInteger("leaderBoardWin"));
             tab.add(user);
         }
         return tab;
