@@ -289,6 +289,9 @@ public class Mongo {
             	content.put("win", doc.getInteger("win") + win);
             	content.put("lose", doc.getInteger("lose") + lose);
             	content.put("totalGain", doc.getDouble("totalGain").floatValue() + gain);
+            	content.put("leaderBoardScore", doc.getDouble("leaderBoardScore").floatValue() + gain);
+            	content.put("leaderBoardWin", doc.getDouble("leaderBoardWin").floatValue() + gain);
+            	content.put("leaderBoardLose", doc.getDouble("leaderBoardLose").floatValue() + gain);
             	Document update = new Document("$set", content);
             	this.collection.updateOne(Filters.eq("_id", allBet.get(0).getUserId()), update);
         	}
@@ -320,6 +323,9 @@ public class Mongo {
 		User.append("win", win);
 		User.append("lose", lose);
 		User.append("totalGain", gain);
+		User.append("leaderBoardScore", gain);
+		User.append("leaderBoardWin", win);
+		User.append("leaderBoardLose", lose);
 		this.collection.insertOne(User);
 	}
 	
@@ -348,7 +354,7 @@ public class Mongo {
         	Document doc = (Document) it.next();
         	if(doc.containsValue(id))
         	{
-        		user = new User(doc.getString("_id"), doc.getString("name"), doc.getInteger("win"), doc.getInteger("lose"), doc.getDouble("totalGain").floatValue());
+        		user = new User(doc.getString("_id"), doc.getString("name"), doc.getInteger("win"), doc.getInteger("lose"), doc.getDouble("totalGain").floatValue(), doc.getDouble("leaderBoardScore").floatValue());
         		return user;
         	}
         }
@@ -363,10 +369,29 @@ public class Mongo {
         while (it.hasNext())
         {
         	Document doc = (Document) it.next();
-        	User user = new User(doc.getString("_id"), doc.getString("name"), doc.getInteger("win"), doc.getInteger("lose"), doc.getDouble("totalGain").floatValue());
+        	User user = new User(doc.getString("_id"), doc.getString("name"), doc.getInteger("win"), doc.getInteger("lose"), doc.getDouble("totalGain").floatValue(), doc.getDouble("leaderBoardScore").floatValue());
             tab.add(user);
         }
         return tab;
+	}
+	
+	public void updateLeaderBoard()
+	{
+		FindIterable<Document> iterDoc = this.collection.find();
+        Iterator it = iterDoc.iterator();
+        int index = 0;
+        while (it.hasNext())
+        {
+        	Document doc = (Document) it.next();
+        	Document content = doc;
+            content.put("leaderBoardScore", 0);
+            content.put("leaderBoardWin", 0);
+            content.put("leaderBoardLose", 0);
+            Document update = new Document("$set", content);
+            this.collection.updateOne(Filters.exists("_id"), update);
+        	
+        }
+        
 	}
 	
 }	

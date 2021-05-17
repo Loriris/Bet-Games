@@ -7,14 +7,16 @@ public class User {
 	private int win;
 	private int lose;
 	private float gain;
+	private float leaderBoardScore;
 	
-	public User(String id, String name, int win, int lose, float gain)
+	public User(String id, String name, int win, int lose, float gain, float leaderBoardScore)
 	{
 		this.id = id;
 		this.name = name;
 		this.win = win;
 		this.lose = lose;
 		this.gain = gain;
+		this.leaderBoardScore = leaderBoardScore;
 	}
 
 	public String getId() {
