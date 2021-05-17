@@ -31,11 +31,14 @@ public class Commands extends ListenerAdapter{
 		ShowMessage mess = new ShowMessage(event);
 		
 		
-		String[] commandsName = {"#info", "#odds", "#games", "#bet", "#teams", "#betgoing", "#wallet", "#connection"};
+		String[] commandsName = {"#info", "#odds", "#games", "#bet", "#teams", "#mybets", "#wallet", "#connection", "#leaderboard"};
 		
-		if(Arrays.stream(commandsName).anyMatch(args[0]::equals) == false && args[0].substring(0, 1) == "#")
+		if(Arrays.stream(commandsName).anyMatch(args[0]::equals) == false)
 		{
-			mess.showMess("🔴 Please try again, the command you entered doesn't exist (see #info).", 0xCA0707);
+			if(args[0].substring(0, 1).equalsIgnoreCase("#"))
+			{
+				mess.showMess("🔴 Please try again, the command you entered doesn't exist (see #info).", 0xCA0707);
+			}
 		}
 		else
 		{
@@ -87,10 +90,19 @@ public class Commands extends ListenerAdapter{
 			/*--------------------------------------------------------------------------------------------*/
 			
 			// allow to know the bet you take on unfinished games 
-			if(args[0].equalsIgnoreCase(prefix + "betgoing"))
+			if(args[0].equalsIgnoreCase(prefix + "mybets"))
 			{
 				BetgoingCommand betgoingCom = new BetgoingCommand(event, args);
 				betgoingCom.betGoing();
+			}
+			
+			/*--------------------------------------------------------------------------------------------*/
+			
+			// allow to know the bet you take on unfinished games 
+			if(args[0].equalsIgnoreCase(prefix + "leaderboard"))
+			{
+				LeaderboardCommand leaderboardCom = new LeaderboardCommand(event, args);
+				leaderboardCom.leaderboardComm();
 			}
 			
 			/*--------------------------------------------------------------------------------------------*/

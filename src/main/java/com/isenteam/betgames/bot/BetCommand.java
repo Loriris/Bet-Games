@@ -105,7 +105,7 @@ public class BetCommand {
 							Mongo col = new Mongo("Bets");
 							col.insert(monPari);
 
-							sendResult(this.event.getAuthor(), "Your bet on the game " + 
+							sendResult(this.event.getAuthor(), "💬 Your bet of " + monPari.getBet() +" BGtokens on the game " + 
 							infos.getPartyInfo().get("gameId").getAsString() + " was successfully recorded.");						
 						}
 					}
