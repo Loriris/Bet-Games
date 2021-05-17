@@ -31,7 +31,7 @@ public class Commands extends ListenerAdapter{
 		ShowMessage mess = new ShowMessage(event);
 		
 		
-		String[] commandsName = {"#info", "#odds", "#games", "#bet", "#teams", "#mybets", "#wallet", "#connection"};
+		String[] commandsName = {"#info", "#odds", "#games", "#bet", "#teams", "#mybets", "#wallet", "#connection", "#leaderboard"};
 		
 		if(Arrays.stream(commandsName).anyMatch(args[0]::equals) == false)
 		{
@@ -94,6 +94,15 @@ public class Commands extends ListenerAdapter{
 			{
 				BetgoingCommand betgoingCom = new BetgoingCommand(event, args);
 				betgoingCom.betGoing();
+			}
+			
+			/*--------------------------------------------------------------------------------------------*/
+			
+			// allow to know the bet you take on unfinished games 
+			if(args[0].equalsIgnoreCase(prefix + "leaderboard"))
+			{
+				LeaderboardCommand leaderboardCom = new LeaderboardCommand(event, args);
+				leaderboardCom.leaderboardComm();
 			}
 			
 			/*--------------------------------------------------------------------------------------------*/
