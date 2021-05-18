@@ -31,7 +31,7 @@ public class InfosCommand {
 			info.addField("To know the odd :", "#odds [team_color] [game_id] (team_color: blue | red)", false);
 			info.addField("To make a bet :", "#bet [team_color] [amount_to_bet] [game_id] "
 					+ "(the amount can have the form x or x.y, team_color: blue | red)", false);
-			info.addField("To know the current bets :", "#betgoing", false);
+			info.addField("To know the current bets :", "#mybets", false);
 			info.addField("To know the leaderboard :", "#leaderboard", false);
 			info.addField("To know your wallet :", "#wallet", false);
 			info.addField("Servers list :", "\"BR1\", \"EUN1\", \"EUW1\", \"LA1\", \r\n" + 
