@@ -77,7 +77,7 @@ public class OddsCommand {
 			 
 						mess.showMess("Odds are " + teamValue[i] + " for the " + this.teamName[i] + " team.", 0x1A93D8);
 						mess.showMess("To make a bet on this game enter #bet [team_color] "
-						+ "[amount_to_bet] [game_id] (game_id: " + this.args[2] + ".", 0x1A93D8);
+						+ "[amount_to_bet] [game_id] (game_id: " + this.args[2] + ").", 0x1A93D8);
 					}	
 				}
 		    }
