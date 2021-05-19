@@ -9,7 +9,7 @@
 	</parent>
 	<groupId>com.isenteam</groupId>
 	<artifactId>betgames</artifactId>
-	<version>0.0.4-SNAPSHOT</version>
+	<version>0.0.5-SNAPSHOT</version>
 	<name>betgames</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
