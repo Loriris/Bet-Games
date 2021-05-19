@@ -31,14 +31,18 @@ public class BetgoingCommand {
 		{
 			Mongo mongo = new Mongo("Bets");
 			ArrayList<Bet> tab = mongo.displayBetNotDone(this.event.getAuthor().getId()); 
+			
+			if(tab.size() == 0)
+			{
+				BetCommand.sendResult(this.event.getAuthor(), "🔴 There are no current bets.");
+			}
 
 			//boucle sur l'array list
 			for(int i = 0; i < tab.size(); i++)
 			{
-				System.out.println("oui");
-				BetCommand.sendResult(this.event.getAuthor(), "There is a bet of " + tab.get(i).getBet() + 
-						" on the team " + tab.get(i).getTeam() + " (odd : " + tab.get(i).getOdd() 
-						+ ") for the game " + tab.get(i).getGameId() + ".");
+				BetCommand.sendResult(this.event.getAuthor(), "💬 There is a bet of " + tab.get(i).getBet() 
+				+ " on the team " + tab.get(i).getTeam() + " (odd : " + tab.get(i).getOdd() 
+				+ ") for the game " + tab.get(i).getGameId() + ".");
 			}
 		}	
 	}

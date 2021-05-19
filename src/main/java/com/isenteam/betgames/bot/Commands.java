@@ -2,6 +2,7 @@ package com.isenteam.betgames.bot;
 
 
 import java.util.Arrays;
+
 import com.isenteam.betgames.API.InfoAPI;
 import com.mashape.unirest.http.exceptions.UnirestException;
 
@@ -29,108 +30,136 @@ public class Commands extends ListenerAdapter{
 		String[] args = event.getMessage().getContentRaw().split("\\s+");
 		ShowMessage mess = new ShowMessage(event);
 		
-/*--------------------------------------------------------------------------------------------*/	
 		
-		// type #info to display all commands
-		if(args[0].equalsIgnoreCase(prefix + "info"))
+		String[] commandsName = {"#info", "#odds", "#games", "#bet", "#teams", "#mybets", "#wallet", "#connection", "#leaderboard"};
+		
+		if(Arrays.stream(commandsName).anyMatch(args[0]::equals) == false)
 		{
-			InfosCommand infoCom = new InfosCommand(event, args);
-			infoCom.displayInfo();
+			if(args[0].substring(0, 1).equalsIgnoreCase("#"))
+			{
+				mess.showMess("🔴 Please try again, the command you entered doesn't exist (see #info).", 0xCA0707);
+			}
 		}
+		else
+		{
+			/*--------------------------------------------------------------------------------------------*/	
+			
+			// type #info to display all commands
+			if(args[0].equalsIgnoreCase(prefix + "info"))
+			{
+				InfosCommand infoCom = new InfosCommand(event, args);
+				infoCom.displayInfo();
+			}
 
-/*--------------------------------------------------------------------------------------------*/
-		
-		// allow to know the odds of betting of the team you that you want	
-		if(args[0].equalsIgnoreCase(prefix + "odds"))
-		{	
-			OddsCommand oddsCom = new OddsCommand(event, args, teamName, coteEq1, coteEq2);
-			oddsCom.Odds();
-		}
-		
-/*--------------------------------------------------------------------------------------------*/
-		
-		// allow to know the games available 
-		if(args[0].equalsIgnoreCase(prefix + "games"))
-		{
-			GamesCommand gamesCom = new GamesCommand(event, args);
-			gamesCom.gamesComm();
-		}
+			/*--------------------------------------------------------------------------------------------*/
+			
+			// allow to know the odds of betting of the team you that you want	
+			if(args[0].equalsIgnoreCase(prefix + "odds"))
+			{	
+				OddsCommand oddsCom = new OddsCommand(event, args, teamName, coteEq1, coteEq2);
+				oddsCom.Odds();
+			}
+			
+			/*--------------------------------------------------------------------------------------------*/
+			
+			// allow to know the games available 
+			if(args[0].equalsIgnoreCase(prefix + "games"))
+			{
+				GamesCommand gamesCom = new GamesCommand(event, args);
+				gamesCom.gamesComm();
+			}
 
-/*--------------------------------------------------------------------------------------------*/
-		
-		//allow to bet on the selected team
-		if(args[0].equalsIgnoreCase(prefix + "bet"))
-		{
-			BetCommand betCom = new BetCommand(event, args, teamName, coteEq1, coteEq2, regionServer);
-			betCom.BetComm();
-		}
+			/*--------------------------------------------------------------------------------------------*/
+			
+			//allow to bet on the selected team
+			if(args[0].equalsIgnoreCase(prefix + "bet"))
+			{
+				BetCommand betCom = new BetCommand(event, args, teamName, coteEq1, coteEq2, regionServer);
+				betCom.BetComm();
+			}
 
-/*--------------------------------------------------------------------------------------------*/
-		
-		// allow to know the team available 
-		if(args[0].equalsIgnoreCase(prefix + "teams"))
-		{
-			TeamsCommand teamsCom = new TeamsCommand(event, args);
-			teamsCom.Teams();
-		}
-		
-/*--------------------------------------------------------------------------------------------*/
-		
-		// allow to know the bet you take on unfinished games 
-		if(args[0].equalsIgnoreCase(prefix + "betgoing"))
-		{
-			BetgoingCommand betgoingCom = new BetgoingCommand(event, args);
-			betgoingCom.betGoing();
-		}
-		
-/*--------------------------------------------------------------------------------------------*/
-		
-		// allows you to know your wallet
-		if(args[0].equalsIgnoreCase(prefix + "wallet"))
-		{
-			//BetgoingCommand betgoingCom = new BetgoingCommand(event, args);
-			//betgoingCom.betGoing();
-		}
-		
-/*--------------------------------------------------------------------------------------------*/
-		
-		// Return the pseudo and the region to use in the LoL API
-		if(args[0].equalsIgnoreCase(prefix + "connection"))
-		{
-			// Check how many arguments were passed in, we need 3 args
-		    if(args.length < 3)
-		    {
-		        mess.showMess("🔴 Please try again by checking if you've entered "
-		        		+ "the correct nickname and/or region (see #info).", 0xCA0707);
-		        
-		    }
-		    
-		    if(args.length > 3)
-		    {
-		    	mess.showMess("🔴 Please try again, you have entered too many arguments (see #info).", 0xCA0707);
-		    }
-		    
-		    if(args.length == 3)
-		    {	
-		    	regionServer = args[2]; //region server
-		    	
-	    		if(Arrays.stream(serverName).anyMatch(args[2]::equals) == false)
-	    		{
-	    			mess.showMess("🔴 Please try again, the server you entered doesn't exist (see #info).", 0xCA0707);
-	    		}
-	    		else
-	    		{
-	    			try
-	    			{
-						infos = new InfoAPI(args[1], args[2]);
-						infos.PartyInfo();
-						//System.out.println(infos.getPartyInfo());
-					} catch (UnirestException e) {
-						e.printStackTrace();
-					}
-	    			mess.showMess("🟢 Connected.", 0x27AE1E);
-	    		}
-		    }
-		}			
+			/*--------------------------------------------------------------------------------------------*/
+			
+			// allow to know the team available 
+			if(args[0].equalsIgnoreCase(prefix + "teams"))
+			{
+				TeamsCommand teamsCom = new TeamsCommand(event, args);
+				teamsCom.Teams();
+			}
+			
+			/*--------------------------------------------------------------------------------------------*/
+			
+			// allow to know the bet you take on unfinished games 
+			if(args[0].equalsIgnoreCase(prefix + "mybets"))
+			{
+				BetgoingCommand betgoingCom = new BetgoingCommand(event, args);
+				betgoingCom.betGoing();
+			}
+			
+			/*--------------------------------------------------------------------------------------------*/
+			
+			// allow to know the bet you take on unfinished games 
+			if(args[0].equalsIgnoreCase(prefix + "leaderboard"))
+			{
+				LeaderboardCommand leaderboardCom = new LeaderboardCommand(event, args);
+				leaderboardCom.leaderboardComm();
+			}
+			
+			/*--------------------------------------------------------------------------------------------*/
+			
+			// allows you to know your wallet
+			if(args[0].equalsIgnoreCase(prefix + "wallet"))
+			{
+				WalletCommand walletCom = new WalletCommand(event, args);
+				walletCom.walletComm();
+			}
+			
+			/*--------------------------------------------------------------------------------------------*/
+			
+			// Return the pseudo and the region to use in the LoL API
+			if(args[0].equalsIgnoreCase(prefix + "connection"))
+			{
+				// Check how many arguments were passed in, we need 3 args
+			    if(args.length < 3)
+			    {
+			        mess.showMess("🔴 Please try again by checking if you've entered "
+			        		+ "the correct nickname and/or region (see #info).", 0xCA0707);
+			        
+			    }
+			    
+			    if(args.length > 3)
+			    {
+			    	mess.showMess("🔴 Please try again, you have entered too many arguments (see #info).", 0xCA0707);
+			    }
+			    
+			    if(args.length == 3)
+			    {	
+			    	regionServer = args[2]; //region server
+			    	
+		    		if(Arrays.stream(serverName).anyMatch(args[2]::equals) == false)
+		    		{
+		    			mess.showMess("🔴 Please try again, the server you entered doesn't exist (see #info).", 0xCA0707);
+		    		}
+		    		else 
+		    		{
+		    			try
+		    			{
+							infos = new InfoAPI(args[1], args[2]);
+							int resultat = infos.partyInfo();
+							if(resultat == 404)
+							{
+								mess.showMess("🔴 Please try again, the player's nickname you entered doesn't exist.", 0xCA0707);
+							}
+							else
+							{
+								mess.showMess("🟢 Connected.", 0x27AE1E);
+							}
+						} catch (UnirestException e) {
+							e.printStackTrace();
+						} 
+		    		}
+			    }
+			}
+		}				
 	}	
 }

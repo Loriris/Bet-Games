@@ -23,11 +23,11 @@ import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import com.mongodb.client.FindIterable;
 
-//@Configuration
-//@EnableScheduling
+@Configuration
+@EnableScheduling
 public class BackgroundService {
 	
-	 @Scheduled(fixedDelay = 50000)
+	 @Scheduled(fixedDelay = 300000)
 	 public void backgroundServiceMethod() throws UnirestException
 	 {
 	     System.out.println("Method executed at every 5 minutes.");
@@ -66,7 +66,7 @@ public class BackgroundService {
 			    	 NotifyUser notif = new NotifyUser(betors, jsonResponse.get("gameId").getAsString());
 			    	 notif.notif();
 			     }
-			     //mongoParty.deleteParty(docObj.get("_id").getAsString());
+			     mongoParty.deleteParty(docObj.get("_id").getAsString());
 			     
 			     for(int index = 0 ; index < betors.size(); index++)
 			     {

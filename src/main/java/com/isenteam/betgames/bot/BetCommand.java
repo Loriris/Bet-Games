@@ -38,7 +38,7 @@ public class BetCommand {
 	{
 		ShowMessage mess = new ShowMessage(event);
 		
-		long money;
+		double money;
 		
 		// Check how many arguments were passed in, we need 4 args
 	    if(this.args.length < 4)
@@ -56,7 +56,7 @@ public class BetCommand {
 	    {
 	    	
 	    	InfoAPI infos = new InfoAPI(this.args[3]);
-	    	infos.PartyInfoMongo();
+	    	infos.partyInfoMongo();
 	    	
 	    	Mongo mongo = new Mongo("Party");
 		    if(Boolean.compare(mongo.searchForExistingParty(this.args[3]), false) == 0)
@@ -75,7 +75,7 @@ public class BetCommand {
 				{
 					if(this.args[1].equalsIgnoreCase(this.teamName[i]) && this.args[2].isEmpty() == false)
 					{
-						money = Integer.parseInt(this.args[2]);
+						money = Double.parseDouble(this.args[2]);
 						if(money <=0 || money>100000)
 						{
 							mess.showMess("🔴 The selected amount isn't valid, "
@@ -105,7 +105,7 @@ public class BetCommand {
 							Mongo col = new Mongo("Bets");
 							col.insert(monPari);
 
-							sendResult(this.event.getAuthor(), "Your bet on the game " + 
+							sendResult(this.event.getAuthor(), "💬 Your bet of " + monPari.getBet() +" BGtokens on the game " + 
 							infos.getPartyInfo().get("gameId").getAsString() + " was successfully recorded.");						
 						}
 					}

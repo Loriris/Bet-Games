@@ -17,7 +17,7 @@ public class CalculCote {
 		
 	public void calcul() throws UnirestException {
 		
-    	infoC.PartyInfoMongo();
+    	infoC.partyInfoMongo();
     	infoC.retrieveParticipantsInfo();
 		for(int index = 0; index < infoC.getParticipant().length; index++)
 		{
@@ -29,7 +29,7 @@ public class CalculCote {
 				{
 					
 					denoEq1--;
-					System.out.println("deno1 " + denoEq2);
+					//System.out.println("deno1 " + denoEq2);
 				}
 			}	
 			else
@@ -39,15 +39,15 @@ public class CalculCote {
 				{
 					
 					denoEq2--;
-					System.out.println("deno2 " + denoEq2);
+					//System.out.println("deno2 " + denoEq2);
 				}
 			}
 		}
 		
 		ratioEq1 = totRatioEq1/denoEq1;
 		ratioEq2 = totRatioEq2/denoEq2;
-		System.out.println(ratioEq1);
-		System.out.println(ratioEq2);
+		//System.out.println(ratioEq1);
+		//System.out.println(ratioEq2);
 		
 		coteEq1 = (float) (Math.round((1/ratioEq1) *100.0)/100.0);
 		coteEq2 = (float) (Math.round((1/ratioEq2) *100.0)/100.0);
