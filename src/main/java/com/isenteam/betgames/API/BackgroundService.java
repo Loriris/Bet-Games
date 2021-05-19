@@ -50,7 +50,7 @@ public class BackgroundService {
 		     { 	 
 			     JsonObject jsonResponse = JsonParser.parseString(response2.getBody().toString()).getAsJsonObject();
 			     JsonArray team = jsonResponse.get("teams").getAsJsonArray();
-			     if(team.get(0).getAsJsonObject().get("win").getAsString() == "Win")
+			     if(team.get(0).getAsJsonObject().get("win").getAsString().equals("Win"))
 			     {
 			    	 //team blue a gagné
 			    	 betors = listBetor.getList(jsonResponse.get("gameId").getAsString(), "blue");

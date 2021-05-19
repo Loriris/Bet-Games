@@ -270,17 +270,21 @@ public class Mongo {
         	{
         		int win = 0;
         		int lose = 0;
+        		int leaderBoardWin = 0;
+        		int leaderBoardLose = 0;
         		float gain = 0;
         		for(int i =0; i<allBet.size(); i++)
         		{
         			if(allBet.get(i).getStatus().equals("win"))
         			{
         				win++;
+        				leaderBoardWin++;
         				gain = (float) (gain + allBet.get(i).getOdd()*allBet.get(0).getBet()); 
         			}
         			else
         			{
         				lose++;
+        				leaderBoardLose++;
         				gain = (float) (gain - allBet.get(i).getBet());
         			}
         		}
@@ -290,8 +294,8 @@ public class Mongo {
             	content.put("lose", doc.getInteger("lose") + lose);
             	content.put("totalGain", doc.getDouble("totalGain").floatValue() + gain);
             	content.put("leaderBoardScore", doc.getDouble("leaderBoardScore").floatValue() + gain);
-            	content.put("leaderBoardWin", doc.getDouble("leaderBoardWin").floatValue() + gain);
-            	content.put("leaderBoardLose", doc.getDouble("leaderBoardLose").floatValue() + gain);
+            	content.put("leaderBoardWin", doc.getInteger("leaderBoardWin") + leaderBoardWin);
+            	content.put("leaderBoardLose", doc.getInteger("leaderBoardLose")+ leaderBoardLose);
             	Document update = new Document("$set", content);
             	this.collection.updateOne(Filters.eq("_id", allBet.get(0).getUserId()), update);
         	}
