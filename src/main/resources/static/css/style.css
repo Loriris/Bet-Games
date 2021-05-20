@@ -121,11 +121,20 @@
 	display: none;
 	}
 	
+#byebyebye {
+	display: none;
+	}
+	
 #hi{
 	margin-left: auto;
 	margin-right: auto;
 	}
 
+#hihi{
+	margin-right: auto;
+    margin-left: auto;
+    padding: 2rem;
+	}
 }
 
 
@@ -158,7 +167,7 @@
     display: block;
 	}
 
-.footer-right {
+#hihi {
     padding: 2rem;
 	}
 }
@@ -203,6 +212,10 @@
 	display: none;
 	}
 
+#hihi{
+	display: none;
+	}
+
 .has-text-centered {
     display: flex;
 	}
@@ -214,11 +227,7 @@
 
 .footer-mid{
 	margin-left: auto;
-}
-
-.footer-right{
 	margin-right: auto;
-    margin-left: auto;
 }
 
 .fas.fa-exclamation{
@@ -233,4 +242,9 @@
 #english{
 	border: solid 1px;
 	width: 20px;
+}
+
+.translate{
+	margin-bottom: 1.5rem;
+    margin-left: 1rem;
 }

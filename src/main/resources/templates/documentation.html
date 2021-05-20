@@ -28,6 +28,25 @@
 	                            <div class="buttons">
 	                                <a class="button is-dark" id="byebye" onclick="window.open('https://github.com/Loriris/Bet-Games.git')">Github</a>
 	                            </div>
+	                            <div class="translate" id="byebyebye">
+					                <div class="dropdown">
+									  <div class="dropdown-trigger">
+									    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+									      <span><img th:src="@{/images/france.png}" id="france"> Français</span>
+									      <span class="icon is-small">
+									        <i class="fas fa-angle-down" aria-hidden="true"></i>
+									      </span>
+									    </button>
+									  </div>
+									  <div class="dropdown-menu" id="dropdown-menu" role="menu">
+									    <div class="dropdown-content">
+									      <a th:href="@{/en/documentation}" class="dropdown-item">
+									        <img th:src="@{/images/english.png}" id="english"> English
+									      </a>
+									    </div>
+									  </div>
+									</div>
+	                            </div>
 	                        </div>
 	                    </div>
 	                </div>
@@ -226,7 +245,7 @@
 	                    <strong>&copy;2021 Bet-Games</strong> par <i>Thomas SCHMID</i>, <i>Alexis RAFÉ</i>, <i>Ines BEN-SLAMA</i> et <i>Loris MARTINEZ</i>.
 	                </p>
             	</div>
-            	<div class="footer-right">
+            	<div id="hihi">
 	                <div class="dropdown">
 					  <div class="dropdown-trigger">
 					    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
