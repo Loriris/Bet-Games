@@ -52,7 +52,7 @@ Nous avons essentiellement développé notre bot discord sous JAVA avec :
 
 ## Versions
 
-**Dernière version :** 4.0
+**Dernière version :** 5.0
 
 ## Auteurs :adult: :woman:
 
